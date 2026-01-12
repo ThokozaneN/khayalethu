@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Khayalethu Grocery Store</title>
+    <meta name="description" content="Learn about Khayalethu Grocery Store's mission to serve our community with essential groceries on credit. Our story, values, and commitment to Embalenhle, Secunda, and Evander.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Google Fonts - 2026 Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #22c55e 0%, #10b981 100%);
+            border-radius: 10px;
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 50%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animated-gradient {
+            background: linear-gradient(-45deg, #f0fdf4, #dcfce7, #d1fae5, #a7f3d0);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+        }
+        
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-delayed {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: -2s;
+        }
+
+        .glow-green {
+            box-shadow: 0 0 60px rgba(34, 197, 94, 0.3), 0 0 100px rgba(34, 197, 94, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.3);
+        }
+
+        .mobile-menu-overlay {
+            clip-path: circle(0% at calc(100% - 40px) 40px);
+            transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu-overlay.active {
+            clip-path: circle(150% at calc(100% - 40px) 40px);
+        }
+
+        .card-3d {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .card-3d:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .noise::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .lang-pill {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            transition: all 0.3s ease;
+        }
+        .lang-pill:hover {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%);
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+
+        .timeline-line {
+            background: linear-gradient(180deg, #22c55e 0%, #10b981 50%, #059669 100%);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased selection:bg-green-200 selection:text-green-900 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="glass-morphism fixed w-full z-50 transition-all duration-500 top-0" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-green-500/25 group-hover:shadow-green-500/40 transition-all duration-300 group-hover:scale-105 group-hover:rotate-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                    </div>
+                    <span class="font-bold text-2xl text-gray-900 tracking-tight">Khayalethu</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-2">
+                    <a href="index.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-green-600 rounded-xl hover:bg-green-50 transition-all">Home</a>
+                    <a href="about.html" class="px-4 py-2 text-sm font-medium text-green-600 bg-green-50 rounded-xl transition-all">About</a>
+                    <a href="shop.html" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-green-600 rounded-xl hover:bg-green-50 transition-all">Shop</a>
+                    <a href="index.html#credit" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-green-600 rounded-xl hover:bg-green-50 transition-all">How It Works</a>
+                    <a href="index.html#contact" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-green-600 rounded-xl hover:bg-green-50 transition-all">Contact</a>
+                    
+                    <div class="w-px h-6 bg-gray-200 mx-2"></div>
+                    
+                    <a href="index.html#apply" class="btn-primary ml-2 text-white px-6 py-2.5 rounded-xl text-sm font-semibold">Apply for Credit</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors z-[70]">
+                    <div class="flex flex-col gap-1.5" id="hamburger-icon">
+                        <span class="w-6 h-0.5 bg-gray-800 rounded-full transition-all duration-300 origin-center" id="line1"></span>
+                        <span class="w-6 h-0.5 bg-gray-800 rounded-full transition-all duration-300" id="line2"></span>
+                        <span class="w-4 h-0.5 bg-gray-800 rounded-full transition-all duration-300 origin-center" id="line3"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu-overlay fixed inset-0 z-[65] bg-white lg:hidden">
+        <div class="flex flex-col items-center justify-center h-full gap-6 px-6">
+            <a href="index.html" class="mobile-link text-3xl font-bold text-gray-900 hover:text-green-600 transition-colors">Home</a>
+            <a href="about.html" class="mobile-link text-3xl font-bold text-green-600 transition-colors">About</a>
+            <a href="shop.html" class="mobile-link text-3xl font-bold text-gray-900 hover:text-green-600 transition-colors">Shop</a>
+            <a href="index.html#credit" class="mobile-link text-3xl font-bold text-gray-900 hover:text-green-600 transition-colors">How It Works</a>
+            <a href="index.html#apply" class="mobile-link text-3xl font-bold text-green-600 hover:text-green-700 transition-colors">Apply for Credit</a>
+            <a href="index.html#contact" class="mobile-link text-3xl font-bold text-gray-900 hover:text-green-600 transition-colors">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[70vh] flex items-center pt-32 pb-20 overflow-hidden animated-gradient noise">
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 right-10 w-72 h-72 bg-green-300/40 rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-20 left-10 w-96 h-96 bg-emerald-300/40 rounded-full blur-3xl floating-delayed"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Breadcrumb -->
+                <nav class="gsap-fade flex items-center justify-center gap-2 text-sm text-gray-500 mb-8 opacity-0">
+                    <a href="index.html" class="hover:text-green-600 transition-colors">Home</a>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <span class="text-green-600 font-medium">About Us</span>
+                </nav>
+                
+                <!-- Badge -->
+                <div class="gsap-fade inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/80 backdrop-blur-sm border border-green-200/50 shadow-lg shadow-green-500/10 mb-10 opacity-0">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                    </span>
+                    <span class="text-sm font-semibold text-green-800 tracking-wide">Our Story</span>
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="gsap-fade text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] mb-8 opacity-0">
+                    Built on trust.<br/>
+                    <span class="gradient-text">Powered by community.</span>
+                </h1>
+                
+                <!-- Subtext -->
+                <p class="gsap-fade text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed opacity-0">
+                    Learn about our journey, our mission, and why we're committed to serving families in Embalenhle, Secunda, and Evander.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Our Story Section -->
+    <section class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <!-- Image -->
+                <div class="gsap-slide-right relative opacity-0">
+                    <div class="aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-green-500/10 relative">
+                        <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Community grocery store" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-gradient-to-t from-green-900/30 to-transparent"></div>
+                    </div>
+                    <!-- Floating Card -->
+                    <div class="absolute -bottom-8 -right-8 bg-white rounded-2xl p-6 shadow-xl shadow-gray-200/50 border border-gray-100">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center text-white text-2xl">❤️</div>
+                            <div>
+                                <div class="text-3xl font-bold text-gray-900">2018</div>
+                                <div class="text-sm text-gray-500 font-medium">Serving Since</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content -->
+                <div class="gsap-slide-left opacity-0">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                        Our Beginning
+                    </span>
+                    <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+                        A store born from<br><span class="gradient-text">understanding.</span>
+                    </h2>
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                        <p>
+                            Khayalethu Grocery Store was founded in 2018 by members of the community who understood a simple truth: <strong>families shouldn't have to choose between paying rent and buying groceries.</strong>
+                        </p>
+                        <p>
+                            We grew up here. We understand the rhythm of life in Embalenhle — the weeks before payday when money is tight, the unexpected expenses that throw budgets off balance, and the pride that comes with providing for your family.
+                        </p>
+                        <p>
+                            That's why we created a different kind of grocery store. One built on trust, dignity, and the belief that everyone deserves access to essential groceries, regardless of when payday falls.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-300 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    What We Stand For
+                </span>
+                <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Our Mission & Values</h2>
+                <p class="text-xl text-gray-600">The principles that guide everything we do.</p>
+            </div>
+
+            <!-- Mission Statement -->
+            <div class="gsap-mission bg-gradient-to-br from-green-500 to-emerald-600 rounded-[2rem] p-10 lg:p-16 text-white text-center mb-16 relative overflow-hidden opacity-0">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                </div>
+                <div class="relative z-10">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-8">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-bold mb-6">Our Mission</h3>
+                    <p class="text-xl sm:text-2xl leading-relaxed max-w-3xl mx-auto opacity-90">
+                        "To ensure no family in our community goes without essential groceries during tough times. We exist to bridge the gap between need and payday with dignity, trust, and respect."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Values Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="gsap-value card-3d bg-white p-8 rounded-3xl border border-gray-100 shadow-lg shadow-gray-100/50 opacity-0">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/30">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Trust</h3>
+                    <p class="text-gray-600">We believe in our community. Our credit system is built on mutual trust and respect — no complicated checks, just honest relationships.</p>
+                </div>
+
+                <div class="gsap-value card-3d bg-white p-8 rounded-3xl border border-gray-100 shadow-lg shadow-gray-100/50 opacity-0">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/30">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Dignity</h3>
+                    <p class="text-gray-600">Needing help isn't something to be ashamed of. We treat every customer with the respect and privacy they deserve.</p>
+                </div>
+
+                <div class="gsap-value card-3d bg-white p-8 rounded-3xl border border-gray-100 shadow-lg shadow-gray-100/50 opacity-0">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/30">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Community</h3>
+                    <p class="text-gray-600">We're not just a business — we're neighbors. We invest in our community and celebrate its successes.</p>
+                </div>
+
+                <div class="gsap-value card-3d bg-white p-8 rounded-3xl border border-gray-100 shadow-lg shadow-gray-100/50 opacity-0">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/30">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Transparency</h3>
+                    <p class="text-gray-600">No hidden fees, no complicated terms. What you see is what you get — clear, honest pricing always.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-24 bg-gradient-to-br from-gray-900 via-gray-900 to-emerald-950 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-green-500 rounded-full blur-[150px]"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-400 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">Our Impact</h2>
+                <p class="text-xl text-gray-400">Numbers that tell our story.</p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="gsap-stat text-center opacity-0">
+                    <div class="text-5xl sm:text-6xl font-bold gradient-text mb-2">100+</div>
+                    <div class="text-gray-400 font-medium">Families Served</div>
+                </div>
+                <div class="gsap-stat text-center opacity-0">
+                    <div class="text-5xl sm:text-6xl font-bold gradient-text mb-2">6+</div>
+                    <div class="text-gray-400 font-medium">Years Operating</div>
+                </div>
+                <div class="gsap-stat text-center opacity-0">
+                    <div class="text-5xl sm:text-6xl font-bold gradient-text mb-2">3</div>
+                    <div class="text-gray-400 font-medium">Communities Served</div>
+                </div>
+                <div class="gsap-stat text-center opacity-0">
+                    <div class="text-5xl sm:text-6xl font-bold gradient-text mb-2">0</div>
+                    <div class="text-gray-400 font-medium">Hidden Fees</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    The People Behind Khayalethu
+                </span>
+                <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Meet Our Team</h2>
+                <p class="text-xl text-gray-600">Dedicated individuals committed to serving our community with care and respect.</p>
+            </div>
+
+            <!-- Team Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 - Founder -->
+                <div class="gsap-team group text-center opacity-0">
+                    <div class="relative mb-6 mx-auto w-48 h-48">
+                        <div class="w-full h-full rounded-3xl overflow-hidden shadow-xl shadow-green-500/10 group-hover:shadow-green-500/20 transition-all duration-500 group-hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Thabo Nkosi" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-3 -right-3 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Thabo Nkosi</h3>
+                    <p class="text-green-600 font-semibold mb-3">Founder & Owner</p>
+                    <button onclick="copyEmail('thabo@khayalethu.co.za', this)" class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-green-600 transition-colors group/email cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="email-text">thabo@khayalethu.co.za</span>
+                        <svg class="w-3.5 h-3.5 opacity-0 group-hover/email:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Team Member 2 - Manager -->
+                <div class="gsap-team group text-center opacity-0">
+                    <div class="relative mb-6 mx-auto w-48 h-48">
+                        <div class="w-full h-full rounded-3xl overflow-hidden shadow-xl shadow-green-500/10 group-hover:shadow-green-500/20 transition-all duration-500 group-hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nomvula Dlamini" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-3 -right-3 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Nomvula Dlamini</h3>
+                    <p class="text-green-600 font-semibold mb-3">Store Manager</p>
+                    <button onclick="copyEmail('nomvula@khayalethu.co.za', this)" class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-green-600 transition-colors group/email cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="email-text">nomvula@khayalethu.co.za</span>
+                        <svg class="w-3.5 h-3.5 opacity-0 group-hover/email:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Team Member 3 - Credit Officer -->
+                <div class="gsap-team group text-center opacity-0">
+                    <div class="relative mb-6 mx-auto w-48 h-48">
+                        <div class="w-full h-full rounded-3xl overflow-hidden shadow-xl shadow-green-500/10 group-hover:shadow-green-500/20 transition-all duration-500 group-hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sipho Mahlangu" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-3 -right-3 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Sipho Mahlangu</h3>
+                    <p class="text-green-600 font-semibold mb-3">Credit Officer</p>
+                    <button onclick="copyEmail('credit@khayalethu.co.za', this)" class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-green-600 transition-colors group/email cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="email-text">credit@khayalethu.co.za</span>
+                        <svg class="w-3.5 h-3.5 opacity-0 group-hover/email:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Team Member 4 - Customer Service -->
+                <div class="gsap-team group text-center opacity-0">
+                    <div class="relative mb-6 mx-auto w-48 h-48">
+                        <div class="w-full h-full rounded-3xl overflow-hidden shadow-xl shadow-green-500/10 group-hover:shadow-green-500/20 transition-all duration-500 group-hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lerato Molefe" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-3 -right-3 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center text-white shadow-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Lerato Molefe</h3>
+                    <p class="text-green-600 font-semibold mb-3">Customer Care</p>
+                    <button onclick="copyEmail('hello@khayalethu.co.za', this)" class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-green-600 transition-colors group/email cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="email-text">hello@khayalethu.co.za</span>
+                        <svg class="w-3.5 h-3.5 opacity-0 group-hover/email:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Team Values -->
+            <div class="mt-16 bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 lg:p-12 border border-green-100">
+                <div class="flex flex-col lg:flex-row items-center gap-8">
+                    <div class="flex-shrink-0">
+                        <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">We're More Than Colleagues — We're Family</h3>
+                        <p class="text-gray-600 text-lg">Our team lives in the same communities we serve. We understand your needs because they're our needs too. When you walk into Khayalethu, you're greeted by neighbors who genuinely care about your wellbeing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banking Details Section -->
+    <section class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-300 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    Payment Options
+                </span>
+                <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Banking Details</h2>
+                <p class="text-xl text-gray-600">Pay your credit balance via EFT or online banking. It's quick, easy, and secure.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Banking Details Card -->
+                <div class="gsap-bank bg-white rounded-3xl p-8 lg:p-10 shadow-xl shadow-gray-200/50 border border-gray-100 opacity-0">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Bank Account Details</h3>
+                            <p class="text-gray-500">For EFT & Online Payments</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-4 border-b border-gray-100">
+                            <span class="text-gray-500 font-medium">Bank Name</span>
+                            <span class="text-gray-900 font-bold text-lg">FNB (First National Bank)</span>
+                        </div>
+                        <div class="flex justify-between items-center py-4 border-b border-gray-100">
+                            <span class="text-gray-500 font-medium">Account Name</span>
+                            <span class="text-gray-900 font-bold text-lg">Khayalethu Grocery Store</span>
+                        </div>
+                        <div class="flex justify-between items-center py-4 border-b border-gray-100">
+                            <span class="text-gray-500 font-medium">Account Number</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-gray-900 font-bold text-lg font-mono" id="account-number">62845912347</span>
+                                <button onclick="copyToClipboard('62845912347', this)" class="p-2 hover:bg-gray-100 rounded-lg transition-colors group" title="Copy">
+                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center py-4 border-b border-gray-100">
+                            <span class="text-gray-500 font-medium">Branch Code</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-gray-900 font-bold text-lg font-mono">250655</span>
+                                <button onclick="copyToClipboard('250655', this)" class="p-2 hover:bg-gray-100 rounded-lg transition-colors group" title="Copy">
+                                    <svg class="w-5 h-5 text-gray-400 group-hover:text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center py-4">
+                            <span class="text-gray-500 font-medium">Account Type</span>
+                            <span class="text-gray-900 font-bold text-lg">Business Cheque Account</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reference Instructions Card -->
+                <div class="gsap-bank bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl p-8 lg:p-10 text-white relative overflow-hidden opacity-0">
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+                        <div class="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full blur-3xl"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Payment Reference</h3>
+                                <p class="text-green-100">Very Important!</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 mb-6 border border-white/20">
+                            <p class="text-lg mb-4">When making your payment, please use your <strong>SA ID Number</strong> as the payment reference:</p>
+                            <div class="bg-white/20 rounded-xl p-4 text-center">
+                                <span class="text-2xl font-bold font-mono tracking-wider">YOUR 13-DIGIT ID</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-green-50">This helps us identify your payment quickly and update your account.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-green-50">Payments reflect within 24-48 hours on weekdays.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-green-50">Send proof of payment via WhatsApp for faster processing.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/20">
+                            <p class="text-sm text-green-100 mb-3">Questions about your payment?</p>
+                            <a href="https://wa.me/27601234567" target="_blank" class="inline-flex items-center gap-2 bg-white text-green-600 px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-all">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
+                                WhatsApp Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Reminder -->
+            <div class="mt-12 max-w-3xl mx-auto">
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 flex items-start gap-4">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-amber-800 mb-1">Important Reminder</h4>
+                        <p class="text-amber-700">Always keep your proof of payment (POP) until your account has been updated. If your payment doesn't reflect within 48 hours, please contact us with your POP via WhatsApp or visit us in-store.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">Ready to Join Our Family?</h2>
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">Apply for credit today and experience the Khayalethu difference. We're here to help you through every step.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="index.html#apply" class="btn-primary w-full sm:w-auto px-10 py-4 text-white rounded-2xl font-semibold text-lg shadow-xl shadow-green-500/25">
+                    Apply for Credit Online
+                </a>
+                <a href="index.html#contact" class="w-full sm:w-auto px-10 py-4 bg-gray-100 text-gray-700 rounded-2xl font-medium text-lg hover:bg-gray-200 transition-all">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Main Footer Content -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-green-500/20">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-white">Khayalethu</h2>
+                            <p class="text-sm">Grocery Store</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 leading-relaxed">Essential groceries when you need them most. Proudly serving Embalenhle, Secunda & Evander.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-green-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="index.html#credit" class="hover:text-green-400 transition-colors">How Credit Works</a></li>
+                        <li><a href="index.html#apply" class="hover:text-green-400 transition-colors">Apply for Credit</a></li>
+                        <li><a href="index.html#contact" class="hover:text-green-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#" onclick="openModal('terms-modal'); return false;" class="hover:text-green-400 transition-colors">Terms & Conditions</a></li>
+                        <li><a href="index.html#" onclick="openModal('ncr-modal'); return false;" class="hover:text-green-400 transition-colors">NCR Information</a></li>
+                        <li><a href="index.html#" onclick="openModal('popia-modal'); return false;" class="hover:text-green-400 transition-colors">POPIA Policy</a></li>
+                        <li><a href="index.html#" onclick="openModal('cookie-modal'); return false;" class="hover:text-green-400 transition-colors">Cookie Settings</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>123 Community Road, Embalenhle, 2285</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <span>017 123 4567</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <span>060 123 4567</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">© 2026 Khayalethu Grocery Store. All rights reserved.</p>
+                <div class="flex items-center gap-2 text-xs text-gray-500">
+                    <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <span>NCR Registered Credit Provider | NCRCP12345</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Legal Modals -->
+    <!-- Terms & Conditions Modal -->
+    <div id="terms-modal" class="fixed inset-0 z-[300] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('terms-modal')"></div>
+        <div class="absolute inset-4 md:inset-10 lg:inset-20 bg-white rounded-3xl overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">Terms & Conditions</h2>
+                <button onclick="closeModal('terms-modal')" class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 md:p-10">
+                <div class="max-w-3xl mx-auto prose prose-gray">
+                    <p class="text-gray-500 text-sm mb-6">Last Updated: January 2026</p>
+                    
+                    <h3 class="text-lg font-bold text-gray-900 mt-6 mb-3">1. Introduction</h3>
+                    <p class="text-gray-600 mb-4">Welcome to Khayalethu Grocery Store. These Terms and Conditions govern your use of our credit services and your relationship with us.</p>
+                    
+                    <h3 class="text-lg font-bold text-gray-900 mt-6 mb-3">2. Credit Account Eligibility</h3>
+                    <p class="text-gray-600 mb-4">To qualify for a credit account, you must be at least 18 years of age, be a South African citizen or permanent resident, and provide valid identification and proof of residence.</p>
+                    
+                    <h3 class="text-lg font-bold text-gray-900 mt-6 mb-3">3. Payment Terms</h3>
+                    <p class="text-gray-600 mb-4">Full payment is due by the agreed date each month. Payments can be made in-store, via EFT, or online banking using your SA ID number as reference.</p>
+                    
+                    <p class="text-gray-600">For complete terms, please visit our store or contact us at 017 123 4567.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NCR Information Modal -->
+    <div id="ncr-modal" class="fixed inset-0 z-[300] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('ncr-modal')"></div>
+        <div class="absolute inset-4 md:inset-10 lg:inset-20 bg-white rounded-3xl overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">NCR Information</h2>
+                <button onclick="closeModal('ncr-modal')" class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 md:p-10">
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 mb-8 border border-green-200">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">Registered Credit Provider</h3>
+                                <p class="text-green-700 font-semibold">NCR Registration: NCRCP12345</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">The National Credit Regulator (NCR) is the regulatory body responsible for the regulation of the South African credit industry. Contact the NCR at 0860 627 627 or visit www.ncr.org.za</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPIA Policy Modal -->
+    <div id="popia-modal" class="fixed inset-0 z-[300] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('popia-modal')"></div>
+        <div class="absolute inset-4 md:inset-10 lg:inset-20 bg-white rounded-3xl overflow-hidden flex flex-col">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">POPIA Privacy Policy</h2>
+                <button onclick="closeModal('popia-modal')" class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 md:p-10">
+                <div class="max-w-3xl mx-auto prose prose-gray">
+                    <p class="text-gray-500 text-sm mb-6">Last Updated: January 2026</p>
+                    <p class="text-gray-600 mb-4">This Privacy Policy explains how Khayalethu Grocery Store collects, uses, and protects your personal information in compliance with the Protection of Personal Information Act (POPIA).</p>
+                    <p class="text-gray-600">For questions, contact our Information Officer at privacy@khayalethu.co.za or 017 123 4567.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookie-modal" class="fixed inset-0 z-[300] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('cookie-modal')"></div>
+        <div class="absolute inset-x-4 top-1/2 -translate-y-1/2 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-lg bg-white rounded-3xl overflow-hidden">
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">Cookie Settings</h2>
+                <button onclick="closeModal('cookie-modal')" class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-6">
+                <p class="text-gray-600 mb-6">We use cookies to improve your experience on our website.</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Essential Cookies</h4>
+                            <p class="text-sm text-gray-500">Required for the website to function</p>
+                        </div>
+                        <div class="w-12 h-7 bg-green-500 rounded-full flex items-center justify-end px-1">
+                            <div class="w-5 h-5 bg-white rounded-full shadow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Analytics Cookies</h4>
+                            <p class="text-sm text-gray-500">Help us improve our website</p>
+                        </div>
+                        <label class="relative cursor-pointer">
+                            <input type="checkbox" id="analytics-cookies-about" class="sr-only peer" checked>
+                            <div class="w-12 h-7 bg-gray-300 peer-checked:bg-green-500 rounded-full transition-colors"></div>
+                            <div class="absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5"></div>
+                        </label>
+                    </div>
+                    
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Marketing Cookies</h4>
+                            <p class="text-sm text-gray-500">Used for targeted advertising</p>
+                        </div>
+                        <label class="relative cursor-pointer">
+                            <input type="checkbox" id="marketing-cookies-about" class="sr-only peer">
+                            <div class="w-12 h-7 bg-gray-300 peer-checked:bg-green-500 rounded-full transition-colors"></div>
+                            <div class="absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5"></div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="flex gap-3 mt-6">
+                    <button onclick="saveCookieSettings()" class="flex-1 btn-primary text-white py-3 rounded-xl font-semibold">Save Preferences</button>
+                    <button onclick="acceptAllCookies()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold transition-colors">Accept All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[250] p-3 translate-y-full opacity-0 transition-all duration-500">
+        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
+            <div class="p-4">
+                <div class="flex items-start gap-3 mb-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <span class="text-sm">🍪</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-semibold text-gray-900 text-sm">We use cookies</h4>
+                        <p class="text-gray-500 text-xs mt-0.5">To improve your experience. See our <a href="#" onclick="openModal('popia-modal'); return false;" class="text-green-600 hover:underline">Privacy Policy</a>.</p>
+                    </div>
+                </div>
+                
+                <!-- Compact Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="acceptAllCookies()" class="btn-primary text-white px-4 py-2 rounded-lg font-medium text-sm">
+                        Accept All
+                    </button>
+                    <button onclick="acceptEssentialOnly()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium text-sm transition-colors">
+                        Essential Only
+                    </button>
+                    <button onclick="openModal('cookie-modal'); hideCookieBanner();" class="border border-gray-200 hover:border-green-500 hover:text-green-600 text-gray-500 px-4 py-2 rounded-lg font-medium text-sm transition-colors">
+                        Customize
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const line3 = document.getElementById('line3');
+        let menuOpen = false;
+
+        function toggleMobileMenu() {
+            menuOpen = !menuOpen;
+            
+            if (menuOpen) {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                line1.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                line2.style.opacity = '0';
+                line3.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                line3.style.width = '24px';
+            } else {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                line1.style.transform = '';
+                line2.style.opacity = '1';
+                line3.style.transform = '';
+                line3.style.width = '16px';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuOpen) toggleMobileMenu();
+            });
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animations
+        gsap.to('.gsap-fade', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: 'power3.out',
+            delay: 0.3
+        });
+
+        // Story section
+        gsap.to('.gsap-slide-right', {
+            scrollTrigger: { trigger: '.gsap-slide-right', start: 'top 80%' },
+            x: 0, opacity: 1, duration: 1, ease: 'power3.out'
+        });
+        gsap.to('.gsap-slide-left', {
+            scrollTrigger: { trigger: '.gsap-slide-left', start: 'top 80%' },
+            x: 0, opacity: 1, duration: 1, delay: 0.2, ease: 'power3.out'
+        });
+
+        // Mission
+        gsap.to('.gsap-mission', {
+            scrollTrigger: { trigger: '.gsap-mission', start: 'top 80%' },
+            opacity: 1, y: 0, duration: 1, ease: 'power3.out'
+        });
+
+        // Values
+        gsap.to('.gsap-value', {
+            scrollTrigger: { trigger: '.gsap-value', start: 'top 85%' },
+            opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
+        });
+
+        // Stats
+        gsap.to('.gsap-stat', {
+            scrollTrigger: { trigger: '.gsap-stat', start: 'top 85%' },
+            opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
+        });
+
+        // Team members
+        gsap.to('.gsap-team', {
+            scrollTrigger: { trigger: '.gsap-team', start: 'top 85%' },
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+        });
+
+        // Banking details
+        gsap.to('.gsap-bank', {
+            scrollTrigger: { trigger: '.gsap-bank', start: 'top 85%' },
+            opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out'
+        });
+
+        // Copy to clipboard function
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show success feedback
+                const originalHTML = button.innerHTML;
+                button.innerHTML = `
+                    <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                `;
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // Copy email function with visual feedback
+        function copyEmail(email, button) {
+            navigator.clipboard.writeText(email).then(() => {
+                const emailText = button.querySelector('.email-text');
+                const originalText = emailText.textContent;
+                
+                // Change text to show copied
+                emailText.textContent = 'Copied!';
+                button.classList.add('text-green-600');
+                
+                // Add a brief scale animation
+                button.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    button.style.transform = 'scale(1)';
+                }, 150);
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    emailText.textContent = originalText;
+                    button.classList.remove('text-green-600');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy email: ', err);
+                // Fallback - open email client
+                window.location.href = 'mailto:' + email;
+            });
+        }
+
+        // ==========================================
+        // MODAL FUNCTIONS
+        // ==========================================
+        
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                gsap.fromTo(modal.querySelector('.absolute:not(.bg-black\\/60)'), 
+                    { opacity: 0, scale: 0.95, y: 20 },
+                    { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: 'power2.out' }
+                );
+            }
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                gsap.to(modal.querySelector('.absolute:not(.bg-black\\/60)'), {
+                    opacity: 0, scale: 0.95, y: 20, duration: 0.2, ease: 'power2.in',
+                    onComplete: () => {
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modals = ['terms-modal', 'ncr-modal', 'popia-modal', 'cookie-modal'];
+                modals.forEach(id => {
+                    const modal = document.getElementById(id);
+                    if (modal && !modal.classList.contains('hidden')) {
+                        closeModal(id);
+                    }
+                });
+            }
+        });
+
+        function acceptAllCookies() {
+            localStorage.setItem('cookie_consent', JSON.stringify({
+                essential: true,
+                analytics: true,
+                marketing: true,
+                timestamp: Date.now()
+            }));
+            hideCookieBanner();
+            closeModal('cookie-modal');
+            showCookieToast('All cookies accepted');
+        }
+        
+        function saveCookieSettings() {
+            const analytics = document.getElementById('analytics-cookies-about')?.checked || false;
+            const marketing = document.getElementById('marketing-cookies-about')?.checked || false;
+            
+            localStorage.setItem('cookie_consent', JSON.stringify({
+                essential: true,
+                analytics: analytics,
+                marketing: marketing,
+                timestamp: Date.now()
+            }));
+            
+            hideCookieBanner();
+            closeModal('cookie-modal');
+            showCookieToast('Cookie preferences saved');
+        }
+        
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                gsap.to(banner, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.6,
+                    ease: 'power3.out'
+                });
+            }
+        }
+        
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                gsap.to(banner, {
+                    y: 100,
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: 'power2.in'
+                });
+            }
+        }
+        
+        function acceptEssentialOnly() {
+            localStorage.setItem('cookie_consent', JSON.stringify({
+                essential: true,
+                analytics: false,
+                marketing: false,
+                timestamp: Date.now()
+            }));
+            hideCookieBanner();
+            showCookieToast('Essential cookies only');
+        }
+        
+        function showCookieToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-xl shadow-lg z-[400] flex items-center gap-2';
+            toast.innerHTML = `
+                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                ${message}
+            `;
+            document.body.appendChild(toast);
+            
+            gsap.fromTo(toast, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3 });
+            setTimeout(() => {
+                gsap.to(toast, { y: 20, opacity: 0, duration: 0.3, onComplete: () => toast.remove() });
+            }, 3000);
+        }
+        
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookie_consent');
+            if (!consent) {
+                // Show cookie banner after content loads with a delay
+                setTimeout(showCookieBanner, 1500);
+            } else {
+                // Load saved preferences into the modal
+                try {
+                    const settings = JSON.parse(consent);
+                    const analyticsCheckbox = document.getElementById('analytics-cookies-about');
+                    const marketingCheckbox = document.getElementById('marketing-cookies-about');
+                    if (analyticsCheckbox) analyticsCheckbox.checked = settings.analytics;
+                    if (marketingCheckbox) marketingCheckbox.checked = settings.marketing;
+                } catch (e) {
+                    console.error('Error parsing cookie consent:', e);
+                }
+            }
+        }
+        
+        // Check cookie consent on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkCookieConsent();
+        });
+    </script>
+</body>
+</html>
