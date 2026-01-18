@@ -29,25 +29,39 @@
             100% { transform: translateY(0px); }
         }
 
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+        }
+        
+        /* Pause on hover */
+        .group:hover .animate-scroll {
+            animation-play-state: paused;
+        }
+
         /* Glassmorphism Utilities */
         .glass {
             background: rgba(255, 255, 255, 0.7);
-            -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
         .glass-card {
             background: rgba(255, 255, 255, 0.4);
-            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
 
         .gradient-text {
-            -webkit-background-clip: text;
             background-clip: text;
+            -webkit-background-clip: text;
             color: transparent;
             background-image: linear-gradient(to right, #059669, #10b981, #34d399);
         }
@@ -85,9 +99,16 @@
                         <a href="#about" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">About</a>
                         <a href="#how-it-works" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Credit</a>
                         <a href="#products" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Essentials</a>
+                        <a href="partner.html" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Partner</a>
                     </div>
 
-                    <div class="hidden md:flex">
+                    <div class="hidden md:flex items-center gap-3">
+                        <button id="nav-shop-btn" class="px-5 py-2.5 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full hover:bg-emerald-200 transition-all flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                            Order Online
+                        </button>
                         <a href="#contact" class="px-6 py-2.5 bg-stone-900 text-white text-sm font-medium rounded-full hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-200 transition-all duration-300 transform hover:-translate-y-0.5">
                             Contact Us
                         </a>
@@ -110,7 +131,14 @@
                     <a href="#about" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">About</a>
                     <a href="#how-it-works" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Credit Info</a>
                     <a href="#products" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Products</a>
-                    <a href="#contact" class="block px-4 py-2 text-base font-bold text-emerald-700 bg-emerald-50 rounded-xl mt-4 text-center">Contact Us</a>
+                    <a href="partner.html" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Partner</a>
+                    <button id="mobile-shop-btn" class="w-full text-left block px-4 py-2 text-base font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-xl transition-colors flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        Order Online
+                    </button>
+                    <a href="#contact" class="block px-4 py-2 text-base font-bold text-stone-900 hover:text-emerald-600 rounded-xl mt-2">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -120,13 +148,29 @@
     <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             
-            <!-- Status Badge -->
-            <div class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm mb-8">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span class="text-xs font-medium text-stone-500 tracking-wide uppercase">Open for Applications</span>
+            <!-- Status Badges -->
+            <div class="flex flex-col justify-center items-center gap-3 mb-8 sm:flex-row">
+                <div class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-xs font-medium text-stone-500 tracking-wide uppercase">Open for Applications</span>
+                </div>
+                
+                <div class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
+                    <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                    <span class="text-xs font-medium text-stone-500 tracking-wide uppercase">We deliver for free</span>
+                </div>
+                
+                <div class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
+                    <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span class="text-xs font-medium text-stone-500 tracking-wide uppercase">NCR Compliant</span>
+                </div>
             </div>
 
             <h1 class="hero-anim text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-stone-900 mb-8 leading-[1.1]">
@@ -135,7 +179,7 @@
             </h1>
             
             <p class="hero-anim max-w-2xl mx-auto text-xl text-stone-500 mb-12 leading-relaxed font-light">
-                The modern way to shop for essentials in <span class="text-stone-800 font-medium">Embalenhle, Secunda</span> & <span class="text-stone-800 font-medium">surrounding areas</span>. Buy now, pay later. Built on trust.
+                The modern way to shop for essentials in <span class="text-stone-800 font-medium">Embalenhle, Secunda</span> & <span class="text-stone-800 font-medium">Surrounding Areas</span>. Buy now, pay later. Built on trust. <span class="gradient-text font-semibold">Kumnandi Ekhaya.</span>
             </p>
             
             <div class="hero-anim flex flex-col sm:flex-row justify-center gap-4 items-center">
@@ -171,7 +215,7 @@
                 <p class="text-xs uppercase tracking-widest text-stone-500">Approval</p>
             </div>
             <div class="stat-item opacity-0 translate-y-4">
-                <p class="text-3xl font-bold text-stone-900 mb-1"><span class="count-up" data-target="100">0</span>+</p>
+                <p class="text-3xl font-bold text-stone-900 mb-1"><span class="count-up" data-target="500">0</span>+</p>
                 <p class="text-xs uppercase tracking-widest text-stone-500">Families</p>
             </div>
         </div>
@@ -187,7 +231,7 @@
             <div class="glass-card p-8 md:p-12 rounded-3xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 <p class="text-lg md:text-xl text-stone-600 leading-relaxed relative z-10 mb-8">
-                    We believe access to food shouldn't be determined by payday. Khayalethu Grocery Store provides a dignified, transparent way to get essentials now and pay later. We are building a financial safety net for the people of Gert Sibande.
+                    We believe access to food shouldn't be determined by payday. Khayalethu provides a dignified, transparent way to get essentials now and pay later. We are building a financial safety net for the people of Mpumalanga.
                 </p>
                 <div class="relative z-10 flex justify-center md:justify-start">
                     <button id="open-about-btn" class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-emerald-100 text-emerald-700 font-medium rounded-full hover:bg-emerald-50 hover:shadow-lg hover:shadow-emerald-100 transition-all group">
@@ -215,8 +259,8 @@
                 <!-- Step 1 -->
                 <div class="step-card group p-8 rounded-3xl bg-white border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 hover:border-emerald-100 transition-all duration-300">
                     <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center text-xl font-bold text-stone-900 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">1</div>
-                    <h3 class="text-xl font-bold text-stone-900 mb-3">Apply In-Store or Online</h3>
-                    <p class="text-stone-500 leading-relaxed">Visit us with your ID and proof of residence or do it all online. We verify details instantly.</p>
+                    <h3 class="text-xl font-bold text-stone-900 mb-3">Apply In-Store</h3>
+                    <p class="text-stone-500 leading-relaxed">Visit us with your ID and proof of residence. We verify details instantly.</p>
                 </div>
 
                 <!-- Step 2 -->
@@ -230,7 +274,7 @@
                 <div class="step-card group p-8 rounded-3xl bg-white border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 hover:border-emerald-100 transition-all duration-300">
                     <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center text-xl font-bold text-stone-900 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">3</div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Pay Later</h3>
-                    <p class="text-stone-500 leading-relaxed">Settle your account by month-end or at your preferred date to increase your limit for next time.</p>
+                    <p class="text-stone-500 leading-relaxed">Settle your account by month-end to increase your limit for next time.</p>
                 </div>
             </div>
 
@@ -240,7 +284,7 @@
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                     </svg>
-                    <span>Late payments result in immediate legal action.</span>
+                    <span>Late payments result in immediate account suspension.</span>
                 </div>
             </div>
         </div>
@@ -329,6 +373,44 @@
                     <div class="absolute bottom-0 left-0 p-5">
                         <span class="text-lg font-bold text-white">Canned</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Brands Carousel -->
+    <section class="py-12 bg-white border-t border-stone-50 overflow-hidden relative z-10">
+        <div class="max-w-6xl mx-auto px-4 mb-6 text-center">
+            <p class="text-xs font-bold tracking-widest text-stone-400 uppercase">Trusted Brands We Stock</p>
+        </div>
+        
+        <div class="relative w-full group">
+            <!-- Gradient Masks for seamless effect -->
+            <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            
+            <!-- Scrolling Container -->
+            <div class="flex overflow-hidden whitespace-nowrap">
+                <div class="flex animate-scroll gap-12 md:gap-24 min-w-full items-center justify-around px-12">
+                    <!-- Original Set -->
+                    <span class="text-3xl font-serif font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default">TASTIC</span>
+                    <span class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-tighter">KOO</span>
+                    <span class="text-3xl font-serif italic font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Albany</span>
+                    <span class="text-3xl font-sans font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-widest">LUCKY STAR</span>
+                    <span class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Huletts</span>
+                    <span class="text-3xl font-mono font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Sunlight</span>
+                    <span class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">NOLA</span>
+                    <span class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">JUNGLE</span>
+                    
+                    <!-- Duplicate Set for smooth loop -->
+                    <span class="text-3xl font-serif font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default">TASTIC</span>
+                    <span class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-tighter">KOO</span>
+                    <span class="text-3xl font-serif italic font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Albany</span>
+                    <span class="text-3xl font-sans font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-widest">LUCKY STAR</span>
+                    <span class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Huletts</span>
+                    <span class="text-3xl font-mono font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Sunlight</span>
+                    <span class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">NOLA</span>
+                    <span class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">JUNGLE</span>
                 </div>
             </div>
         </div>
@@ -505,7 +587,7 @@
                         <div class="space-y-6 text-stone-400">
                             <div>
                                 <h3 class="text-white font-medium mb-1">Address</h3>
-                                <p>11444 Dhlomo Street<br>Embalenhle, 2285</p>
+                                <p>123 Community Street<br>Embalenhle, 2285</p>
                             </div>
                             <div>
                                 <h3 class="text-white font-medium mb-1">Hours</h3>
@@ -542,11 +624,39 @@
                 <div class="w-6 h-6 rounded bg-emerald-600 flex items-center justify-center text-white text-xs font-bold">K</div>
                 <span class="font-bold text-stone-900">Khayalethu</span>
             </div>
-            <div class="text-stone-400 text-sm">
-                © 2026 Khayalethu Grocery Store.
+            <div class="flex flex-col items-center md:items-end gap-2 text-xs text-stone-400">
+                <div class="flex flex-wrap justify-center md:justify-end gap-3 md:gap-4">
+                    <button type="button" id="btn-cookies" class="hover:text-stone-700 transition-colors">Cookie Settings</button>
+                    <button type="button" id="btn-terms" class="hover:text-stone-700 transition-colors">Terms &amp; Conditions</button>
+                    <button type="button" id="btn-popia" class="hover:text-stone-700 transition-colors">POPIA Act</button>
+                    <a href="partner.html" id="btn-collab" class="hover:text-stone-700 transition-colors">Partner with Us</a>
+                </div>
+                <div class="text-stone-400 text-sm text-center md:text-right">
+                    © <span id="current-year"></span> Khayalethu Grocery Store · NCR Reg No: NCRCP12345
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed inset-x-4 bottom-4 z-[120] md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:max-w-xl bg-white/95 backdrop-blur-xl border border-stone-200 shadow-2xl rounded-2xl px-4 py-4 md:px-6 md:py-5 flex items-start gap-3 md:gap-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="mt-1 hidden md:block">
+            <div class="w-8 h-8 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+            </div>
+        </div>
+        <div class="flex-1 text-xs md:text-sm text-stone-600">
+            <p class="font-medium text-stone-900 mb-1 md:mb-1.5">We use limited cookies for a better experience.</p>
+            <p class="mb-2 md:mb-3">We only use essential cookies for things like the cart and forms, plus optional analytics to understand visits. You can change this anytime under Cookie Settings.</p>
+            <button id="cookie-more" class="text-[11px] md:text-xs font-medium text-emerald-700 hover:text-emerald-600 underline underline-offset-2">Open Cookie Settings</button>
+        </div>
+        <div class="flex flex-col gap-2 ml-2 shrink-0">
+            <button id="cookie-accept" class="px-3 py-1.5 md:px-4 md:py-2 bg-emerald-600 text-white text-xs md:text-sm font-semibold rounded-full hover:bg-emerald-500 transition-colors whitespace-nowrap">Accept</button>
+            <button id="cookie-decline" class="px-3 py-1.5 md:px-4 md:py-2 bg-stone-100 text-stone-600 text-[11px] md:text-xs font-medium rounded-full hover:bg-stone-200 transition-colors whitespace-nowrap">Only essential</button>
+        </div>
+    </div>
 
     <!-- JavaScript & Animations -->
     <script>
@@ -775,6 +885,148 @@
             });
         }
     </script>
+    <!-- Shop Overlay -->
+    <div id="shop-overlay" class="fixed inset-0 z-[100] bg-stone-50 overflow-hidden hidden opacity-0 translate-y-[20px] flex flex-col">
+        <!-- Shop Header -->
+        <nav class="shrink-0 w-full p-4 md:p-6 flex justify-between items-center z-50 bg-white/90 backdrop-blur-sm border-b border-stone-100 shadow-sm">
+            <div class="flex items-center gap-3">
+                <button id="close-shop-btn" class="p-2 hover:bg-stone-100 rounded-full transition-colors">
+                    <svg class="w-6 h-6 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </button>
+                <div>
+                    <h2 class="font-bold text-xl text-stone-900">Khayalethu Shop</h2>
+                    <p class="text-xs text-emerald-600 font-medium">Free delivery in Embalenhle</p>
+                </div>
+            </div>
+            
+            <button id="cart-btn" class="relative p-2 hover:bg-stone-100 rounded-full transition-colors group">
+                <svg class="w-7 h-7 text-stone-800 group-hover:text-emerald-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span id="cart-count" class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full shadow-sm scale-0 transition-transform">0</span>
+            </button>
+        </nav>
+
+        <!-- Shop Content -->
+        <div class="flex-1 overflow-y-auto p-4 md:p-8 relative">
+            <div class="max-w-6xl mx-auto">
+                <!-- Shop Hero -->
+                <div class="mb-8 rounded-3xl bg-gradient-to-r from-emerald-800 to-teal-900 p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div class="relative z-10 max-w-lg">
+                        <h3 class="text-3xl font-bold mb-2">Order Essentials Online</h3>
+                        <p class="text-emerald-100 mb-6">Select your items, add them to your cart, and we'll deliver to your door in Embalenhle, Secunda, Evander and nearby areas — <span class="font-semibold text-white">delivery is always free</span>. Payment or store credit is finalized on delivery.</p>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-xs font-medium">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            <span>Fast &amp; Free Delivery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-20">
+                    <!-- Products injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Modal (Overlay) -->
+        <div id="checkout-modal" class="absolute inset-0 z-[60] bg-stone-900/50 backdrop-blur-sm hidden flex items-end md:items-center justify-center p-4 opacity-0 transition-opacity">
+            <div class="bg-white w-full max-w-lg rounded-t-3xl md:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+                <div class="p-5 border-b border-stone-100 flex justify-between items-center bg-stone-50/50">
+                    <h3 class="font-bold text-lg text-stone-900">Your Cart</h3>
+                    <button id="close-checkout" class="text-stone-400 hover:text-stone-900">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                
+                <div class="overflow-y-auto flex-1 p-5 space-y-6">
+                    <!-- Cart Items List -->
+                    <div id="cart-items" class="space-y-4">
+                        <!-- Items injected here -->
+                        <div class="text-center text-stone-400 py-8">Your cart is empty</div>
+                    </div>
+
+                    <!-- Totals -->
+                    <div class="border-t border-dashed border-stone-200 pt-4">
+                        <div class="flex justify-between text-stone-600 mb-2">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">R0.00</span>
+                        </div>
+                        <div class="flex justify-between text-emerald-600 font-medium mb-2">
+                            <span>Delivery</span>
+                            <span>FREE</span>
+                        </div>
+                        <div class="flex justify-between text-xl font-bold text-stone-900 pt-2 border-t border-stone-100">
+                            <span>Total</span>
+                            <span id="cart-total">R0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Customer Details Form -->
+                    <div id="checkout-form-container" class="bg-stone-50 rounded-2xl p-5 border border-stone-100 hidden">
+                        <h4 class="font-bold text-sm text-stone-900 uppercase tracking-wide mb-4">Delivery Details</h4>
+                        <form id="order-form" class="space-y-3">
+                            <div>
+                                <input required id="order-name" type="text" placeholder="Full Name" class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <input required id="order-id" type="text" inputmode="numeric" maxlength="13" placeholder="ID Number (For Credit Check)" class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <textarea required id="order-address" rows="2" placeholder="Delivery Address (Street, Section, etc.)" class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none"></textarea>
+                            </div>
+                            <div class="text-[10px] text-stone-500 leading-tight">
+                                By placing this order, you agree to have your details verified for credit eligibility upon delivery.
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-200 transition-all flex items-center justify-center gap-2">
+                                <span>Place Order via WhatsApp</span>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <button id="checkout-btn" class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                        Proceed to Checkout
+                    </button>
+                </div>
+
+                <!-- Shop Footer -->
+                <footer class="border-t border-stone-100 bg-stone-50/80 backdrop-blur-sm px-5 py-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-[11px] text-stone-500">
+                    <p>Free delivery in Embalenhle, Secunda, Evander & nearby areas.</p>
+                    <p class="md:text-right">© <span id="current-year"></span> Khayalethu Grocery Store · NCR Reg No: NCRCP12345</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legal Overlay -->
+    <div id="legal-overlay" class="fixed inset-0 z-[150] bg-stone-900/30 backdrop-blur-sm hidden opacity-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden transform scale-95 transition-all">
+            <!-- Header -->
+            <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50/50">
+                <h3 id="legal-title" class="font-bold text-xl text-stone-900">Legal</h3>
+                <button id="close-legal-btn" class="p-2 hover:bg-stone-200 rounded-full transition-colors cursor-pointer">
+                    <svg class="w-6 h-6 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <!-- Content Scroll -->
+            <div id="legal-content" class="p-6 overflow-y-auto text-stone-600 space-y-6 text-sm leading-relaxed">
+                <!-- Dynamic Content -->
+            </div>
+
+            <!-- Footer (for actions) -->
+            <div id="legal-footer" class="p-6 border-t border-stone-100 bg-stone-50 hidden">
+                <button id="legal-action-btn" class="w-full bg-stone-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition-colors shadow-lg">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Full Screen About Overlay -->
     <div id="about-overlay" class="fixed inset-0 z-[100] bg-stone-50 overflow-y-auto hidden opacity-0 translate-y-[20px]">
         <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-stone-50/90 backdrop-blur-sm">
@@ -790,6 +1042,79 @@
             </button>
         </nav>
 
+        <!-- Business Collaboration Overlay -->
+        <div id="collab-overlay" class="fixed inset-0 z-[140] bg-stone-900/40 backdrop-blur-sm hidden opacity-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
+                <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50/80">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold text-lg">K</div>
+                        <div>
+                            <h2 class="text-lg md:text-xl font-bold text-stone-900">Business Collaborations</h2>
+                            <p class="text-xs text-stone-500">Partner with Khayalethu to serve our community better.</p>
+                        </div>
+                    </div>
+                    <button id="close-collab-btn" class="p-2 rounded-full hover:bg-stone-100 transition-colors">
+                        <svg class="w-5 h-5 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-6 md:p-8 overflow-y-auto flex-1 space-y-6 text-sm text-stone-600">
+                    <p class="text-stone-700">We collaborate with local suppliers, transport providers, farmers, community organisations, and fintech partners who share our goal of making essential groceries more accessible and affordable.</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h3 class="text-sm font-semibold text-stone-900 tracking-wide uppercase">Who should apply?</h3>
+                            <ul class="text-sm list-disc pl-5 space-y-1">
+                                <li>Local farmers and food producers</li>
+                                <li>Transport and last-mile delivery partners</li>
+                                <li>Brands looking for township presence</li>
+                                <li>NGOs and community organisations</li>
+                                <li>Fintech / credit / loyalty providers</li>
+                            </ul>
+                            <p class="text-xs text-stone-500">We prioritise partners who are ethical, community-focused, and compliant with South African regulations.</p>
+                        </div>
+                        <form id="collab-form" class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-name">Contact person</label>
+                                <input id="collab-name" required type="text" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="Your full name" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-company">Business / Organisation</label>
+                                <input id="collab-company" required type="text" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="Company or organisation name" />
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-email">Email</label>
+                                    <input id="collab-email" required type="email" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="you@example.com" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-phone">Phone / WhatsApp</label>
+                                    <input id="collab-phone" required type="tel" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="071 234 5678" />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-type">Type of collaboration</label>
+                                <select id="collab-type" required class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm bg-white focus:border-emerald-500 focus:outline-none">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option>Supplier / Stock</option>
+                                    <option>Logistics / Delivery</option>
+                                    <option>Financial / Credit Services</option>
+                                    <option>Community / NGO Partner</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-message">Tell us more</label>
+                                <textarea id="collab-message" required rows="3" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="Briefly describe how you’d like to collaborate and the value you bring."></textarea>
+                            </div>
+                            <button type="submit" class="mt-1 w-full rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-2.5 shadow-sm shadow-emerald-300 transition-colors">Submit Collaboration Request</button>
+                        </form>
+                    </div>
+                    <p class="text-[11px] text-stone-400">We aim to respond to collaboration requests within 3–5 working days. By submitting this form, you agree that we may contact you using the details provided for partnership discussions only.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="max-w-4xl mx-auto px-4 pt-32 pb-20">
             <!-- Hero Text -->
             <h1 class="text-5xl md:text-7xl font-bold text-stone-900 mb-12 leading-tight tracking-tight">
@@ -803,7 +1128,7 @@
                     <div>
                         <h3 class="text-xl font-bold text-stone-900 mb-3">The Beginning</h3>
                         <p class="text-stone-600 leading-relaxed">
-                            Khayalethu Grocery Store started in 2021 in a small garage in Embalenhle. We noticed a recurring problem: hardworking families running out of essentials just days before payday. The options were limited—go hungry or borrow from loan sharks with exorbitant interest rates. We chose a third option: trust.
+                            Khayalethu started in 2021 in a small garage in Embalenhle. We noticed a recurring problem: hardworking families running out of essentials just days before payday. The options were limited—go hungry or borrow from loan sharks with exorbitant interest rates. We chose a third option: trust.
                         </p>
                     </div>
                     <div>
@@ -836,6 +1161,70 @@
                 </div>
             </div>
             
+            <!-- Free Delivery Details & Delivery Bento Grid -->
+            <section class="mt-16">
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <!-- Info Card Left -->
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-3xl p-6 md:p-8 flex gap-4 items-start">
+                        <div class="shrink-0 w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 13l2-5h13l2 5M5 13v4a2 2 0 002 2h10a2 2 0 002-2v-4M7 13h10m-8 6h6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-stone-900 mb-2">Free delivery to your door</h3>
+                            <p class="text-stone-600 text-sm md:text-base leading-relaxed mb-3">
+                                Once your order or credit purchase is confirmed, our team delivers straight to your home in Embalenhle, Secunda, Evander and nearby areas at no extra cost. We group deliveries by area to keep costs low, so you save on both time and transport.
+                            </p>
+                            <p class="text-stone-500 text-xs md:text-sm">
+                                Deliveries typically run in <span class="font-semibold text-stone-700">morning</span> and <span class="font-semibold text-stone-700">late afternoon</span> rounds. We’ll call or WhatsApp you before we arrive.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Vehicles Bento Grid Right -->
+                    <div class="grid grid-cols-4 gap-3 md:gap-4 auto-rows-[90px] md:auto-rows-[110px]">
+                        <!-- Hero Tile -->
+                        <div class="relative col-span-4 row-span-2 md:col-span-2 md:row-span-3 rounded-3xl overflow-hidden group shadow-md">
+                            <div class="absolute inset-0 bg-[url('images/delivery-bike1.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-stone-900/20 to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <p class="text-[11px] font-semibold text-emerald-200 uppercase tracking-[0.18em] mb-1">Local Routes</p>
+                                <p class="text-sm md:text-base font-semibold text-white leading-snug">Daily rounds across Embalenhle, Secunda & Evander</p>
+                            </div>
+                        </div>
+
+                        <!-- Supporting Tile 1 -->
+                        <div class="relative col-span-2 md:col-span-2 rounded-2xl overflow-hidden group shadow-sm">
+                            <div class="absolute inset-0 bg-[url('images/delivery-bike2.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute inset-0 bg-stone-900/55"></div>
+                            <p class="absolute bottom-2 left-3 text-[11px] font-medium text-emerald-100">Cold items handled</p>
+                        </div>
+
+                        <!-- Supporting Tile 2 -->
+                        <div class="relative col-span-2 md:col-span-2 rounded-2xl overflow-hidden group shadow-sm">
+                            <div class="absolute inset-0 bg-[url('images/delivery-van.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute inset-0 bg-stone-900/55"></div>
+                            <p class="absolute bottom-2 left-3 text-[11px] font-medium text-emerald-100">Secure packaging</p>
+                        </div>
+
+                        <!-- Supporting Tile 3 -->
+                        <div class="relative col-span-2 md:col-span-1 rounded-2xl overflow-hidden group shadow-sm">
+                            <div class="absolute inset-0 bg-[url('images/delivery-bike3.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute inset-0 bg-stone-900/55"></div>
+                            <p class="absolute bottom-2 left-3 text-[11px] font-medium text-emerald-100">Neighbourhood drop-offs</p>
+                        </div>
+
+                        <!-- Supporting Tile 4 -->
+                        <div class="relative col-span-2 md:col-span-1 rounded-2xl overflow-hidden group shadow-sm">
+                            <div class="absolute inset-0 bg-[url('images/delivery-bike4.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/30 to-transparent"></div>
+                            <p class="absolute bottom-2 left-3 text-[11px] font-semibold text-white uppercase tracking-[0.18em]">Always Free</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Big Image Placeholder -->
             <div class="mt-16 rounded-3xl overflow-hidden h-80 relative group shadow-2xl">
                  <div class="absolute inset-0 bg-[url('images/emba.jpg')] bg-cover bg-center transition-transform duration-[2s] group-hover:scale-105"></div>
@@ -890,12 +1279,12 @@
                         </div>
                         <h4 class="text-xl font-bold text-stone-900">Nkosinathi Ndhlovu</h4>
                         <p class="text-emerald-600 font-medium text-sm mb-3">Marketing & Analytics</p>
-                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"Delivering actionable insights every day through data-driven marketing and business intelligence.."</p>
+                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"Ensuring fresh produce arrives every morning from our local farming partners."</p>
                         <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="stock@khayalethu.store">
                             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                             </svg>
-                            <span>nathi@khayalethu.co.za</span>
+                            <span>nkosinathi@khayalethu.co.za</span>
                         </button>
                     </div>
                 </div>
@@ -915,7 +1304,7 @@
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         </div>
                         <p class="text-stone-600 text-sm mb-6 leading-relaxed">"Khayalethu saved us during a tough month. The process was respectful and private. I didn't feel judged."</p>
-                        <p class="text-xs font-bold text-stone-900 uppercase tracking-wider">— Thokozane N.</p>
+                        <p class="text-xs font-bold text-stone-900 uppercase tracking-wider">— Mama N.</p>
                     </div>
 
                     <!-- Review 2 -->
@@ -998,6 +1387,393 @@
             });
         }
 
+        // ==========================================
+        // SHOP LOGIC
+        // ==========================================
+        
+        // Product Data
+        const productsDB = [
+            {
+                id: 1,
+                name: "King Super Maize Meal",
+                image: "images/king.jpg",
+                variants: [
+                    { id: "1a", label: "10kg", price: 90 },
+                    { id: "1b", label: "12.5kg", price: 110 },
+                    { id: "1c", label: "25kg", price: 220 }
+                ],
+                defaultPrice: 90
+            },
+            {
+                id: 2,
+                name: "Sunflower Oil",
+                image: "images/cooking-oil.png",
+                variants: [
+                    { id: "2a", label: "750ml", price: 35 },
+                    { id: "2b", label: "2L", price: 85 },
+                    { id: "2c", label: "5L", price: 195 }
+                ],
+                defaultPrice: 35
+            },
+            {
+                id: 3,
+                name: "Sugar",
+                image: "images/sugar.jpg",
+                variants: [
+                    { id: "3a", label: "2kg", price: 38 },
+                    { id: "3b", label: "10kg", price: 160 }
+                ],
+                defaultPrice: 38
+            },
+            {
+                id: 4,
+                name: "Canned Pilchards",
+                image: "images/pilchards.jpg",
+                variants: [
+                    { id: "4a", label: "Tomato (400g)", price: 22 },
+                    { id: "4b", label: "Chili (400g)", price: 22 }
+                ],
+                defaultPrice: 22
+            },
+            {
+                id: 5,
+                name: "Baked Beans",
+                image: "images/koo.jpg",
+                variants: [
+                    { id: "5a", label: "Standard", price: 18 }
+                ],
+                defaultPrice: 18
+            },
+            {
+                id: 6,
+                name: "Full Cream Milk",
+                image: "images/milk2.jpg",
+                variants: [
+                    { id: "6a", label: "1 Liter", price: 16 },
+                    { id: "6b", label: "6 x 1L Pack", price: 90 }
+                ],
+                defaultPrice: 16
+            },
+            {
+                id: 7,
+                name: "Cake Wheat Flour",
+                image: "images/wheat-flour.jpg",
+                variants: [
+                    { id: "7a", label: "2.5kg", price: 34 },
+                    { id: "7b", label: "10kg", price: 115 }
+                ],
+                defaultPrice: 34
+            },
+            {
+                id: 8,
+                name: "Washing Powder",
+                image: "images/washing.jpg",
+                variants: [
+                    { id: "8a", label: "2kg Hand Wash", price: 55 },
+                    { id: "8b", label: "2kg Auto", price: 65 }
+                ],
+                defaultPrice: 55
+            }
+        ];
+
+        // State
+        let cart = [];
+        let selections = {}; // Tracks current variant selection per product
+
+        // DOM Elements
+        const shopOverlay = document.getElementById('shop-overlay');
+        const shopBtns = [document.getElementById('nav-shop-btn'), document.getElementById('mobile-shop-btn')];
+        const closeShopBtn = document.getElementById('close-shop-btn');
+        const productGrid = document.getElementById('product-grid');
+        const cartBtn = document.getElementById('cart-btn');
+        const cartCount = document.getElementById('cart-count');
+        const checkoutModal = document.getElementById('checkout-modal');
+        const closeCheckoutBtn = document.getElementById('close-checkout');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const formContainer = document.getElementById('checkout-form-container');
+        const orderForm = document.getElementById('order-form');
+
+        // Initial Selection State
+        productsDB.forEach(p => {
+            selections[p.id] = p.variants[0];
+        });
+
+        // Initialize Shop
+        function initShop() {
+            renderProducts();
+            setupEventListeners();
+        }
+
+        function renderProducts() {
+            productGrid.innerHTML = productsDB.map(product => {
+                const currentVariant = selections[product.id];
+                
+                // Create variants dropdown/selector
+                let variantSelector = '';
+                if(product.variants.length > 1) {
+                    const options = product.variants.map(v => 
+                        `<option value="${v.id}" ${v.id === currentVariant.id ? 'selected' : ''}>${v.label}</option>`
+                    ).join('');
+                    variantSelector = `
+                        <select onchange="updateVariant(${product.id}, this.value)" class="w-full mb-3 text-sm border-stone-200 rounded-lg p-2 text-stone-600 focus:ring-emerald-500 focus:border-emerald-500 bg-stone-50">
+                            ${options}
+                        </select>
+                    `;
+                } else {
+                    variantSelector = `<div class="mb-3 text-sm text-stone-500 p-2 bg-stone-50 rounded-lg border border-transparent">${product.variants[0].label}</div>`;
+                }
+
+                return `
+                <div class="group bg-white rounded-2xl border border-stone-100 p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
+                    <div class="h-40 rounded-xl bg-stone-100 mb-4 overflow-hidden relative">
+                         <img src="${product.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="${product.name}">
+                    </div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold text-stone-900">${product.name}</h4>
+                    </div>
+                    
+                    <div class="mt-auto">
+                        ${variantSelector}
+                        
+                        <div class="flex items-center justify-between gap-3">
+                            <span class="text-lg font-bold text-emerald-700" id="price-${product.id}">R${currentVariant.price}</span>
+                            <button onclick="addToCart(${product.id})" class="px-4 py-2 bg-stone-900 text-white text-sm font-medium rounded-lg hover:bg-emerald-600 active:scale-95 transition-all">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // Global functions for inline HTML events
+        window.updateVariant = (productId, variantId) => {
+            const product = productsDB.find(p => p.id === productId);
+            const variant = product.variants.find(v => v.id === variantId);
+            selections[productId] = variant;
+            
+            // Update UI Price
+            const priceEl = document.getElementById(`price-${productId}`);
+            if(priceEl) {
+                priceEl.innerText = `R${variant.price}`;
+            }
+        };
+
+        window.addToCart = (productId) => {
+            const product = productsDB.find(p => p.id === productId);
+            const variant = selections[productId];
+            
+            // Check if item already exists in cart with same variant
+            const existingItem = cart.find(item => item.productId === productId && item.variantId === variant.id);
+            
+            if(existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({
+                    cartId: Date.now(), // Unique ID for cart item
+                    productId: productId,
+                    variantId: variant.id,
+                    name: product.name,
+                    variantLabel: variant.label,
+                    price: variant.price,
+                    qty: 1,
+                    image: product.image
+                });
+            }
+            
+            updateCartIcon();
+            
+            // Simple visual feedback
+            const btn = document.activeElement;
+            if(btn) {
+                const original = btn.innerText;
+                btn.innerText = 'Added';
+                btn.classList.add('bg-emerald-600');
+                setTimeout(() => {
+                    btn.innerText = original;
+                    btn.classList.remove('bg-emerald-600');
+                }, 1000);
+            }
+        };
+
+        window.removeFromCart = (cartId) => {
+            cart = cart.filter(item => item.cartId !== cartId);
+            renderCart();
+            updateCartIcon();
+        };
+
+        function updateCartIcon() {
+            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+            cartCount.innerText = totalQty;
+            
+            if(totalQty > 0) {
+                cartCount.classList.remove('scale-0');
+            } else {
+                cartCount.classList.add('scale-0');
+            }
+        }
+
+        function renderCart() {
+            if(cart.length === 0) {
+                cartItemsContainer.innerHTML = `<div class="text-center text-stone-400 py-12 flex flex-col items-center">
+                    <svg class="w-12 h-12 mb-3 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    <p>Your cart is empty</p>
+                </div>`;
+                document.getElementById('cart-subtotal').innerText = 'R0.00';
+                document.getElementById('cart-total').innerText = 'R0.00';
+                checkoutBtn.disabled = true;
+                return;
+            }
+
+            let total = 0;
+
+            cartItemsContainer.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                return `
+                    <div class="flex items-center gap-4 bg-white p-2 rounded-xl border border-stone-50">
+                        <div class="h-16 w-16 bg-stone-100 rounded-lg overflow-hidden shrink-0">
+                            <img src="${item.image}" class="h-full w-full object-cover">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h5 class="font-bold text-stone-900 text-sm truncate">${item.name}</h5>
+                            <p class="text-xs text-stone-500">${item.variantLabel}</p>
+                            <p class="text-emerald-600 font-bold text-sm">R${item.price} x ${item.qty}</p>
+                        </div>
+                        <button onclick="removeFromCart(${item.cartId})" class="p-2 text-stone-400 hover:text-red-500 transition-colors">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cart-subtotal').innerText = `R${total}`;
+            document.getElementById('cart-total').innerText = `R${total}`;
+            checkoutBtn.disabled = false;
+        }
+
+        // Event Listeners for Shop UI
+        function setupEventListeners() {
+            // Open Shop
+            shopBtns.forEach(btn => {
+                if(btn) {
+                    btn.addEventListener('click', () => {
+                        shopOverlay.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                        
+                        gsap.to(shopOverlay, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.5,
+                            ease: "power3.out"
+                        });
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        if(mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+
+            // Close Shop
+            const closeShop = () => {
+                gsap.to(shopOverlay, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.3,
+                    ease: "power3.in",
+                    onComplete: () => {
+                        shopOverlay.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                });
+            };
+            
+            if(closeShopBtn) closeShopBtn.addEventListener('click', closeShop);
+
+            // Open Cart/Checkout
+            cartBtn.addEventListener('click', () => {
+                renderCart();
+                checkoutModal.classList.remove('hidden');
+                // Reset form view
+                formContainer.classList.add('hidden');
+                checkoutBtn.classList.remove('hidden');
+                
+                gsap.to(checkoutModal, {
+                    opacity: 1,
+                    duration: 0.3
+                });
+            });
+
+            // Close Checkout
+            const closeCheckout = () => {
+                gsap.to(checkoutModal, {
+                    opacity: 0,
+                    duration: 0.2,
+                    onComplete: () => {
+                        checkoutModal.classList.add('hidden');
+                    }
+                });
+            };
+            
+            closeCheckoutBtn.addEventListener('click', closeCheckout);
+
+            // Proceed to Form
+            checkoutBtn.addEventListener('click', () => {
+                checkoutBtn.classList.add('hidden');
+                formContainer.classList.remove('hidden');
+                formContainer.classList.add('animate-fade-in-up'); // Ensure we have a class or simple animation
+                
+                // Simple animation via JS
+                gsap.from(formContainer, { y: 20, opacity: 0, duration: 0.3 });
+            });
+
+            // Submit Order via WhatsApp
+            orderForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('order-name').value;
+                const idNum = document.getElementById('order-id').value;
+                const address = document.getElementById('order-address').value;
+                
+                let message = `*New Order from Website*\n\n`;
+                message += `*Customer:* ${name}\n`;
+                message += `*ID:* ${idNum}\n`;
+                message += `*Address:* ${address}\n\n`;
+                message += `*Order Details:*\n`;
+                
+                let total = 0;
+                cart.forEach(item => {
+                    message += `- ${item.qty}x ${item.name} (${item.variantLabel}) @ R${item.price}\n`;
+                    total += (item.price * item.qty);
+                });
+                
+                message += `\n*Total:* R${total}`;
+                message += `\n*Delivery:* Free`;
+                
+                // Encode and open WhatsApp
+                const whatsappNumber = "27123456789"; // Replace with real number
+                const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                
+                window.open(url, '_blank');
+                
+                // Close modal and clear cart
+                closeCheckout();
+                cart = [];
+                updateCartIcon();
+                renderCart();
+            });
+        }
+
+        // Run Init
+        window.addEventListener('load', initShop);
+
         // Email Copy Functionality
         document.querySelectorAll('.copy-email').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1020,6 +1796,327 @@
                 }
             });
         });
+
+        // ==========================================
+        // LEGAL MODAL LOGIC
+        // ==========================================
+        const legalOverlay = document.getElementById('legal-overlay');
+        const legalTitle = document.getElementById('legal-title');
+        const legalContent = document.getElementById('legal-content');
+        const legalFooter = document.getElementById('legal-footer');
+        const closeLegalBtn = document.getElementById('close-legal-btn');
+        const legalActionBtn = document.getElementById('legal-action-btn');
+
+        const legalData = {
+            cookies: {
+                title: "Privacy & Cookie Preferences",
+                body: `
+                    <p class="mb-4">At Khayalethu, we prioritize your privacy. We use minimal cookies to ensure our website functions correctly and to improve your experience.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-stone-50 rounded-xl border border-stone-200">
+                            <div>
+                                <h4 class="font-bold text-stone-900">Essential Cookies</h4>
+                                <p class="text-xs text-stone-500 mt-1">Required for the cart and application forms to work.</p>
+                            </div>
+                            <div class="relative inline-flex items-center cursor-not-allowed opacity-50">
+                                <input type="checkbox" checked disabled class="sr-only peer">
+                                <div class="w-11 h-6 bg-emerald-600 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-stone-200">
+                            <div>
+                                <h4 class="font-bold text-stone-900">Analytics</h4>
+                                <p class="text-xs text-stone-500 mt-1">Helps us understand how many people visit our site.</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer">
+                                <div class="w-11 h-6 bg-stone-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-300 rounded-full peer peer-checked:bg-emerald-600 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="text-xs text-stone-400 mt-4">For more details, please read our POPIA compliance section.</p>
+                `,
+                hasAction: true,
+                actionText: "Save Preferences"
+            },
+            terms: {
+                title: "Terms & Conditions",
+                body: `
+                    <div class="space-y-4">
+                        <p class="font-bold text-stone-900">Last Updated: January 2026</p>
+                        
+                        <section>
+                            <h4 class="font-bold text-emerald-700 mb-2">1. Credit Eligibility</h4>
+                            <p>Credit facilities are granted at the sole discretion of Khayalethu Grocery Store management. Applicants must reside within our service areas (Embalenhle, Secunda, Evander) and provide valid identification.</p>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-emerald-700 mb-2">2. Repayment Terms</h4>
+                            <p>All credit purchases are interest-free (0%) if paid in full by the agreed-upon date (usually month-end or grant payout date). Late payments may incur a penalty fee and result in immediate suspension of credit facilities.</p>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-emerald-700 mb-2">3. Ownership of Goods</h4>
+                            <p>Ownership of goods remains with Khayalethu Grocery Store until the purchase price has been paid in full, particularly for bulk orders or high-value items.</p>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-emerald-700 mb-2">4. Fair Usage</h4>
+                            <p>We reserve the right to limit quantities per household to ensure fair access for the entire community during high-demand periods.</p>
+                        </section>
+                    </div>
+                `,
+                hasAction: false
+            },
+            popia: {
+                title: "POPIA Compliance Act",
+                body: `
+                    <div class="space-y-4">
+                        <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl">
+                            <h4 class="font-bold text-emerald-800 text-sm mb-1">Your Privacy is Our Priority</h4>
+                            <p class="text-xs text-emerald-700">Khayalethu is fully compliant with the Protection of Personal Information Act (POPIA) of South Africa.</p>
+                        </div>
+
+                        <section>
+                            <h4 class="font-bold text-stone-900 mb-2">1. What Information We Collect</h4>
+                            <p>We only collect information necessary for credit assessment and delivery: Full Name, ID Number, Address, Contact Number, and Income Status.</p>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-stone-900 mb-2">2. How We Use Your Information</h4>
+                            <ul class="list-disc pl-5 space-y-1 mt-2">
+                                <li>To verify your identity and residence (FICA).</li>
+                                <li>To assess affordability for store credit.</li>
+                                <li>To deliver your groceries.</li>
+                            </ul>
+                            <p class="mt-2 font-bold">We do NOT sell your data to third parties or marketing agencies.</p>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-stone-900 mb-2">3. Security</h4>
+                            <p>Physical copies of documents are stored in a locked safe. Digital records are encrypted. Access is restricted to authorized accounts personnel only.</p>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-stone-900 mb-2">4. Your Rights</h4>
+                            <p>You have the right to request access to your personal information or ask for it to be deleted (subject to legal record-keeping requirements for credit agreements).</p>
+                        </section>
+                    </div>
+                `,
+                hasAction: false
+            },
+            ncr: {
+                title: "NCR & National Credit Act (South Africa)",
+                body: `
+                    <div class="space-y-4">
+                        <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl">
+                            <h4 class="font-bold text-emerald-800 text-sm mb-1">Registered & Responsible Credit Provider</h4>
+                            <p class="text-xs text-emerald-700">Khayalethu operates in line with the National Credit Act (NCA) and the guidance of the National Credit Regulator (NCR).</p>
+                        </div>
+
+                        <section>
+                            <h4 class="font-bold text-stone-900 mb-2">1. Responsible Lending</h4>
+                            <p>All credit granted by Khayalethu is based on an affordability assessment. We will never intentionally give credit that we believe you cannot afford to repay. Credit limits may be reduced or declined if affordability cannot be shown.</p>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-stone-900 mb-2">2. Transparency of Terms</h4>
+                            <ul class="list-disc pl-5 space-y-1 mt-2">
+                                <li>0% interest for accounts paid on or before the agreed due date.</li>
+                                <li>Clear due dates agreed upfront (usually linked to salary or grant dates).</li>
+                                <li>Any penalties or fees for late payment are explained in-store and on your credit agreement, in plain language.</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-stone-900 mb-2">3. If You Fall Behind</h4>
+                            <p>If you miss a payment, we will first try to contact you to make an arrangement. Continued non-payment may result in suspension of your credit facility and may be reported in line with NCA guidelines. We always aim to resolve matters respectfully and fairly.</p>
+                        </section>
+
+                        <section>
+                            <h4 class="font-bold text-stone-900 mb-2">4. Your Rights as a Consumer</h4>
+                            <ul class="list-disc pl-5 space-y-1 mt-2">
+                                <li>To receive information about your account in clear, understandable language.</li>
+                                <li>To ask for a statement of your account and repayment history.</li>
+                                <li>To apply for debt counselling if you are over-indebted.</li>
+                            </ul>
+                            <p class="mt-3 text-xs text-stone-500">For more information, you can visit the official National Credit Regulator website at <a href="https://www.ncr.org.za" target="_blank" class="text-emerald-700 underline">www.ncr.org.za</a>.</p>
+                        </section>
+                    </div>
+                `,
+                hasAction: false
+            }
+        };
+
+        function openLegal(type) {
+            const data = legalData[type];
+            if(!data) return;
+
+            legalTitle.innerText = data.title;
+            legalContent.innerHTML = data.body;
+            
+            if(data.hasAction) {
+                legalFooter.classList.remove('hidden');
+                legalActionBtn.innerText = data.actionText;
+            } else {
+                legalFooter.classList.add('hidden');
+            }
+
+            legalOverlay.classList.remove('hidden');
+            
+            gsap.to(legalOverlay, { opacity: 1, duration: 0.3 });
+            gsap.fromTo(legalOverlay.children[0], 
+                { scale: 0.95, y: 20 },
+                { scale: 1, y: 0, duration: 0.4, ease: "back.out(1.2)" }
+            );
+        }
+
+        function closeLegal() {
+            gsap.to(legalOverlay, { opacity: 0, duration: 0.2 });
+            gsap.to(legalOverlay.children[0], { scale: 0.95, y: 20, duration: 0.2, onComplete: () => {
+                legalOverlay.classList.add('hidden');
+            }});
+        }
+
+        ['btn-cookies', 'btn-terms', 'btn-popia', 'btn-ncr'].forEach(id => {
+            const btn = document.getElementById(id);
+            if(btn) {
+                btn.addEventListener('click', () => {
+                    // map id to key
+                    const key = id.replace('btn-', '');
+                    openLegal(key);
+                });
+            }
+        });
+
+        if(closeLegalBtn) closeLegalBtn.addEventListener('click', closeLegal);
+        if(legalActionBtn) legalActionBtn.addEventListener('click', () => {
+            // Simulate saving
+            const original = legalActionBtn.innerText;
+            legalActionBtn.innerText = "Preferences Saved!";
+            legalActionBtn.classList.add('bg-emerald-600');
+            setTimeout(() => {
+                closeLegal();
+                setTimeout(() => {
+                    legalActionBtn.innerText = original;
+                    legalActionBtn.classList.remove('bg-emerald-600');
+                }, 500);
+            }, 800);
+        });
+
+        // Close on BG click
+        legalOverlay.addEventListener('click', (e) => {
+            if(e.target === legalOverlay) closeLegal();
+        });
+
+        // ==========================================
+        // COOKIE CONSENT POPUP
+        // ==========================================
+        const cookieBanner = document.getElementById('cookie-banner');
+        const cookieAcceptBtn = document.getElementById('cookie-accept');
+        const cookieDeclineBtn = document.getElementById('cookie-decline');
+        const cookieMoreBtn = document.getElementById('cookie-more');
+
+        function hideCookieBanner() {
+            if(!cookieBanner) return;
+            cookieBanner.classList.add('pointer-events-none');
+            cookieBanner.classList.add('opacity-0');
+        }
+
+        function showCookieBanner() {
+            if(!cookieBanner) return;
+            cookieBanner.classList.remove('pointer-events-none');
+            cookieBanner.classList.remove('opacity-0');
+        }
+
+        // Show banner after small delay, only if not previously set
+        window.addEventListener('load', () => {
+            try {
+                const pref = localStorage.getItem('kh_cookie_pref');
+                if(!pref) {
+                    setTimeout(showCookieBanner, 1200);
+                }
+            } catch (e) {
+                // If localStorage fails, still show the banner
+                setTimeout(showCookieBanner, 1200);
+            }
+        });
+
+        if(cookieAcceptBtn) {
+            cookieAcceptBtn.addEventListener('click', () => {
+                try {
+                    localStorage.setItem('kh_cookie_pref', 'all');
+                } catch (e) {}
+                hideCookieBanner();
+            });
+        }
+
+        if(cookieDeclineBtn) {
+            cookieDeclineBtn.addEventListener('click', () => {
+                try {
+                    localStorage.setItem('kh_cookie_pref', 'essential');
+                } catch (e) {}
+                hideCookieBanner();
+            });
+        }
+
+        if(cookieMoreBtn) {
+            cookieMoreBtn.addEventListener('click', () => {
+                hideCookieBanner();
+                openLegal('cookies');
+            });
+        }
+
+        // ==========================================
+        // BUSINESS COLLABORATION OVERLAY
+        // ==========================================
+        const collabOverlay = document.getElementById('collab-overlay');
+        const collabBtn = document.getElementById('btn-collab');
+        const closeCollabBtn = document.getElementById('close-collab-btn');
+        const collabForm = document.getElementById('collab-form');
+
+        if (collabBtn && collabOverlay && closeCollabBtn) {
+            const openCollab = () => {
+                collabOverlay.classList.remove('hidden');
+                gsap.to(collabOverlay, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+                gsap.fromTo(collabOverlay.querySelector('> div'), { y: 20, scale: 0.98 }, { y: 0, scale: 1, duration: 0.3, ease: 'power3.out' });
+            };
+
+            const closeCollab = () => {
+                gsap.to(collabOverlay, { opacity: 0, duration: 0.2, ease: 'power2.in', onComplete: () => {
+                    collabOverlay.classList.add('hidden');
+                }});
+            };
+
+            collabBtn.addEventListener('click', openCollab);
+            closeCollabBtn.addEventListener('click', closeCollab);
+            collabOverlay.addEventListener('click', (e) => {
+                if (e.target === collabOverlay) closeCollab();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !collabOverlay.classList.contains('hidden')) closeCollab();
+            });
+
+            if (collabForm) {
+                collabForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const btn = collabForm.querySelector('button[type="submit"]');
+                    const originalText = btn.innerText;
+                    btn.disabled = true;
+                    btn.innerText = 'Sending...';
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                        collabForm.reset();
+                        alert('Thank you. Your collaboration request has been received. Our team will contact you within a few working days.');
+                        closeCollab();
+                    }, 1500);
+                });
+            }
+        }
+
     </script>
 </body>
 </html>

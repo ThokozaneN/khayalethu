@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner with Us - Khayalethu Grocery Store</title>
+  <meta name="description" content="Business partnerships and collaborations with Khayalethu Grocery Store in Embalenhle, Secunda, and Evander." />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-200 selection:text-emerald-900">
+  <div class="min-h-screen flex flex-col">
+    <!-- Simple Nav -->
+    <header class="border-b border-stone-100 bg-white/80 backdrop-blur-md sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg">K</div>
+          <span class="font-semibold text-stone-900 tracking-tight">Khayalethu</span>
+        </a>
+        <a href="index.html" class="text-sm text-stone-500 hover:text-emerald-600">Back to Home</a>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <!-- Hero -->
+      <section class="pt-16 pb-12 md:pb-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <p class="text-xs font-semibold tracking-[0.25em] uppercase text-emerald-600 mb-3">Partner with Us</p>
+          <h1 class="text-3xl md:text-5xl font-bold text-stone-900 tracking-tight mb-4">
+            Build a stronger township economy, together.
+          </h1>
+          <p class="text-stone-500 text-base md:text-lg max-w-2xl mx-auto">
+            We collaborate with suppliers, farmers, logistics providers, fintechs, and community organisations who believe in
+            fair, dignified access to essential groceries in Embalenhle, Secunda, Evander and nearby areas.
+          </p>
+        </div>
+      </section>
+
+      <!-- Two-column Layout -->
+      <section class="pb-20">
+        <div class="max-w-6xl mx-auto px-4 grid gap-10 md:grid-cols-2 items-start">
+          <!-- Left: Info -->
+          <div class="space-y-6">
+            <div class="bg-white border border-stone-100 rounded-2xl p-6 shadow-sm">
+              <h2 class="text-lg font-semibold text-stone-900 mb-3">Who we partner with</h2>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-stone-600">
+                <li>Local farmers and food producers</li>
+                <li>Wholesale and FMCG suppliers</li>
+                <li>Transport and last-mile delivery partners</li>
+                <li>Fintech, payment and credit innovators</li>
+                <li>NGOs and community-based organisations</li>
+              </ul>
+            </div>
+
+            <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 space-y-3 text-sm text-stone-700">
+              <h3 class="font-semibold text-stone-900">Why partner with Khayalethu?</h3>
+              <ul class="list-disc pl-5 space-y-1">
+                <li>Deep roots in Embalenhle and surrounding communities.</li>
+                <li>Growing base of loyal customers who buy on trust-based credit.</li>
+                <li>Free delivery network across key townships.</li>
+                <li>Planned digital expansion for credit profiles and loyalty programs.</li>
+              </ul>
+              <p class="text-xs text-stone-500">We prioritise ethical, compliant and community-first partners.</p>
+            </div>
+
+            <div class="bg-white border border-stone-100 rounded-2xl p-6 text-sm text-stone-600 space-y-2">
+              <h3 class="font-semibold text-stone-900 mb-1">What we look for</h3>
+              <p>We look for partners who are:</p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li>Serious about serving township communities long-term.</li>
+                <li>Transparent about pricing and terms.</li>
+                <li>Compliant with South African regulations (NCR, POPIA, tax, transport, etc.).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <div class="bg-white border border-stone-100 rounded-2xl p-6 md:p-7 shadow-sm">
+            <h2 class="text-lg font-semibold text-stone-900 mb-1">Partner enquiry form</h2>
+            <p class="text-xs text-stone-500 mb-5">Tell us more about your business and how you’d like to collaborate. We aim to respond within 3–5 working days.</p>
+
+            <form id="partner-form" class="space-y-4 text-sm">
+              <div>
+                <label for="p-name" class="block text-xs font-medium text-stone-700 mb-1">Contact person</label>
+                <input id="p-name" required type="text" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="Your full name" />
+              </div>
+
+              <div>
+                <label for="p-company" class="block text-xs font-medium text-stone-700 mb-1">Business / Organisation</label>
+                <input id="p-company" required type="text" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="Company or organisation name" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label for="p-email" class="block text-xs font-medium text-stone-700 mb-1">Email</label>
+                  <input id="p-email" required type="email" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="you@example.com" />
+                </div>
+                <div>
+                  <label for="p-phone" class="block text-xs font-medium text-stone-700 mb-1">Phone / WhatsApp</label>
+                  <input id="p-phone" required type="tel" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="071 234 5678" />
+                </div>
+              </div>
+
+              <div>
+                <label for="p-type" class="block text-xs font-medium text-stone-700 mb-1">Type of collaboration</label>
+                <select id="p-type" required class="w-full rounded-xl border border-stone-200 px-3 py-2.5 bg-white focus:border-emerald-500 focus:outline-none">
+                  <option value="" disabled selected>Select an option</option>
+                  <option>Supplier / Stock</option>
+                  <option>Logistics / Delivery</option>
+                  <option>Financial / Credit Services</option>
+                  <option>Community / NGO Partner</option>
+                  <option>Marketing / Brand Activation</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="p-message" class="block text-xs font-medium text-stone-700 mb-1">Tell us more</label>
+                <textarea id="p-message" required rows="4" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="Briefly describe your business, where you operate and how you’d like to collaborate."></textarea>
+              </div>
+
+              <p class="text-[11px] text-stone-400 leading-snug">By submitting this form, you agree that we may contact you using the details provided for partnership discussions only. Your information is handled in line with our POPIA commitments.</p>
+
+              <button type="submit" class="mt-1 w-full rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-2.5 shadow-sm shadow-emerald-300 transition-colors">Submit partner enquiry</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-stone-100 bg-white py-6 mt-auto">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-stone-400">
+        <p>© <span id="current-year"></span> Khayalethu Grocery Store · NCR Reg No: NCRCP12345</p>
+        <a href="index.html#contact" class="text-stone-400 hover:text-emerald-600">Contact the store</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Simple submit handler
+    const form = document.getElementById('partner-form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = original;
+          form.reset();
+          alert('Thank you. Your partner enquiry has been received. Our team will contact you within a few working days.');
+        }, 1500);
+      });
+    }
+
+    // Small GSAP entrance
+    if (window.gsap) {
+      gsap.from('section:first-of-type h1, section:first-of-type p', { y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out' });
+      gsap.from('section.pb-20 > div > div', { y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out' });
+    }
+  </script>
+</body>
+</html>
