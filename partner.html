@@ -1,169 +1,323 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Partner with Us - Khayalethu Grocery Store</title>
-  <meta name="description" content="Business partnerships and collaborations with Khayalethu Grocery Store in Embalenhle, Secunda, and Evander." />
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner with Khayalethu - Business Opportunities</title>
+    <meta name="description" content="Collaborate with Khayalethu Grocery Store. Opportunities for suppliers, logistics partners, and community initiatives in Embalenhle.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        @theme {
+            --color-primary: #10b981;
+            --color-primary-dark: #047857;
+            --color-secondary: #064e3b;
+            --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            
+            --animate-float: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #059669, #10b981, #34d399);
+        }
+        
+        .gsap-reveal { visibility: hidden; }
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; }
+    </style>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-200 selection:text-emerald-900">
-  <div class="min-h-screen flex flex-col">
-    <!-- Simple Nav -->
-    <header class="border-b border-stone-100 bg-white/80 backdrop-blur-md sticky top-0 z-30">
-      <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg">K</div>
-          <span class="font-semibold text-stone-900 tracking-tight">Khayalethu</span>
-        </a>
-        <a href="index.html" class="text-sm text-stone-500 hover:text-emerald-600">Back to Home</a>
-      </div>
-    </header>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-200 selection:text-emerald-900 relative">
 
-    <main class="flex-1">
-      <!-- Hero -->
-      <section class="pt-16 pb-12 md:pb-16">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-          <p class="text-xs font-semibold tracking-[0.25em] uppercase text-emerald-600 mb-3">Partner with Us</p>
-          <h1 class="text-3xl md:text-5xl font-bold text-stone-900 tracking-tight mb-4">
-            Build a stronger township economy, together.
-          </h1>
-          <p class="text-stone-500 text-base md:text-lg max-w-2xl mx-auto">
-            We collaborate with suppliers, farmers, logistics providers, fintechs, and community organisations who believe in
-            fair, dignified access to essential groceries in Embalenhle, Secunda, Evander and nearby areas.
-          </p>
-        </div>
-      </section>
+    <!-- Ambient Background Blobs -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl opacity-50 animate-[float_8s_ease-in-out_infinite]"></div>
+        <div class="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-teal-100/40 rounded-full blur-3xl opacity-60 animate-[float_10s_ease-in-out_infinite_reverse]"></div>
+    </div>
 
-      <!-- Two-column Layout -->
-      <section class="pb-20">
-        <div class="max-w-6xl mx-auto px-4 grid gap-10 md:grid-cols-2 items-start">
-          <!-- Left: Info -->
-          <div class="space-y-6">
-            <div class="bg-white border border-stone-100 rounded-2xl p-6 shadow-sm">
-              <h2 class="text-lg font-semibold text-stone-900 mb-3">Who we partner with</h2>
-              <ul class="list-disc pl-5 space-y-1 text-sm text-stone-600">
-                <li>Local farmers and food producers</li>
-                <li>Wholesale and FMCG suppliers</li>
-                <li>Transport and last-mile delivery partners</li>
-                <li>Fintech, payment and credit innovators</li>
-                <li>NGOs and community-based organisations</li>
-              </ul>
-            </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="glass mx-4 mt-4 rounded-2xl shadow-sm border border-white/40 max-w-7xl lg:mx-auto">
+            <div class="px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center">
+                        <a href="index.html" class="flex items-center gap-2 group">
+                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">K</div>
+                            <span class="text-lg font-bold text-stone-900 tracking-tight group-hover:text-emerald-700 transition-colors">Khayalethu</span>
+                        </a>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="index.html" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Home</a>
+                        <a href="index.html#about" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">About</a>
+                        <a href="index.html#how-it-works" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Credit</a>
+                        <a href="index.html#products" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Essentials</a>
+                        <a href="#" class="px-4 py-2 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-full transition-all">Partner</a>
+                    </div>
 
-            <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 space-y-3 text-sm text-stone-700">
-              <h3 class="font-semibold text-stone-900">Why partner with Khayalethu?</h3>
-              <ul class="list-disc pl-5 space-y-1">
-                <li>Deep roots in Embalenhle and surrounding communities.</li>
-                <li>Growing base of loyal customers who buy on trust-based credit.</li>
-                <li>Free delivery network across key townships.</li>
-                <li>Planned digital expansion for credit profiles and loyalty programs.</li>
-              </ul>
-              <p class="text-xs text-stone-500">We prioritise ethical, compliant and community-first partners.</p>
-            </div>
+                    <div class="hidden md:flex items-center gap-3">
+                        <a href="index.html#contact" class="px-6 py-2.5 bg-stone-900 text-white text-sm font-medium rounded-full hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-200 transition-all duration-300 transform hover:-translate-y-0.5">
+                            Contact Us
+                        </a>
+                    </div>
 
-            <div class="bg-white border border-stone-100 rounded-2xl p-6 text-sm text-stone-600 space-y-2">
-              <h3 class="font-semibold text-stone-900 mb-1">What we look for</h3>
-              <p>We look for partners who are:</p>
-              <ul class="list-disc pl-5 space-y-1">
-                <li>Serious about serving township communities long-term.</li>
-                <li>Transparent about pricing and terms.</li>
-                <li>Compliant with South African regulations (NCR, POPIA, tax, transport, etc.).</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Right: Form -->
-          <div class="bg-white border border-stone-100 rounded-2xl p-6 md:p-7 shadow-sm">
-            <h2 class="text-lg font-semibold text-stone-900 mb-1">Partner enquiry form</h2>
-            <p class="text-xs text-stone-500 mb-5">Tell us more about your business and how you’d like to collaborate. We aim to respond within 3–5 working days.</p>
-
-            <form id="partner-form" class="space-y-4 text-sm">
-              <div>
-                <label for="p-name" class="block text-xs font-medium text-stone-700 mb-1">Contact person</label>
-                <input id="p-name" required type="text" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="Your full name" />
-              </div>
-
-              <div>
-                <label for="p-company" class="block text-xs font-medium text-stone-700 mb-1">Business / Organisation</label>
-                <input id="p-company" required type="text" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="Company or organisation name" />
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label for="p-email" class="block text-xs font-medium text-stone-700 mb-1">Email</label>
-                  <input id="p-email" required type="email" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="you@example.com" />
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" class="p-2 text-stone-600 hover:text-emerald-600 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div>
-                  <label for="p-phone" class="block text-xs font-medium text-stone-700 mb-1">Phone / WhatsApp</label>
-                  <input id="p-phone" required type="tel" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="071 234 5678" />
+            </div>
+            
+            <div id="mobile-menu" class="hidden md:hidden border-t border-stone-100 bg-white/95 backdrop-blur-xl rounded-b-2xl absolute w-full left-0 top-full shadow-xl">
+                <div class="px-4 py-6 space-y-3">
+                    <a href="index.html" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Home</a>
+                    <a href="index.html#about" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">About</a>
+                    <a href="index.html#how-it-works" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Credit Info</a>
+                    <a href="index.html#products" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Products</a>
+                    <a href="#" class="block px-4 py-2 text-base font-bold text-emerald-700 bg-emerald-50 rounded-xl">Partner</a>
+                    <a href="index.html#contact" class="block px-4 py-2 text-base font-bold text-stone-900 hover:text-emerald-600 rounded-xl mt-2">Contact Us</a>
                 </div>
-              </div>
-
-              <div>
-                <label for="p-type" class="block text-xs font-medium text-stone-700 mb-1">Type of collaboration</label>
-                <select id="p-type" required class="w-full rounded-xl border border-stone-200 px-3 py-2.5 bg-white focus:border-emerald-500 focus:outline-none">
-                  <option value="" disabled selected>Select an option</option>
-                  <option>Supplier / Stock</option>
-                  <option>Logistics / Delivery</option>
-                  <option>Financial / Credit Services</option>
-                  <option>Community / NGO Partner</option>
-                  <option>Marketing / Brand Activation</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="p-message" class="block text-xs font-medium text-stone-700 mb-1">Tell us more</label>
-                <textarea id="p-message" required rows="4" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 focus:border-emerald-500 focus:outline-none" placeholder="Briefly describe your business, where you operate and how you’d like to collaborate."></textarea>
-              </div>
-
-              <p class="text-[11px] text-stone-400 leading-snug">By submitting this form, you agree that we may contact you using the details provided for partnership discussions only. Your information is handled in line with our POPIA commitments.</p>
-
-              <button type="submit" class="mt-1 w-full rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-2.5 shadow-sm shadow-emerald-300 transition-colors">Submit partner enquiry</button>
-            </form>
-          </div>
+            </div>
         </div>
-      </section>
-    </main>
+    </nav>
+
+    <!-- Partner Section -->
+    <section id="partner" class="py-24 relative z-10 bg-emerald-900 text-white overflow-hidden min-h-screen">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div class="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-3xl animate-[float_15s_ease-in-out_infinite]"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-3xl animate-[float_12s_ease-in-out_infinite_reverse]"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 relative z-10 pt-20">
+            <div class="text-center mb-16">
+                <span class="text-emerald-400 font-bold tracking-widest text-xs uppercase mb-3 block">Business Opportunities</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Grow with Khayalethu</h2>
+                <p class="text-emerald-100 max-w-2xl mx-auto text-lg leading-relaxed">
+                    We are always looking for local partners to help us serve the community better. Whether you are a farmer, a driver, or a community leader, let's build something together.
+                </p>
+            </div>
+
+            <!-- Partnership Types Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <!-- Suppliers -->
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-[url('images/supplier.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 text-white border border-white/20">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Suppliers</h3>
+                        <p class="text-emerald-100 text-sm">Local farmers and manufacturers. We prioritize local stock.</p>
+                    </div>
+                </div>
+
+                <!-- Logistics -->
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-[url('images/delivery-bike3.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 text-white border border-white/20">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Logistics</h3>
+                        <p class="text-emerald-100 text-sm">Delivery drivers and fleet owners in Secunda & Evander.</p>
+                    </div>
+                </div>
+
+                <!-- Community -->
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer">
+                    <div class="absolute inset-0 bg-[url('images/community.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-900/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-8">
+                        <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 text-white border border-white/20">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Community</h3>
+                        <p class="text-emerald-100 text-sm">NGOs, feeding schemes, and community leaders.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Form -->
+            <div class="max-w-3xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">Partnership Application</h3>
+                <form id="partner-form" action="https://formsubmit.co/partners@khayalethu.co.za" method="POST" class="space-y-4">
+                    <input type="hidden" name="_subject" value="New Partnership Application">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-emerald-300 uppercase tracking-widest mb-2">Organization / Company</label>
+                            <input required name="Organization" type="text" class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 focus:bg-black/40 transition-all" placeholder="e.g. Dlamini Transport">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-emerald-300 uppercase tracking-widest mb-2">Partnership Type</label>
+                            <select required name="Partnership Type" class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500 focus:bg-black/40 transition-all [&>option]:bg-emerald-900">
+                                <option>Supplier (Products)</option>
+                                <option>Logistics (Delivery)</option>
+                                <option>Community Initiative</option>
+                                <option>Corporate Sponsor</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                         <div>
+                            <label class="block text-xs font-bold text-emerald-300 uppercase tracking-widest mb-2">Contact Person</label>
+                            <input required name="Contact Person" type="text" class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 focus:bg-black/40 transition-all" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-emerald-300 uppercase tracking-widest mb-2">Contact Number</label>
+                            <input required name="Phone" type="tel" class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 focus:bg-black/40 transition-all" placeholder="082 123 4567">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-emerald-300 uppercase tracking-widest mb-2">Proposal / Message</label>
+                        <textarea required name="Proposal" rows="4" class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-emerald-500 focus:bg-black/40 transition-all" placeholder="Tell us how we can work together..."></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-emerald-500 text-emerald-950 font-bold py-4 rounded-xl hover:bg-emerald-400 hover:scale-[1.02] transition-all shadow-lg shadow-emerald-900/50">
+                            Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="border-t border-stone-100 bg-white py-6 mt-auto">
-      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-stone-400">
-        <p>© <span id="current-year"></span> Khayalethu Grocery Store · NCR Reg No: NCRCP12345</p>
-        <a href="index.html#contact" class="text-stone-400 hover:text-emerald-600">Contact the store</a>
-      </div>
+    <footer class="bg-white border-t border-stone-100 py-12 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-emerald-600 flex items-center justify-center text-white text-xs font-bold">K</div>
+                <span class="font-bold text-stone-900">Khayalethu</span>
+            </div>
+            <div class="text-stone-400 text-sm flex flex-col items-center md:items-end gap-1">
+                <div>© <span id="current-year"></span> Khayalethu Grocery Store.</div>
+                <div><a href="https://thokozane.co.za" target="_blank" rel="noopener" class="underline hover:text-stone-700">Developed by Thokozane</a></div>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    // Year
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    <script>
+        // Update Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Simple submit handler
-    const form = document.getElementById('partner-form');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const btn = form.querySelector('button[type="submit"]');
-        const original = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Sending...';
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = original;
-          form.reset();
-          alert('Thank you. Your partner enquiry has been received. Our team will contact you within a few working days.');
-        }, 1500);
-      });
-    }
+        // Mobile Menu
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
 
-    // Small GSAP entrance
-    if (window.gsap) {
-      gsap.from('section:first-of-type h1, section:first-of-type p', { y: 20, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out' });
-      gsap.from('section.pb-20 > div > div', { y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out' });
-    }
-  </script>
+        if(btn) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                if(!menu.classList.contains('hidden')) {
+                    navbar.classList.add('bg-white');
+                } else if (window.scrollY === 0) {
+                    navbar.classList.remove('bg-white');
+                }
+            });
+        }
+
+        // Partner Form Handling (AJAX)
+        const partnerForm = document.getElementById('partner-form');
+        if(partnerForm) {
+            partnerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = partnerForm.querySelector('button');
+                const originalText = btn.innerText;
+                
+                btn.disabled = true;
+                btn.innerText = 'Sending Application...';
+                
+                const formData = new FormData(partnerForm);
+                
+                fetch(partnerForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        btn.innerText = 'Application Sent!';
+                        btn.classList.add('bg-emerald-300'); // Lighter green for feedback against dark bg if needed, or stick to emerald-400
+                        partnerForm.reset();
+                        
+                        setTimeout(() => {
+                            btn.innerText = originalText;
+                            btn.disabled = false;
+                            btn.classList.remove('bg-emerald-300');
+                            alert('Thank you for your interest in partnering with Khayalethu. We will review your proposal and contact you shortly.');
+                        }, 2500);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was a problem submitting your application. Please try again.');
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                });
+            });
+        }
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from("#partner h2, #partner p, #partner form", {
+            y: 30,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out",
+            delay: 0.2
+        });
+        
+        gsap.from(".group", {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.7)",
+            delay: 0.5
+        });
+    </script>
 </body>
 </html>

@@ -76,6 +76,81 @@
 </head>
 <body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-200 selection:text-emerald-900 relative">
 
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[200] bg-stone-50 flex flex-col items-center justify-center">
+        <div class="relative w-20 h-20 md:w-24 md:h-24 mb-6">
+            <div class="absolute inset-0 bg-emerald-500/30 rounded-2xl blur-xl animate-pulse"></div>
+            <div class="relative w-full h-full bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                <svg class="w-10 h-10 md:w-12 md:h-12 text-white animate-[bounce_1s_infinite]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </div>
+        </div>
+        <div class="w-48 h-1 bg-stone-200 rounded-full overflow-hidden mb-4">
+            <div id="loader-bar" class="h-full bg-emerald-500 w-0 rounded-full transition-all duration-300 ease-out"></div>
+        </div>
+        <div id="preloader-text" class="h-6 text-sm font-bold text-emerald-600 uppercase tracking-widest transition-opacity duration-300">
+            Shop Now
+        </div>
+    </div>
+    <script>
+        // Immediate Preloader Logic
+        (function() {
+            const bar = document.getElementById('loader-bar');
+            const preloader = document.getElementById('preloader');
+            const textEl = document.getElementById('preloader-text');
+            let width = 0;
+            
+            // Text cycling
+            const words = ["Shop Now", "Pay Later", "Zero Interest", "Local Trust"];
+            let wordIndex = 0;
+            
+            const textInterval = setInterval(() => {
+                if(textEl) {
+                    textEl.style.opacity = '0';
+                    setTimeout(() => {
+                        wordIndex = (wordIndex + 1) % words.length;
+                        textEl.innerText = words[wordIndex];
+                        textEl.style.opacity = '1';
+                    }, 200);
+                }
+            }, 2000);
+
+            // Fake progress
+            const interval = setInterval(() => {
+                if(width < 90) {
+                    width += Math.random() * 5;
+                    if(bar) bar.style.width = width + '%';
+                }
+            }, 100);
+
+            window.addEventListener('load', () => {
+                clearInterval(interval);
+                if(bar) bar.style.width = '100%';
+                
+                // GSAP is loaded in head, so we can use it
+                setTimeout(() => {
+                    clearInterval(textInterval); // Stop text cycling
+                    if(typeof gsap !== 'undefined') {
+                        gsap.to(preloader, {
+                            opacity: 0,
+                            y: -20,
+                            duration: 0.8,
+                            ease: "power2.inOut",
+                            onComplete: () => {
+                                preloader.style.display = 'none';
+                            }
+                        });
+                    } else {
+                        // Fallback if GSAP fails
+                        preloader.style.opacity = '0';
+                        setTimeout(() => preloader.style.display = 'none', 500);
+                    }
+                }, 800); // Small delay to show 100% and let user read final text
+            });
+        })();
+    </script>
+
     <!-- Ambient Background Blobs -->
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl opacity-50 animate-[float_8s_ease-in-out_infinite]"></div>
@@ -179,7 +254,7 @@
             </h1>
             
             <p class="hero-anim max-w-2xl mx-auto text-xl text-stone-500 mb-12 leading-relaxed font-light">
-                The modern way to shop for essentials in <span class="text-stone-800 font-medium">Embalenhle, Secunda</span> & <span class="text-stone-800 font-medium">Surrounding Areas</span>. Buy now, pay later. Built on trust. <span class="gradient-text font-semibold">Kumnandi Ekhaya.</span>
+                The modern way to shop for essentials in <span class="text-stone-800 font-medium">Embalenhle</span> & <span class="text-stone-800 font-medium">Secunda</span>. Buy now, pay later. Built on trust.
             </p>
             
             <div class="hero-anim flex flex-col sm:flex-row justify-center gap-4 items-center">
@@ -430,30 +505,34 @@
                     </p>
                 </div>
 
-                <form id="credit-form" class="grid gap-6 md:grid-cols-2">
+                <form id="credit-form" action="https://formsubmit.co/credit@khayalethu.co.za" method="POST" enctype="multipart/form-data" class="grid gap-6 md:grid-cols-2">
+                    <!-- Hidden FormSubmit settings -->
+                    <input type="hidden" name="_subject" value="New Store Credit Application (Khayalethu Website)">
+
+                    <input type="hidden" name="_captcha" value="false">
                     <!-- Full Name -->
                     <div class="md:col-span-2">
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="fullName">Full name (as on ID)</label>
-                        <input required id="fullName" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="e.g. Thandiwe Mokoena">
+                        <input required id="fullName" name="Full Name" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="e.g. Thandiwe Mokoena">
                     </div>
 
                     <!-- ID Number -->
                     <div>
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="idNumber">South African ID number</label>
-                        <input required id="idNumber" type="text" inputmode="numeric" minlength="13" maxlength="13" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="13-digit ID">
+                        <input required id="idNumber" name="ID Number" type="text" inputmode="numeric" minlength="13" maxlength="13" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="13-digit ID">
                         <p class="mt-1 text-[11px] text-stone-400">We only use this to verify you in-store. No online credit checks.</p>
                     </div>
 
                     <!-- Phone -->
                     <div>
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="cell">Cellphone number</label>
-                        <input required id="cell" type="tel" inputmode="tel" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="e.g. 071 234 5678">
+                        <input required id="cell" name="Cellphone" type="tel" inputmode="tel" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="e.g. 071 234 5678">
                     </div>
 
                     <!-- Area -->
                     <div>
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="area">Where do you live?</label>
-                        <select required id="area" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        <select required id="area" name="Area" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
                             <option value="" disabled selected>Select your area</option>
                             <option>Embalenhle</option>
                             <option>Secunda</option>
@@ -467,7 +546,7 @@
                     <!-- Address -->
                     <div class="md:col-span-2">
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="address">Physical address</label>
-                        <input required id="address" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="House number, street, section or extension">
+                        <input required id="address" name="Physical Address" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="House number, street, section or extension">
                         <p class="mt-1 text-[11px] text-stone-400">Must match your proof of residence that you bring to the store.</p>
                     </div>
 
@@ -497,13 +576,13 @@
                     <!-- Employer / Institution (optional) -->
                     <div>
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="employer">Employer / School (optional)</label>
-                        <input id="employer" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="Where you work or study (if applicable)">
+                        <input id="employer" name="Employer or School" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="Where you work or study (if applicable)">
                     </div>
 
                     <!-- Income Day -->
                     <div>
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="payday">When do you usually get paid?</label>
-                        <select required id="payday" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        <select required id="payday" name="Usual Pay Date" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
                             <option value="" disabled selected>Select one</option>
                             <option>Month-end</option>
                             <option>Middle of the month</option>
@@ -518,7 +597,7 @@
                         <div class="grid gap-4 md:grid-cols-3">
                             <!-- ID Upload -->
                             <div class="relative group">
-                                <input type="file" id="file-id" accept="image/*,.pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
+                                <input type="file" id="file-id" name="ID Document" accept="image/png, image/jpeg, application/pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
                                 <div class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
                                     <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
@@ -529,7 +608,7 @@
 
                             <!-- Proof of Res Upload -->
                             <div class="relative group">
-                                <input type="file" id="file-res" accept="image/*,.pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
+                                <input type="file" id="file-res" name="Proof of Residence" accept="image/png, image/jpeg, application/pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
                                 <div class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
                                      <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -540,7 +619,7 @@
                             
                             <!-- Income Upload -->
                             <div class="relative group">
-                                <input type="file" id="file-income" accept="image/*,.pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
+                                <input type="file" id="file-income" name="Proof of Income" accept="image/png, image/jpeg, application/pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
                                 <div class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
                                      <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -555,13 +634,13 @@
                     <!-- Notes -->
                     <div class="md:col-span-2">
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="notes">Anything else we should know? (optional)</label>
-                        <textarea id="notes" rows="3" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="E.g. existing account with us, community reference, special circumstances"></textarea>
+                        <textarea id="notes" name="Extra Notes" rows="3" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="E.g. existing account with us, community reference, special circumstances"></textarea>
                     </div>
 
                     <!-- Consent + Submit -->
                     <div class="md:col-span-2 flex flex-col gap-4 md:flex-row md:items-center md:justify-between mt-2">
                         <label class="flex items-start gap-2 text-xs text-stone-500 max-w-md">
-                            <input type="checkbox" id="consent" required class="mt-0.5 text-emerald-600">
+                            <input type="checkbox" id="consent" name="Consent" value="Yes" required class="mt-0.5 text-emerald-600">
                             <span>I understand this is an application request and that final credit approval only happens in-store after my documents are checked.</span>
                         </label>
                         <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-7 py-3 text-sm font-semibold text-white shadow-sm shadow-emerald-500/30 hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-50">
@@ -572,6 +651,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!-- Floating Contact Section -->
     <section id="contact" class="py-24 relative z-10">
@@ -587,14 +668,14 @@
                         <div class="space-y-6 text-stone-400">
                             <div>
                                 <h3 class="text-white font-medium mb-1">Address</h3>
-                                <p>123 Community Street<br>Embalenhle, 2285</p>
+                                <p>11444 Dhlomo Street<br>Embalenhle, 2285</p>
                             </div>
                             <div>
                                 <h3 class="text-white font-medium mb-1">Hours</h3>
                                 <p>Mon - Fri: 8am - 6pm<br>Sat: 8am - 4pm</p>
                             </div>
                             <div class="pt-4">
-                                <a href="tel:+27123456789" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+                                <a href="tel:+27727935025" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
@@ -604,10 +685,12 @@
                         </div>
                     </div>
 
-                    <form id="contact-form" class="space-y-4">
-                        <input type="text" id="name" placeholder="Your Name" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
-                        <input type="tel" id="phone" placeholder="Phone Number" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
-                        <textarea id="message" rows="3" placeholder="Message" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"></textarea>
+                    <form id="contact-form" action="https://formsubmit.co/info@khayalethu.co.za" method="POST" class="space-y-4">
+                        <input type="hidden" name="_subject" value="New Contact Message from Website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input required type="text" id="name" name="Name" placeholder="Your Name" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                        <input required type="tel" id="phone" name="Phone" placeholder="Phone Number" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                        <textarea required id="message" name="Message" rows="3" placeholder="Message" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"></textarea>
                         <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/20">
                             Send Message
                         </button>
@@ -626,13 +709,13 @@
             </div>
             <div class="flex flex-col items-center md:items-end gap-2 text-xs text-stone-400">
                 <div class="flex flex-wrap justify-center md:justify-end gap-3 md:gap-4">
+                    <a href="partner.html" class="hover:text-stone-700 transition-colors">Partner with Us</a>
                     <button type="button" id="btn-cookies" class="hover:text-stone-700 transition-colors">Cookie Settings</button>
                     <button type="button" id="btn-terms" class="hover:text-stone-700 transition-colors">Terms &amp; Conditions</button>
                     <button type="button" id="btn-popia" class="hover:text-stone-700 transition-colors">POPIA Act</button>
-                    <a href="partner.html" id="btn-collab" class="hover:text-stone-700 transition-colors">Partner with Us</a>
                 </div>
                 <div class="text-stone-400 text-sm text-center md:text-right">
-                    © <span id="current-year"></span> Khayalethu Grocery Store · NCR Reg No: NCRCP12345
+                    © <span id="current-year"></span> Khayalethu Grocery Store · <a href="https://thokozane.co.za" target="_blank" rel="noopener" class="underline hover:text-stone-700">Developed by Thokozane</a>.
                 </div>
             </div>
         </div>
@@ -802,23 +885,45 @@
             });
         });
 
-        // Contact Form Handling
+        // Contact Form Handling (AJAX)
         const contactForm = document.getElementById('contact-form');
         if(contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const btn = e.target.querySelector('button');
+                const btn = contactForm.querySelector('button');
                 const originalText = btn.innerText;
                 
-                btn.innerText = 'Sent!';
-                btn.classList.add('bg-emerald-700');
+                btn.disabled = true;
+                btn.innerText = 'Sending...';
                 
-                setTimeout(() => {
+                const formData = new FormData(contactForm);
+                
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        btn.innerText = 'Message Sent!';
+                        btn.classList.add('bg-emerald-700');
+                        contactForm.reset();
+                        setTimeout(() => {
+                            btn.innerText = originalText;
+                            btn.disabled = false;
+                            btn.classList.remove('bg-emerald-700');
+                            alert('Message received! We will be in touch shortly via email or phone.');
+                        }, 3000);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was a problem sending your message. Please try again.');
                     btn.innerText = originalText;
-                    btn.classList.remove('bg-emerald-700');
-                    e.target.reset();
-                    alert('Message received! We will be in touch shortly.');
-                }, 2000);
+                    btn.disabled = false;
+                });
             });
         }
 
@@ -855,17 +960,36 @@
             }
         });
 
-        // Credit Application Handling (front-end only)
+        // Partner Form Handling
+        const partnerForm = document.getElementById('partner-form');
+        if(partnerForm) {
+            partnerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button');
+                const originalText = btn.innerText;
+                
+                btn.innerText = 'Sending Application...';
+                btn.classList.add('bg-emerald-700');
+                
+                setTimeout(() => {
+                    btn.innerText = 'Application Sent!';
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.classList.remove('bg-emerald-700');
+                        e.target.reset();
+                        alert('Thank you for your interest in partnering with Khayalethu. We will review your proposal and contact you shortly.');
+                    }, 2000);
+                }, 1500);
+            });
+        }
+
+        // Credit Application Handling - AJAX Submission
         const creditForm = document.getElementById('credit-form');
         if(creditForm) {
-            creditForm.addEventListener('submit', (e) => {
+            creditForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-
-                const form = e.target;
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerText;
-
-                // Very light validation for ID length
+                
+                // 1. Validation
                 const idInput = document.getElementById('idNumber');
                 if (idInput && idInput.value && idInput.value.length !== 13) {
                     alert('Please enter a valid 13-digit South African ID number.');
@@ -873,15 +997,65 @@
                     return;
                 }
 
-                submitBtn.disabled = true;
-                submitBtn.innerText = 'Sending...';
+                // 2. UI Loading State
+                const btn = creditForm.querySelector('button[type="submit"]');
+                const originalText = btn.innerText;
+                btn.disabled = true;
+                btn.innerText = 'Sending Application...';
+                btn.classList.add('opacity-75', 'cursor-not-allowed');
 
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = originalText;
-                    form.reset();
-                    alert('Thank you. Your application request has been received. Our team will contact you to complete the process in-store.');
-                }, 1800);
+                // 3. Prepare Data
+                const formData = new FormData(creditForm);
+
+                // 4. AJAX Fetch
+                fetch(creditForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // 5. Success UI
+                        const container = creditForm.closest('.glass-card');
+                        if(container) {
+                            // Replace form content with Success Message
+                            gsap.to(container.children, {opacity: 0, duration: 0.3, onComplete: () => {
+                                container.innerHTML = `
+                                    <div class="flex flex-col items-center justify-center text-center py-10">
+                                        <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6 text-emerald-600">
+                                            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
+                                        <h3 class="text-3xl font-bold text-stone-900 mb-2">Application Received!</h3>
+                                        <p class="text-stone-500 max-w-md mx-auto mb-8">
+                                            Thank you for applying. We have received your details and documents. Our team will verify them and contact you shortly (usually within 24 hours).
+                                        </p>
+                                        <button onclick="location.reload()" class="px-6 py-2.5 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-500 transition-colors shadow-lg">
+                                            Back to Home
+                                        </button>
+                                    </div>
+                                `;
+                                gsap.fromTo(container.children, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5});
+                            }});
+                        } else {
+                            // Fallback
+                            alert('Application Received! We will be in touch shortly.');
+                            location.reload();
+                        }
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was a problem submitting your application. Please try again or visit us in-store.');
+                    btn.disabled = false;
+                    btn.innerText = originalText;
+                    btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                });
             });
         }
     </script>
@@ -1042,79 +1216,6 @@
             </button>
         </nav>
 
-        <!-- Business Collaboration Overlay -->
-        <div id="collab-overlay" class="fixed inset-0 z-[140] bg-stone-900/40 backdrop-blur-sm hidden opacity-0 flex items-center justify-center p-4">
-            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
-                <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50/80">
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-bold text-lg">K</div>
-                        <div>
-                            <h2 class="text-lg md:text-xl font-bold text-stone-900">Business Collaborations</h2>
-                            <p class="text-xs text-stone-500">Partner with Khayalethu to serve our community better.</p>
-                        </div>
-                    </div>
-                    <button id="close-collab-btn" class="p-2 rounded-full hover:bg-stone-100 transition-colors">
-                        <svg class="w-5 h-5 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="p-6 md:p-8 overflow-y-auto flex-1 space-y-6 text-sm text-stone-600">
-                    <p class="text-stone-700">We collaborate with local suppliers, transport providers, farmers, community organisations, and fintech partners who share our goal of making essential groceries more accessible and affordable.</p>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-3">
-                            <h3 class="text-sm font-semibold text-stone-900 tracking-wide uppercase">Who should apply?</h3>
-                            <ul class="text-sm list-disc pl-5 space-y-1">
-                                <li>Local farmers and food producers</li>
-                                <li>Transport and last-mile delivery partners</li>
-                                <li>Brands looking for township presence</li>
-                                <li>NGOs and community organisations</li>
-                                <li>Fintech / credit / loyalty providers</li>
-                            </ul>
-                            <p class="text-xs text-stone-500">We prioritise partners who are ethical, community-focused, and compliant with South African regulations.</p>
-                        </div>
-                        <form id="collab-form" class="space-y-3">
-                            <div>
-                                <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-name">Contact person</label>
-                                <input id="collab-name" required type="text" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="Your full name" />
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-company">Business / Organisation</label>
-                                <input id="collab-company" required type="text" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="Company or organisation name" />
-                            </div>
-                            <div class="grid grid-cols-2 gap-2">
-                                <div>
-                                    <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-email">Email</label>
-                                    <input id="collab-email" required type="email" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="you@example.com" />
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-phone">Phone / WhatsApp</label>
-                                    <input id="collab-phone" required type="tel" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="071 234 5678" />
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-type">Type of collaboration</label>
-                                <select id="collab-type" required class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm bg-white focus:border-emerald-500 focus:outline-none">
-                                    <option value="" disabled selected>Select an option</option>
-                                    <option>Supplier / Stock</option>
-                                    <option>Logistics / Delivery</option>
-                                    <option>Financial / Credit Services</option>
-                                    <option>Community / NGO Partner</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-medium text-stone-700 mb-1" for="collab-message">Tell us more</label>
-                                <textarea id="collab-message" required rows="3" class="w-full rounded-xl border border-stone-200 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none" placeholder="Briefly describe how you’d like to collaborate and the value you bring."></textarea>
-                            </div>
-                            <button type="submit" class="mt-1 w-full rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold py-2.5 shadow-sm shadow-emerald-300 transition-colors">Submit Collaboration Request</button>
-                        </form>
-                    </div>
-                    <p class="text-[11px] text-stone-400">We aim to respond to collaboration requests within 3–5 working days. By submitting this form, you agree that we may contact you using the details provided for partnership discussions only.</p>
-                </div>
-            </div>
-        </div>
-
         <div class="max-w-4xl mx-auto px-4 pt-32 pb-20">
             <!-- Hero Text -->
             <h1 class="text-5xl md:text-7xl font-bold text-stone-900 mb-12 leading-tight tracking-tight">
@@ -1128,7 +1229,7 @@
                     <div>
                         <h3 class="text-xl font-bold text-stone-900 mb-3">The Beginning</h3>
                         <p class="text-stone-600 leading-relaxed">
-                            Khayalethu started in 2021 in a small garage in Embalenhle. We noticed a recurring problem: hardworking families running out of essentials just days before payday. The options were limited—go hungry or borrow from loan sharks with exorbitant interest rates. We chose a third option: trust.
+                            Khayalethu Grocery Store started in 2021 in a small garage in Embalenhle. We noticed a recurring problem: hardworking families running out of essentials just days before payday. The options were limited—go hungry or borrow from loan sharks with exorbitant interest rates. We chose a third option: trust.
                         </p>
                     </div>
                     <div>
@@ -1161,72 +1262,48 @@
                 </div>
             </div>
             
-            <!-- Free Delivery Details & Delivery Bento Grid -->
-            <section class="mt-16">
-                <div class="grid md:grid-cols-2 gap-8 items-start">
-                    <!-- Info Card Left -->
-                    <div class="bg-emerald-50 border border-emerald-100 rounded-3xl p-6 md:p-8 flex gap-4 items-start">
-                        <div class="shrink-0 w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700">
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 13l2-5h13l2 5M5 13v4a2 2 0 002 2h10a2 2 0 002-2v-4M7 13h10m-8 6h6" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-stone-900 mb-2">Free delivery to your door</h3>
-                            <p class="text-stone-600 text-sm md:text-base leading-relaxed mb-3">
-                                Once your order or credit purchase is confirmed, our team delivers straight to your home in Embalenhle, Secunda, Evander and nearby areas at no extra cost. We group deliveries by area to keep costs low, so you save on both time and transport.
-                            </p>
-                            <p class="text-stone-500 text-xs md:text-sm">
-                                Deliveries typically run in <span class="font-semibold text-stone-700">morning</span> and <span class="font-semibold text-stone-700">late afternoon</span> rounds. We’ll call or WhatsApp you before we arrive.
-                            </p>
-                        </div>
+            <!-- Free Delivery Section -->
+            <div class="mt-20 grid md:grid-cols-2 gap-8 items-stretch">
+                <!-- Info Card -->
+                <div class="bg-emerald-50 rounded-3xl p-8 border border-emerald-100 flex flex-col justify-center">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-6">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
                     </div>
-
-                    <!-- Delivery Vehicles Bento Grid Right -->
-                    <div class="grid grid-cols-4 gap-3 md:gap-4 auto-rows-[90px] md:auto-rows-[110px]">
-                        <!-- Hero Tile -->
-                        <div class="relative col-span-4 row-span-2 md:col-span-2 md:row-span-3 rounded-3xl overflow-hidden group shadow-md">
-                            <div class="absolute inset-0 bg-[url('images/delivery-bike1.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-stone-900/20 to-transparent"></div>
-                            <div class="absolute bottom-4 left-4 right-4">
-                                <p class="text-[11px] font-semibold text-emerald-200 uppercase tracking-[0.18em] mb-1">Local Routes</p>
-                                <p class="text-sm md:text-base font-semibold text-white leading-snug">Daily rounds across Embalenhle, Secunda & Evander</p>
-                            </div>
-                        </div>
-
-                        <!-- Supporting Tile 1 -->
-                        <div class="relative col-span-2 md:col-span-2 rounded-2xl overflow-hidden group shadow-sm">
-                            <div class="absolute inset-0 bg-[url('images/delivery-bike2.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
-                            <div class="absolute inset-0 bg-stone-900/55"></div>
-                            <p class="absolute bottom-2 left-3 text-[11px] font-medium text-emerald-100">Cold items handled</p>
-                        </div>
-
-                        <!-- Supporting Tile 2 -->
-                        <div class="relative col-span-2 md:col-span-2 rounded-2xl overflow-hidden group shadow-sm">
-                            <div class="absolute inset-0 bg-[url('images/delivery-van.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
-                            <div class="absolute inset-0 bg-stone-900/55"></div>
-                            <p class="absolute bottom-2 left-3 text-[11px] font-medium text-emerald-100">Secure packaging</p>
-                        </div>
-
-                        <!-- Supporting Tile 3 -->
-                        <div class="relative col-span-2 md:col-span-1 rounded-2xl overflow-hidden group shadow-sm">
-                            <div class="absolute inset-0 bg-[url('images/delivery-bike3.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
-                            <div class="absolute inset-0 bg-stone-900/55"></div>
-                            <p class="absolute bottom-2 left-3 text-[11px] font-medium text-emerald-100">Neighbourhood drop-offs</p>
-                        </div>
-
-                        <!-- Supporting Tile 4 -->
-                        <div class="relative col-span-2 md:col-span-1 rounded-2xl overflow-hidden group shadow-sm">
-                            <div class="absolute inset-0 bg-[url('images/delivery-bike4.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/30 to-transparent"></div>
-                            <p class="absolute bottom-2 left-3 text-[11px] font-semibold text-white uppercase tracking-[0.18em]">Always Free</p>
-                        </div>
+                    <h3 class="text-2xl font-bold text-stone-900 mb-4">We Deliver for Free</h3>
+                    <p class="text-stone-600 mb-6 leading-relaxed">
+                        If you live in <span class="font-bold text-emerald-700">Embalenhle, Secunda, or Evander</span>, we bring your groceries to your door at no extra cost. 
+                        We run two delivery rounds daily: Morning (9am - 12pm) and Late Afternoon (3pm - 6pm).
+                    </p>
+                    <div class="flex items-center gap-3 text-sm text-stone-500">
+                         <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                         <span>You'll get a WhatsApp before we arrive.</span>
                     </div>
                 </div>
-            </section>
+
+                <!-- Delivery Bento Grid -->
+                <div class="grid grid-cols-2 grid-rows-3 gap-3 h-80 md:h-auto">
+                    <!-- Hero Tile -->
+                    <div class="col-span-2 row-span-2 relative rounded-2xl overflow-hidden group">
+                        <div class="absolute inset-0 bg-stone-200 bg-[url('images/delivery-bike1.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <span class="absolute bottom-3 left-3 text-white font-bold text-sm">Local Routes</span>
+                    </div>
+                    <!-- Small Tiles -->
+                    <div class="relative rounded-2xl overflow-hidden group">
+                        <div class="absolute inset-0 bg-stone-200 bg-[url('images/delivery-bike4.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <span class="absolute bottom-2 left-2 text-white font-bold text-xs">Fresh</span>
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden group bg-emerald-600 flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">Always Free</span>
+                    </div>
+                </div>
+            </div>
 
             <!-- Big Image Placeholder -->
-            <div class="mt-16 rounded-3xl overflow-hidden h-80 relative group shadow-2xl">
+            <div class="mt-8 rounded-3xl overflow-hidden h-80 relative group shadow-2xl">
                  <div class="absolute inset-0 bg-[url('images/emba.jpg')] bg-cover bg-center transition-transform duration-[2s] group-hover:scale-105"></div>
                  <div class="absolute inset-0 bg-stone-900/40"></div>
                  <div class="absolute bottom-8 left-8 text-white">
@@ -1248,7 +1325,7 @@
                         <h4 class="text-xl font-bold text-stone-900">Serame D. Mahloko</h4>
                         <p class="text-emerald-600 font-medium text-sm mb-3">Founder & Store Manager</p>
                         <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"I started this store so no mother in Embalenhle has to worry about an empty cupboard."</p>
-                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="zanele@khayalethu.store">
+                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="serame@khayalethu.co.za">
                             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                             </svg>
@@ -1264,7 +1341,7 @@
                         <h4 class="text-xl font-bold text-stone-900">Zandile Mahloko</h4>
                         <p class="text-emerald-600 font-medium text-sm mb-3">Credit & Accounts</p>
                         <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"My job is to find a way to say 'yes' responsibly, helping you build a good credit record."</p>
-                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="accounts@khayalethu.store">
+                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="zandile@khayalethu.co.za">
                             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                             </svg>
@@ -1279,12 +1356,12 @@
                         </div>
                         <h4 class="text-xl font-bold text-stone-900">Nkosinathi Ndhlovu</h4>
                         <p class="text-emerald-600 font-medium text-sm mb-3">Marketing & Analytics</p>
-                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"Ensuring fresh produce arrives every morning from our local farming partners."</p>
-                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="stock@khayalethu.store">
+                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"Delivering actionable insights every day through data-driven marketing and business intelligence."</p>
+                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="nathi@khayalethu.co.za">
                             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                             </svg>
-                            <span>nkosinathi@khayalethu.co.za</span>
+                            <span>nathi@khayalethu.co.za</span>
                         </button>
                     </div>
                 </div>
@@ -1304,7 +1381,7 @@
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         </div>
                         <p class="text-stone-600 text-sm mb-6 leading-relaxed">"Khayalethu saved us during a tough month. The process was respectful and private. I didn't feel judged."</p>
-                        <p class="text-xs font-bold text-stone-900 uppercase tracking-wider">— Mama N.</p>
+                        <p class="text-xs font-bold text-stone-900 uppercase tracking-wider">— Thokozane N.</p>
                     </div>
 
                     <!-- Review 2 -->
@@ -1398,81 +1475,75 @@
                 name: "King Super Maize Meal",
                 image: "images/king.jpg",
                 variants: [
-                    { id: "1a", label: "10kg", price: 90 },
-                    { id: "1b", label: "12.5kg", price: 110 },
-                    { id: "1c", label: "25kg", price: 220 }
+                    { id: "1a", label: "25kg", price: 320 }
                 ],
-                defaultPrice: 90
+                defaultPrice: 320
             },
             {
                 id: 2,
-                name: "Sunflower Oil",
-                image: "images/cooking-oil.png",
+                name: "Superwhite Maize Meal",
+                image: "images/superwhite.png",
                 variants: [
-                    { id: "2a", label: "750ml", price: 35 },
-                    { id: "2b", label: "2L", price: 85 },
-                    { id: "2c", label: "5L", price: 195 }
+                    { id: "2a", label: "10kg", price: 140 }
                 ],
-                defaultPrice: 35
+                defaultPrice: 140
             },
             {
                 id: 3,
-                name: "Sugar",
-                image: "images/sugar.jpg",
+                name: "Tastic Rice",
+                image: "images/tastic.jpg",
                 variants: [
-                    { id: "3a", label: "2kg", price: 38 },
-                    { id: "3b", label: "10kg", price: 160 }
+                    { id: "3a", label: "10kg", price: 200 }
                 ],
-                defaultPrice: 38
+                defaultPrice: 200
             },
             {
                 id: 4,
                 name: "Canned Pilchards",
                 image: "images/pilchards.jpg",
                 variants: [
-                    { id: "4a", label: "Tomato (400g)", price: 22 },
-                    { id: "4b", label: "Chili (400g)", price: 22 }
+                    { id: "4a", label: "Tomato (400g)", price: 35 },
+                    { id: "4b", label: "Chili (400g)", price: 35 }
                 ],
-                defaultPrice: 22
+                defaultPrice: 35
             },
             {
                 id: 5,
-                name: "Baked Beans",
-                image: "images/koo.jpg",
+                name: "Rajah Curry Powder",
+                image: "images/rajah.jpg",
                 variants: [
-                    { id: "5a", label: "Standard", price: 18 }
+                    { id: "5a", label: "Mild & Spicy 50g", price: 20 },
+                    { id: "5a", label: "Medium 50g", price: 20 },
+                    { id: "5a", label: "Hot 50g", price: 20 }
                 ],
-                defaultPrice: 18
+                defaultPrice: 20
             },
             {
                 id: 6,
-                name: "Full Cream Milk",
-                image: "images/milk2.jpg",
+                name: "KOO Beans",
+                image: "images/koo.jpg",
                 variants: [
-                    { id: "6a", label: "1 Liter", price: 16 },
-                    { id: "6b", label: "6 x 1L Pack", price: 90 }
+                    { id: "6a", label: "400g", price: 25 }
                 ],
-                defaultPrice: 16
+                defaultPrice: 25
             },
             {
                 id: 7,
-                name: "Cake Wheat Flour",
+                name: "Snow Flake Flour",
                 image: "images/wheat-flour.jpg",
                 variants: [
-                    { id: "7a", label: "2.5kg", price: 34 },
-                    { id: "7b", label: "10kg", price: 115 }
+                    { id: "7b", label: "10kg", price: 170 }
                 ],
-                defaultPrice: 34
+                defaultPrice: 170
             },
             {
                 id: 8,
-                name: "Washing Powder",
-                image: "images/washing.jpg",
+                name: "Exella Cooking Oil",
+                image: "images/excella.jpeg",
                 variants: [
-                    { id: "8a", label: "2kg Hand Wash", price: 55 },
-                    { id: "8b", label: "2kg Auto", price: 65 }
+                    { id: "8a", label: "2l", price: 100 }
                 ],
-                defaultPrice: 55
+                defaultPrice: 100
             }
         ];
 
@@ -2067,54 +2138,6 @@
                 hideCookieBanner();
                 openLegal('cookies');
             });
-        }
-
-        // ==========================================
-        // BUSINESS COLLABORATION OVERLAY
-        // ==========================================
-        const collabOverlay = document.getElementById('collab-overlay');
-        const collabBtn = document.getElementById('btn-collab');
-        const closeCollabBtn = document.getElementById('close-collab-btn');
-        const collabForm = document.getElementById('collab-form');
-
-        if (collabBtn && collabOverlay && closeCollabBtn) {
-            const openCollab = () => {
-                collabOverlay.classList.remove('hidden');
-                gsap.to(collabOverlay, { opacity: 1, duration: 0.25, ease: 'power2.out' });
-                gsap.fromTo(collabOverlay.querySelector('> div'), { y: 20, scale: 0.98 }, { y: 0, scale: 1, duration: 0.3, ease: 'power3.out' });
-            };
-
-            const closeCollab = () => {
-                gsap.to(collabOverlay, { opacity: 0, duration: 0.2, ease: 'power2.in', onComplete: () => {
-                    collabOverlay.classList.add('hidden');
-                }});
-            };
-
-            collabBtn.addEventListener('click', openCollab);
-            closeCollabBtn.addEventListener('click', closeCollab);
-            collabOverlay.addEventListener('click', (e) => {
-                if (e.target === collabOverlay) closeCollab();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !collabOverlay.classList.contains('hidden')) closeCollab();
-            });
-
-            if (collabForm) {
-                collabForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const btn = collabForm.querySelector('button[type="submit"]');
-                    const originalText = btn.innerText;
-                    btn.disabled = true;
-                    btn.innerText = 'Sending...';
-                    setTimeout(() => {
-                        btn.disabled = false;
-                        btn.innerText = originalText;
-                        collabForm.reset();
-                        alert('Thank you. Your collaboration request has been received. Our team will contact you within a few working days.');
-                        closeCollab();
-                    }, 1500);
-                });
-            }
         }
 
     </script>
