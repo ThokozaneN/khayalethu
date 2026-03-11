@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khayalethu Grocery Store - Future of Community Credit</title>
-    <meta name="description" content="Essential groceries on credit for Embalenhle, Secunda, Evander, and surrounding areas.">
-    
+    <meta name="description"
+        content="Essential groceries on credit for Embalenhle, Secunda, Evander, and surrounding areas.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.khayalethu.store/">
+    <meta property="og:title" content="Khayalethu Grocery Store - Future of Community Credit">
+    <meta property="og:description"
+        content="Essential groceries on credit for Embalenhle, Secunda, Evander. Buy now, pay later. Built on trust.">
+    <meta property="og:image" content="https://www.khayalethu.store/images/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.khayalethu.store/">
+    <meta property="twitter:title" content="Khayalethu Grocery Store - Future of Community Credit">
+    <meta property="twitter:description"
+        content="Essential groceries on credit for Embalenhle, Secunda, Evander. Buy now, pay later. Built on trust.">
+    <meta property="twitter:image" content="https://www.khayalethu.store/images/logo.png">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+
     <!-- GSAP for Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <style>
         @theme {
-            --color-primary: #10b981; /* Emerald-500 */
-            --color-primary-dark: #047857; /* Emerald-700 */
-            --color-secondary: #064e3b; /* Emerald-900 */
+            --color-primary: #10b981;
+            /* Emerald-500 */
+            --color-primary-dark: #047857;
+            /* Emerald-700 */
+            --color-secondary: #064e3b;
+            /* Emerald-900 */
             --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            
+
             --animate-float: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
-        
+
         .animate-scroll {
             animation: scroll 20s linear infinite;
         }
-        
+
         /* Pause on hover */
         .group:hover .animate-scroll {
             animation-play-state: paused;
@@ -50,7 +84,7 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        
+
         .glass-card {
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(10px);
@@ -67,46 +101,60 @@
         }
 
         /* Hide elements initially for GSAP */
-        .gsap-reveal { visibility: hidden; }
-        
+        .gsap-reveal {
+            visibility: hidden;
+        }
+
         /* Smooth scrolling behavior fixes */
-        html { scroll-behavior: smooth; }
-        body { overflow-x: hidden; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-200 selection:text-emerald-900 relative">
+
+<body
+    class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-200 selection:text-emerald-900 relative">
 
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 z-[200] bg-stone-50 flex flex-col items-center justify-center">
         <div class="relative w-20 h-20 md:w-24 md:h-24 mb-6">
             <div class="absolute inset-0 bg-emerald-500/30 rounded-2xl blur-xl animate-pulse"></div>
-            <div class="relative w-full h-full bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                <svg class="w-10 h-10 md:w-12 md:h-12 text-white animate-[bounce_1s_infinite]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            <div
+                class="relative w-full h-full bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-2xl">
+                <svg class="w-10 h-10 md:w-12 md:h-12 text-white animate-[bounce_1s_infinite]" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
             </div>
         </div>
         <div class="w-48 h-1 bg-stone-200 rounded-full overflow-hidden mb-4">
-            <div id="loader-bar" class="h-full bg-emerald-500 w-0 rounded-full transition-all duration-300 ease-out"></div>
+            <div id="loader-bar" class="h-full bg-emerald-500 w-0 rounded-full transition-all duration-300 ease-out">
+            </div>
         </div>
-        <div id="preloader-text" class="h-6 text-sm font-bold text-emerald-600 uppercase tracking-widest transition-opacity duration-300">
+        <div id="preloader-text"
+            class="h-6 text-sm font-bold text-emerald-600 uppercase tracking-widest transition-opacity duration-300">
             Shop Now
         </div>
     </div>
     <script>
         // Immediate Preloader Logic
-        (function() {
+        (function () {
             const bar = document.getElementById('loader-bar');
             const preloader = document.getElementById('preloader');
             const textEl = document.getElementById('preloader-text');
             let width = 0;
-            
+
             // Text cycling
             const words = ["Shop Now", "Pay Later", "Zero Interest", "Local Trust"];
             let wordIndex = 0;
-            
+
             const textInterval = setInterval(() => {
-                if(textEl) {
+                if (textEl) {
                     textEl.style.opacity = '0';
                     setTimeout(() => {
                         wordIndex = (wordIndex + 1) % words.length;
@@ -118,20 +166,20 @@
 
             // Fake progress
             const interval = setInterval(() => {
-                if(width < 90) {
+                if (width < 90) {
                     width += Math.random() * 5;
-                    if(bar) bar.style.width = width + '%';
+                    if (bar) bar.style.width = width + '%';
                 }
             }, 100);
 
             window.addEventListener('load', () => {
                 clearInterval(interval);
-                if(bar) bar.style.width = '100%';
-                
+                if (bar) bar.style.width = '100%';
+
                 // GSAP is loaded in head, so we can use it
                 setTimeout(() => {
                     clearInterval(textInterval); // Stop text cycling
-                    if(typeof gsap !== 'undefined') {
+                    if (typeof gsap !== 'undefined') {
                         gsap.to(preloader, {
                             opacity: 0,
                             y: -20,
@@ -153,8 +201,12 @@
 
     <!-- Ambient Background Blobs -->
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl opacity-50 animate-[float_8s_ease-in-out_infinite]"></div>
-        <div class="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-teal-100/40 rounded-full blur-3xl opacity-60 animate-[float_10s_ease-in-out_infinite_reverse]"></div>
+        <div
+            class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl opacity-50 animate-[float_8s_ease-in-out_infinite]">
+        </div>
+        <div
+            class="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-teal-100/40 rounded-full blur-3xl opacity-60 animate-[float_10s_ease-in-out_infinite_reverse]">
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -164,56 +216,78 @@
                 <div class="flex justify-between h-16 items-center">
                     <div class="flex items-center">
                         <a href="#" class="flex items-center gap-2 group">
-                            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">K</div>
-                            <span class="text-lg font-bold text-stone-900 tracking-tight group-hover:text-emerald-700 transition-colors">Khayalethu</span>
+                            <div
+                                class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
+                                K</div>
+                            <span
+                                class="text-lg font-bold text-stone-900 tracking-tight group-hover:text-emerald-700 transition-colors">Khayalethu</span>
                         </a>
                     </div>
-                    
+
                     <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center space-x-1">
-                        <a href="#about" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">About</a>
-                        <a href="#how-it-works" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Credit</a>
-                        <a href="#products" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Essentials</a>
-                        <a href="partner.html" class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Partner</a>
+                        <a href="#about"
+                            class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">About</a>
+                        <a href="#how-it-works"
+                            class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Credit</a>
+                        <a href="#products"
+                            class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Essentials</a>
+                        <a href="partner.html"
+                            class="px-4 py-2 text-sm font-medium text-stone-600 hover:text-emerald-600 rounded-full hover:bg-emerald-50/50 transition-all">Partner</a>
                     </div>
 
                     <div class="hidden md:flex items-center gap-3">
-                        <button id="nav-shop-btn" class="px-5 py-2.5 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full hover:bg-emerald-200 transition-all flex items-center gap-2">
+                        <button id="nav-shop-btn"
+                            class="px-5 py-2.5 bg-emerald-100 text-emerald-800 text-sm font-bold rounded-full hover:bg-emerald-200 transition-all flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                             </svg>
                             Order Online
                         </button>
-                        <a href="#contact" class="px-6 py-2.5 bg-stone-900 text-white text-sm font-medium rounded-full hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-200 transition-all duration-300 transform hover:-translate-y-0.5">
+                        <a href="#contact"
+                            class="px-6 py-2.5 bg-stone-900 text-white text-sm font-medium rounded-full hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-200 transition-all duration-300 transform hover:-translate-y-0.5">
                             Contact Us
                         </a>
                     </div>
 
                     <!-- Mobile menu button -->
                     <div class="md:hidden flex items-center">
-                        <button id="mobile-menu-btn" class="p-2 text-stone-600 hover:text-emerald-600 focus:outline-none">
+                        <button id="mobile-menu-btn"
+                            class="p-2 text-stone-600 hover:text-emerald-600 focus:outline-none">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         </button>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden border-t border-stone-100 bg-white/95 backdrop-blur-xl rounded-b-2xl absolute w-full left-0 top-full shadow-xl">
+            <div id="mobile-menu"
+                class="hidden md:hidden border-t border-stone-100 bg-white/95 backdrop-blur-xl rounded-b-2xl absolute w-full left-0 top-full shadow-xl">
                 <div class="px-4 py-6 space-y-3">
-                    <a href="#about" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">About</a>
-                    <a href="#how-it-works" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Credit Info</a>
-                    <a href="#products" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Products</a>
-                    <a href="partner.html" class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Partner</a>
-                    <button id="mobile-shop-btn" class="w-full text-left block px-4 py-2 text-base font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-xl transition-colors flex items-center gap-2">
+                    <a href="#about"
+                        class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">About</a>
+                    <a href="#how-it-works"
+                        class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Credit
+                        Info</a>
+                    <a href="#products"
+                        class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Products</a>
+                    <a href="partner.html"
+                        class="block px-4 py-2 text-base font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-xl transition-colors">Partner</a>
+                    <button id="mobile-shop-btn"
+                        class="w-full text-left block px-4 py-2 text-base font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-xl transition-colors flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
                         Order Online
                     </button>
-                    <a href="#contact" class="block px-4 py-2 text-base font-bold text-stone-900 hover:text-emerald-600 rounded-xl mt-2">Contact Us</a>
+                    <a href="#contact"
+                        class="block px-4 py-2 text-base font-bold text-stone-900 hover:text-emerald-600 rounded-xl mt-2">Contact
+                        Us</a>
                 </div>
             </div>
         </div>
@@ -222,52 +296,67 @@
     <!-- Hero Section -->
     <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 z-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            
+
             <!-- Status Badges -->
             <div class="flex flex-col justify-center items-center gap-3 mb-8 sm:flex-row">
-                <div class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
+                <div
+                    class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
                     <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
-                    <span class="text-xs font-medium text-stone-500 tracking-wide uppercase">Open for Applications</span>
+                    <span class="text-xs font-medium text-stone-500 tracking-wide uppercase">Open for
+                        Applications</span>
                 </div>
-                
-                <div class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
+
+                <div
+                    class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
                     <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                     <span class="text-xs font-medium text-stone-500 tracking-wide uppercase">We deliver for free</span>
                 </div>
-                
-                <div class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
+
+                <div
+                    class="hero-anim inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-100 shadow-sm">
                     <svg class="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                     <span class="text-xs font-medium text-stone-500 tracking-wide uppercase">NCR Compliant</span>
                 </div>
             </div>
 
-            <h1 class="hero-anim text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-stone-900 mb-8 leading-[1.1]">
+            <h1
+                class="hero-anim text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-stone-900 mb-8 leading-[1.1]">
                 Groceries when <br>
                 <span class="gradient-text">you need them.</span>
             </h1>
-            
+
             <p class="hero-anim max-w-2xl mx-auto text-xl text-stone-500 mb-12 leading-relaxed font-light">
-                The modern way to shop for essentials in <span class="text-stone-800 font-medium">Embalenhle</span> & <span class="text-stone-800 font-medium">Secunda</span>. Buy now, pay later. Built on trust.
+                The modern way to shop for essentials in <span class="text-stone-800 font-medium">Embalenhle</span> &
+                <span class="text-stone-800 font-medium">Secunda</span>. Buy now, pay later. Built on trust.
             </p>
-            
+
             <div class="hero-anim flex flex-col sm:flex-row justify-center gap-4 items-center">
-                <a href="#how-it-works" class="group relative px-8 py-4 bg-emerald-600 text-white font-medium rounded-full overflow-hidden transition-all hover:shadow-xl hover:shadow-emerald-200">
-                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                <a href="#how-it-works"
+                    class="group relative px-8 py-4 bg-emerald-600 text-white font-medium rounded-full overflow-hidden transition-all hover:shadow-xl hover:shadow-emerald-200">
+                    <div
+                        class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]">
+                    </div>
                     <span class="relative flex items-center gap-2">
                         Get Started
-                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </span>
                 </a>
-                <a href="#products" class="px-8 py-4 bg-white text-stone-600 border border-stone-200 font-medium rounded-full hover:bg-stone-50 hover:border-stone-300 transition-all">
+                <a href="#products"
+                    class="px-8 py-4 bg-white text-stone-600 border border-stone-200 font-medium rounded-full hover:bg-stone-50 hover:border-stone-300 transition-all">
                     View Essentials
                 </a>
             </div>
@@ -304,15 +393,22 @@
                 Not just a store. <br>A community lifeline.
             </h2>
             <div class="glass-card p-8 md:p-12 rounded-3xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-emerald-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none">
+                </div>
                 <p class="text-lg md:text-xl text-stone-600 leading-relaxed relative z-10 mb-8">
-                    We believe access to food shouldn't be determined by payday. Khayalethu provides a dignified, transparent way to get essentials now and pay later. We are building a financial safety net for the people of Mpumalanga.
+                    We believe access to food shouldn't be determined by payday. Khayalethu provides a dignified,
+                    transparent way to get essentials now and pay later. We are building a financial safety net for the
+                    people of Mpumalanga.
                 </p>
                 <div class="relative z-10 flex justify-center md:justify-start">
-                    <button id="open-about-btn" class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-emerald-100 text-emerald-700 font-medium rounded-full hover:bg-emerald-50 hover:shadow-lg hover:shadow-emerald-100 transition-all group">
+                    <button id="open-about-btn"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-white border border-emerald-100 text-emerald-700 font-medium rounded-full hover:bg-emerald-50 hover:shadow-lg hover:shadow-emerald-100 transition-all group">
                         <span>More About Us</span>
-                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </button>
                 </div>
@@ -332,32 +428,46 @@
 
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Step 1 -->
-                <div class="step-card group p-8 rounded-3xl bg-white border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 hover:border-emerald-100 transition-all duration-300">
-                    <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center text-xl font-bold text-stone-900 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">1</div>
+                <div
+                    class="step-card group p-8 rounded-3xl bg-white border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 hover:border-emerald-100 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center text-xl font-bold text-stone-900 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                        1</div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Apply In-Store</h3>
-                    <p class="text-stone-500 leading-relaxed">Visit us with your ID and proof of residence. We verify details instantly.</p>
+                    <p class="text-stone-500 leading-relaxed">Visit us with your ID and proof of residence. We verify
+                        details instantly.</p>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="step-card group p-8 rounded-3xl bg-white border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 hover:border-emerald-100 transition-all duration-300">
-                    <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center text-xl font-bold text-stone-900 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">2</div>
+                <div
+                    class="step-card group p-8 rounded-3xl bg-white border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 hover:border-emerald-100 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center text-xl font-bold text-stone-900 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                        2</div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Get Approved</h3>
-                    <p class="text-stone-500 leading-relaxed">Receive a credit limit based on your profile. Shop immediately.</p>
+                    <p class="text-stone-500 leading-relaxed">Receive a credit limit based on your profile. Shop
+                        immediately.</p>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="step-card group p-8 rounded-3xl bg-white border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 hover:border-emerald-100 transition-all duration-300">
-                    <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center text-xl font-bold text-stone-900 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">3</div>
+                <div
+                    class="step-card group p-8 rounded-3xl bg-white border border-stone-100 shadow-sm hover:shadow-xl hover:shadow-emerald-100/50 hover:border-emerald-100 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center text-xl font-bold text-stone-900 mb-6 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                        3</div>
                     <h3 class="text-xl font-bold text-stone-900 mb-3">Pay Later</h3>
-                    <p class="text-stone-500 leading-relaxed">Settle your account by month-end to increase your limit for next time.</p>
+                    <p class="text-stone-500 leading-relaxed">Settle your account by month-end to increase your limit
+                        for next time.</p>
                 </div>
             </div>
 
             <!-- Fair Usage Pill -->
             <div class="mt-12 flex justify-center">
-                <div class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-orange-50 border border-orange-100 text-orange-800 text-sm">
+                <div
+                    class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-orange-50 border border-orange-100 text-orange-800 text-sm">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                     </svg>
                     <span>Late payments result in immediate account suspension.</span>
                 </div>
@@ -375,20 +485,28 @@
 
             <!-- Bento Grid Layout -->
             <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] gap-4">
-                
+
                 <!-- Maize (Large Square) -->
-                <div class="product-item group relative col-span-2 row-span-2 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div class="absolute inset-0 bg-[url('images/maize.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent"></div>
+                <div role="img" aria-label="Maize Meal - Staple Food"
+                    class="product-item group relative col-span-2 row-span-2 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-[url('images/maize.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent">
+                    </div>
                     <div class="absolute bottom-0 left-0 p-6 md:p-8">
-                        <span class="text-emerald-400 font-bold tracking-wider text-xs uppercase mb-1 block">Staple</span>
+                        <span
+                            class="text-emerald-400 font-bold tracking-wider text-xs uppercase mb-1 block">Staple</span>
                         <span class="text-3xl font-bold text-white">Maize Meal</span>
                     </div>
                 </div>
 
                 <!-- Dairy -->
-                <div class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div class="absolute inset-0 bg-[url('images/dairy.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                <div role="img" aria-label="Dairy Products"
+                    class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-[url('images/dairy.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-5">
                         <span class="text-lg font-bold text-white">Dairy</span>
@@ -396,8 +514,11 @@
                 </div>
 
                 <!-- Bakery -->
-                <div class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div class="absolute inset-0 bg-[url('images/bakery.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                <div role="img" aria-label="Bakery Items"
+                    class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-[url('images/bakery.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-5">
                         <span class="text-lg font-bold text-white">Bakery</span>
@@ -405,18 +526,26 @@
                 </div>
 
                 <!-- Meat (Wide) -->
-                <div class="product-item group relative col-span-2 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div class="absolute inset-0 bg-[url('images/meat.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/10 to-transparent"></div>
+                <div role="img" aria-label="Butchers Meat - Fresh Cuts"
+                    class="product-item group relative col-span-2 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-[url('images/meat.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/10 to-transparent">
+                    </div>
                     <div class="absolute bottom-0 left-0 p-6">
-                        <span class="text-emerald-400 font-bold tracking-wider text-xs uppercase mb-1 block">Fresh</span>
+                        <span
+                            class="text-emerald-400 font-bold tracking-wider text-xs uppercase mb-1 block">Fresh</span>
                         <span class="text-2xl font-bold text-white">Butcher's Meat</span>
                     </div>
                 </div>
 
                 <!-- Oil -->
-                <div class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div class="absolute inset-0 bg-[url('images/oil.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                <div role="img" aria-label="Cooking Oil and Fats"
+                    class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-[url('images/oil.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-5">
                         <span class="text-lg font-bold text-white">Oil & Fats</span>
@@ -424,8 +553,11 @@
                 </div>
 
                 <!-- Grains -->
-                <div class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div class="absolute inset-0 bg-[url('images/grains.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                <div role="img" aria-label="Grains and Pulses"
+                    class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-[url('images/grains.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-5">
                         <span class="text-lg font-bold text-white">Grains</span>
@@ -433,17 +565,23 @@
                 </div>
 
                 <!-- Hygiene -->
-                <div class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div class="absolute inset-0 bg-[url('images/hygiene.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                <div role="img" aria-label="Hygiene Products"
+                    class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-[url('images/hygiene.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-5">
                         <span class="text-lg font-bold text-white">Hygiene</span>
                     </div>
                 </div>
 
-                 <!-- Canned -->
-                <div class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
-                    <div class="absolute inset-0 bg-[url('images/canned.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                <!-- Canned -->
+                <div role="img" aria-label="Canned Foods"
+                    class="product-item group relative col-span-1 row-span-1 rounded-3xl overflow-hidden cursor-default shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div
+                        class="absolute inset-0 bg-[url('images/canned.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                    </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-5">
                         <span class="text-lg font-bold text-white">Canned</span>
@@ -458,34 +596,56 @@
         <div class="max-w-6xl mx-auto px-4 mb-6 text-center">
             <p class="text-xs font-bold tracking-widest text-stone-400 uppercase">Trusted Brands We Stock</p>
         </div>
-        
+
         <div class="relative w-full group">
             <!-- Gradient Masks for seamless effect -->
-            <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-            
+            <div
+                class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none">
+            </div>
+
             <!-- Scrolling Container -->
             <div class="flex overflow-hidden whitespace-nowrap">
                 <div class="flex animate-scroll gap-12 md:gap-24 min-w-full items-center justify-around px-12">
                     <!-- Original Set -->
-                    <span class="text-3xl font-serif font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default">TASTIC</span>
-                    <span class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-tighter">KOO</span>
-                    <span class="text-3xl font-serif italic font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Albany</span>
-                    <span class="text-3xl font-sans font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-widest">LUCKY STAR</span>
-                    <span class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Huletts</span>
-                    <span class="text-3xl font-mono font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Sunlight</span>
-                    <span class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">NOLA</span>
-                    <span class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">JUNGLE</span>
-                    
+                    <span
+                        class="text-3xl font-serif font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default">TASTIC</span>
+                    <span
+                        class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-tighter">KOO</span>
+                    <span
+                        class="text-3xl font-serif italic font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Albany</span>
+                    <span
+                        class="text-3xl font-sans font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-widest">LUCKY
+                        STAR</span>
+                    <span
+                        class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Huletts</span>
+                    <span
+                        class="text-3xl font-mono font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Sunlight</span>
+                    <span
+                        class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">NOLA</span>
+                    <span
+                        class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">JUNGLE</span>
+
                     <!-- Duplicate Set for smooth loop -->
-                    <span class="text-3xl font-serif font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default">TASTIC</span>
-                    <span class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-tighter">KOO</span>
-                    <span class="text-3xl font-serif italic font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Albany</span>
-                    <span class="text-3xl font-sans font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-widest">LUCKY STAR</span>
-                    <span class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Huletts</span>
-                    <span class="text-3xl font-mono font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Sunlight</span>
-                    <span class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">NOLA</span>
-                    <span class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">JUNGLE</span>
+                    <span
+                        class="text-3xl font-serif font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default">TASTIC</span>
+                    <span
+                        class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-tighter">KOO</span>
+                    <span
+                        class="text-3xl font-serif italic font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Albany</span>
+                    <span
+                        class="text-3xl font-sans font-black text-stone-300 hover:text-emerald-600 transition-colors cursor-default tracking-widest">LUCKY
+                        STAR</span>
+                    <span
+                        class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Huletts</span>
+                    <span
+                        class="text-3xl font-mono font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">Sunlight</span>
+                    <span
+                        class="text-3xl font-sans font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">NOLA</span>
+                    <span
+                        class="text-3xl font-serif font-bold text-stone-300 hover:text-emerald-600 transition-colors cursor-default">JUNGLE</span>
                 </div>
             </div>
         </div>
@@ -497,42 +657,58 @@
             <div class="glass-card rounded-[2rem] p-8 md:p-10 border border-emerald-100/70">
                 <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                     <div>
-                        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-emerald-600 mb-3">Apply for Store Credit</p>
-                        <h2 class="text-3xl md:text-4xl font-bold text-stone-900 leading-tight">Groceries on credit, with a few details.</h2>
+                        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-emerald-600 mb-3">Apply for
+                            Store Credit</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-stone-900 leading-tight">Groceries on credit,
+                            with a few details.</h2>
                     </div>
                     <p class="text-sm text-stone-500 max-w-sm">
-                        This form starts your application. Final approval and document checks still happen in-store for your safety.
+                        This form starts your application. Final approval and document checks still happen in-store for
+                        your safety.
                     </p>
                 </div>
 
-                <form id="credit-form" action="https://formsubmit.co/credit@khayalethu.co.za" method="POST" enctype="multipart/form-data" class="grid gap-6 md:grid-cols-2">
+                <form id="credit-form" action="https://formsubmit.co/credit@khayalethu.co.za" method="POST"
+                    enctype="multipart/form-data" class="grid gap-6 md:grid-cols-2">
                     <!-- Hidden FormSubmit settings -->
                     <input type="hidden" name="_subject" value="New Store Credit Application (Khayalethu Website)">
 
                     <input type="hidden" name="_captcha" value="false">
                     <!-- Full Name -->
                     <div class="md:col-span-2">
-                        <label class="block text-sm font-medium text-stone-700 mb-1" for="fullName">Full name (as on ID)</label>
-                        <input required id="fullName" name="Full Name" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="e.g. Thandiwe Mokoena">
+                        <label class="block text-sm font-medium text-stone-700 mb-1" for="fullName">Full name (as on
+                            ID)</label>
+                        <input required id="fullName" name="Full Name" type="text"
+                            class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                            placeholder="e.g. Thandiwe Mokoena">
                     </div>
 
                     <!-- ID Number -->
                     <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1" for="idNumber">South African ID number</label>
-                        <input required id="idNumber" name="ID Number" type="text" inputmode="numeric" minlength="13" maxlength="13" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="13-digit ID">
-                        <p class="mt-1 text-[11px] text-stone-400">We only use this to verify you in-store. No online credit checks.</p>
+                        <label class="block text-sm font-medium text-stone-700 mb-1" for="idNumber">South African ID
+                            number</label>
+                        <input required id="idNumber" name="ID Number" type="text" inputmode="numeric" minlength="13"
+                            maxlength="13"
+                            class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                            placeholder="13-digit ID">
+                        <p class="mt-1 text-[11px] text-stone-400">We only use this to verify you in-store. No online
+                            credit checks.</p>
                     </div>
 
                     <!-- Phone -->
                     <div>
                         <label class="block text-sm font-medium text-stone-700 mb-1" for="cell">Cellphone number</label>
-                        <input required id="cell" name="Cellphone" type="tel" inputmode="tel" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="e.g. 071 234 5678">
+                        <input required id="cell" name="Cellphone" type="tel" inputmode="tel"
+                            class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                            placeholder="e.g. 071 234 5678">
                     </div>
 
                     <!-- Area -->
                     <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1" for="area">Where do you live?</label>
-                        <select required id="area" name="Area" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        <label class="block text-sm font-medium text-stone-700 mb-1" for="area">Where do you
+                            live?</label>
+                        <select required id="area" name="Area"
+                            class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
                             <option value="" disabled selected>Select your area</option>
                             <option>Embalenhle</option>
                             <option>Secunda</option>
@@ -545,28 +721,36 @@
 
                     <!-- Address -->
                     <div class="md:col-span-2">
-                        <label class="block text-sm font-medium text-stone-700 mb-1" for="address">Physical address</label>
-                        <input required id="address" name="Physical Address" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="House number, street, section or extension">
-                        <p class="mt-1 text-[11px] text-stone-400">Must match your proof of residence that you bring to the store.</p>
+                        <label class="block text-sm font-medium text-stone-700 mb-1" for="address">Physical
+                            address</label>
+                        <input required id="address" name="Physical Address" type="text"
+                            class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                            placeholder="House number, street, section or extension">
+                        <p class="mt-1 text-[11px] text-stone-400">Must match your proof of residence that you bring to
+                            the store.</p>
                     </div>
 
                     <!-- Employment Status -->
                     <div class="md:col-span-2">
                         <span class="block text-sm font-medium text-stone-700 mb-2">Main source of income</span>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                            <label class="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 cursor-pointer hover:border-emerald-400">
+                            <label
+                                class="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 cursor-pointer hover:border-emerald-400">
                                 <input type="radio" name="income" value="employed" class="text-emerald-600" required>
                                 <span>Employed</span>
                             </label>
-                            <label class="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 cursor-pointer hover:border-emerald-400">
+                            <label
+                                class="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 cursor-pointer hover:border-emerald-400">
                                 <input type="radio" name="income" value="self-employed" class="text-emerald-600">
                                 <span>Self-employed</span>
                             </label>
-                            <label class="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 cursor-pointer hover:border-emerald-400">
+                            <label
+                                class="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 cursor-pointer hover:border-emerald-400">
                                 <input type="radio" name="income" value="student" class="text-emerald-600">
                                 <span>Studying</span>
                             </label>
-                            <label class="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 cursor-pointer hover:border-emerald-400">
+                            <label
+                                class="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-3 py-2 cursor-pointer hover:border-emerald-400">
                                 <input type="radio" name="income" value="sassa" class="text-emerald-600">
                                 <span>SASSA grant</span>
                             </label>
@@ -575,14 +759,19 @@
 
                     <!-- Employer / Institution (optional) -->
                     <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1" for="employer">Employer / School (optional)</label>
-                        <input id="employer" name="Employer or School" type="text" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="Where you work or study (if applicable)">
+                        <label class="block text-sm font-medium text-stone-700 mb-1" for="employer">Employer / School
+                            (optional)</label>
+                        <input id="employer" name="Employer or School" type="text"
+                            class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                            placeholder="Where you work or study (if applicable)">
                     </div>
 
                     <!-- Income Day -->
                     <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1" for="payday">When do you usually get paid?</label>
-                        <select required id="payday" name="Usual Pay Date" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        <label class="block text-sm font-medium text-stone-700 mb-1" for="payday">When do you usually
+                            get paid?</label>
+                        <select required id="payday" name="Usual Pay Date"
+                            class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500">
                             <option value="" disabled selected>Select one</option>
                             <option>Month-end</option>
                             <option>Middle of the month</option>
@@ -593,57 +782,86 @@
 
                     <!-- Document Uploads -->
                     <div class="md:col-span-2 mt-4">
-                        <span class="block text-sm font-medium text-stone-700 mb-3">Upload Documents (Optional - speeds up approval)</span>
+                        <span class="block text-sm font-medium text-stone-700 mb-3">Upload Documents (Optional - speeds
+                            up approval)</span>
                         <div class="grid gap-4 md:grid-cols-3">
                             <!-- ID Upload -->
                             <div class="relative group">
-                                <input type="file" id="file-id" name="ID Document" accept="image/png, image/jpeg, application/pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
-                                <div class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
-                                    <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                                <input type="file" id="file-id" name="ID Document"
+                                    accept="image/png, image/jpeg, application/pdf"
+                                    class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
+                                <div
+                                    class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
+                                    <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
                                     </svg>
-                                    <span class="text-xs font-medium text-stone-500 group-hover:text-emerald-600 transition-colors" id="label-file-id">Upload ID Copy</span>
+                                    <span
+                                        class="text-xs font-medium text-stone-500 group-hover:text-emerald-600 transition-colors"
+                                        id="label-file-id">Upload ID Copy</span>
                                 </div>
                             </div>
 
                             <!-- Proof of Res Upload -->
                             <div class="relative group">
-                                <input type="file" id="file-res" name="Proof of Residence" accept="image/png, image/jpeg, application/pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
-                                <div class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
-                                     <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                <input type="file" id="file-res" name="Proof of Residence"
+                                    accept="image/png, image/jpeg, application/pdf"
+                                    class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
+                                <div
+                                    class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
+                                    <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                     </svg>
-                                    <span class="text-xs font-medium text-stone-500 group-hover:text-emerald-600 transition-colors" id="label-file-res">Proof of Res</span>
+                                    <span
+                                        class="text-xs font-medium text-stone-500 group-hover:text-emerald-600 transition-colors"
+                                        id="label-file-res">Proof of Res</span>
                                 </div>
                             </div>
-                            
+
                             <!-- Income Upload -->
                             <div class="relative group">
-                                <input type="file" id="file-income" name="Proof of Income" accept="image/png, image/jpeg, application/pdf" class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
-                                <div class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
-                                     <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <input type="file" id="file-income" name="Proof of Income"
+                                    accept="image/png, image/jpeg, application/pdf"
+                                    class="peer absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10">
+                                <div
+                                    class="h-full rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/50 px-4 py-6 text-center transition-all duration-300 peer-hover:border-emerald-400 peer-hover:bg-emerald-50/30 flex flex-col items-center justify-center gap-2">
+                                    <svg class="h-6 w-6 text-stone-400 peer-hover:text-emerald-500 transition-colors"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <span class="text-xs font-medium text-stone-500 group-hover:text-emerald-600 transition-colors" id="label-file-income">Proof of Income</span>
+                                    <span
+                                        class="text-xs font-medium text-stone-500 group-hover:text-emerald-600 transition-colors"
+                                        id="label-file-income">Proof of Income</span>
                                 </div>
                             </div>
                         </div>
-                        <p class="mt-2 text-[10px] text-stone-400">Accepted: Images (JPG, PNG) or PDF. If you can't upload now, bring physical copies in-store.</p>
+                        <p class="mt-2 text-[10px] text-stone-400">Accepted: Images (JPG, PNG) or PDF. If you can't
+                            upload now, bring physical copies in-store.</p>
                     </div>
 
                     <!-- Notes -->
                     <div class="md:col-span-2">
-                        <label class="block text-sm font-medium text-stone-700 mb-1" for="notes">Anything else we should know? (optional)</label>
-                        <textarea id="notes" name="Extra Notes" rows="3" class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500" placeholder="E.g. existing account with us, community reference, special circumstances"></textarea>
+                        <label class="block text-sm font-medium text-stone-700 mb-1" for="notes">Anything else we should
+                            know? (optional)</label>
+                        <textarea id="notes" name="Extra Notes" rows="3"
+                            class="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder-stone-400 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                            placeholder="E.g. existing account with us, community reference, special circumstances"></textarea>
                     </div>
 
                     <!-- Consent + Submit -->
                     <div class="md:col-span-2 flex flex-col gap-4 md:flex-row md:items-center md:justify-between mt-2">
                         <label class="flex items-start gap-2 text-xs text-stone-500 max-w-md">
-                            <input type="checkbox" id="consent" name="Consent" value="Yes" required class="mt-0.5 text-emerald-600">
-                            <span>I understand this is an application request and that final credit approval only happens in-store after my documents are checked.</span>
+                            <input type="checkbox" id="consent" name="Consent" value="Yes" required
+                                class="mt-0.5 text-emerald-600">
+                            <span>I understand this is an application request and that final credit approval only
+                                happens in-store after my documents are checked.</span>
                         </label>
-                        <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-7 py-3 text-sm font-semibold text-white shadow-sm shadow-emerald-500/30 hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-50">
+                        <button type="submit"
+                            class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-7 py-3 text-sm font-semibold text-white shadow-sm shadow-emerald-500/30 hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-50">
                             Submit Application
                         </button>
                     </div>
@@ -659,8 +877,12 @@
         <div class="max-w-4xl mx-auto px-4">
             <div class="bg-stone-900 rounded-[2.5rem] p-8 md:p-16 text-white overflow-hidden relative shadow-2xl">
                 <!-- Background Decorations -->
-                <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-600/20 rounded-full blur-[100px] pointer-events-none"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-teal-800/30 rounded-full blur-[80px] pointer-events-none"></div>
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-emerald-600/20 rounded-full blur-[100px] pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-64 h-64 bg-teal-800/30 rounded-full blur-[80px] pointer-events-none">
+                </div>
 
                 <div class="relative z-10 grid md:grid-cols-2 gap-12">
                     <div>
@@ -675,9 +897,11 @@
                                 <p>Mon - Fri: 8am - 6pm<br>Sat: 8am - 4pm</p>
                             </div>
                             <div class="pt-4">
-                                <a href="tel:+27727935025" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+                                <a href="tel:+27727935025"
+                                    class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
                                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
                                     +27 72 793 5025
                                 </a>
@@ -685,13 +909,18 @@
                         </div>
                     </div>
 
-                    <form id="contact-form" action="https://formsubmit.co/info@khayalethu.co.za" method="POST" class="space-y-4">
+                    <form id="contact-form" action="https://formsubmit.co/info@khayalethu.co.za" method="POST"
+                        class="space-y-4">
                         <input type="hidden" name="_subject" value="New Contact Message from Website">
                         <input type="hidden" name="_captcha" value="false">
-                        <input required type="text" id="name" name="Name" placeholder="Your Name" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
-                        <input required type="tel" id="phone" name="Phone" placeholder="Phone Number" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
-                        <textarea required id="message" name="Message" rows="3" placeholder="Message" class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"></textarea>
-                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/20">
+                        <input required type="text" id="name" name="Name" placeholder="Your Name"
+                            class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                        <input required type="tel" id="phone" name="Phone" placeholder="Phone Number"
+                            class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+                        <textarea required id="message" name="Message" rows="3" placeholder="Message"
+                            class="w-full bg-stone-800/50 border border-stone-700 rounded-xl px-4 py-3 text-white placeholder-stone-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"></textarea>
+                        <button type="submit"
+                            class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/20">
                             Send Message
                         </button>
                     </form>
@@ -704,40 +933,55 @@
     <footer class="bg-white border-t border-stone-100 py-12 relative z-10">
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-2">
-                <div class="w-6 h-6 rounded bg-emerald-600 flex items-center justify-center text-white text-xs font-bold">K</div>
+                <div
+                    class="w-6 h-6 rounded bg-emerald-600 flex items-center justify-center text-white text-xs font-bold">
+                    K</div>
                 <span class="font-bold text-stone-900">Khayalethu</span>
             </div>
             <div class="flex flex-col items-center md:items-end gap-2 text-xs text-stone-400">
                 <div class="flex flex-wrap justify-center md:justify-end gap-3 md:gap-4">
                     <a href="partner.html" class="hover:text-stone-700 transition-colors">Partner with Us</a>
-                    <button type="button" id="btn-cookies" class="hover:text-stone-700 transition-colors">Cookie Settings</button>
-                    <button type="button" id="btn-terms" class="hover:text-stone-700 transition-colors">Terms &amp; Conditions</button>
-                    <button type="button" id="btn-popia" class="hover:text-stone-700 transition-colors">POPIA Act</button>
+                    <button type="button" id="btn-cookies" class="hover:text-stone-700 transition-colors">Cookie
+                        Settings</button>
+                    <button type="button" id="btn-terms" class="hover:text-stone-700 transition-colors">Terms &amp;
+                        Conditions</button>
+                    <button type="button" id="btn-popia" class="hover:text-stone-700 transition-colors">POPIA
+                        Act</button>
                 </div>
                 <div class="text-stone-400 text-sm text-center md:text-right">
-                    © <span id="current-year"></span> Khayalethu Grocery Store · <a href="https://thokozane.co.za" target="_blank" rel="noopener" class="underline hover:text-stone-700">Developed by Thokozane</a>.
+                    © <span id="current-year"></span> Khayalethu Grocery Store · <a href="https://thokozane.co.za"
+                        target="_blank" rel="noopener" class="underline hover:text-stone-700">Developed by
+                        Thokozane</a>.
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Cookie Consent Banner -->
-    <div id="cookie-banner" class="fixed inset-x-4 bottom-4 z-[120] md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:max-w-xl bg-white/95 backdrop-blur-xl border border-stone-200 shadow-2xl rounded-2xl px-4 py-4 md:px-6 md:py-5 flex items-start gap-3 md:gap-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div id="cookie-banner"
+        class="fixed inset-x-4 bottom-4 z-[120] md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:max-w-xl bg-white/95 backdrop-blur-xl border border-stone-200 shadow-2xl rounded-2xl px-4 py-4 md:px-6 md:py-5 flex items-start gap-3 md:gap-4 opacity-0 pointer-events-none transition-all duration-300">
         <div class="mt-1 hidden md:block">
             <div class="w-8 h-8 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600">
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
             </div>
         </div>
         <div class="flex-1 text-xs md:text-sm text-stone-600">
             <p class="font-medium text-stone-900 mb-1 md:mb-1.5">We use limited cookies for a better experience.</p>
-            <p class="mb-2 md:mb-3">We only use essential cookies for things like the cart and forms, plus optional analytics to understand visits. You can change this anytime under Cookie Settings.</p>
-            <button id="cookie-more" class="text-[11px] md:text-xs font-medium text-emerald-700 hover:text-emerald-600 underline underline-offset-2">Open Cookie Settings</button>
+            <p class="mb-2 md:mb-3">We only use essential cookies for things like the cart and forms, plus optional
+                analytics to understand visits. You can change this anytime under Cookie Settings.</p>
+            <button id="cookie-more"
+                class="text-[11px] md:text-xs font-medium text-emerald-700 hover:text-emerald-600 underline underline-offset-2">Open
+                Cookie Settings</button>
         </div>
         <div class="flex flex-col gap-2 ml-2 shrink-0">
-            <button id="cookie-accept" class="px-3 py-1.5 md:px-4 md:py-2 bg-emerald-600 text-white text-xs md:text-sm font-semibold rounded-full hover:bg-emerald-500 transition-colors whitespace-nowrap">Accept</button>
-            <button id="cookie-decline" class="px-3 py-1.5 md:px-4 md:py-2 bg-stone-100 text-stone-600 text-[11px] md:text-xs font-medium rounded-full hover:bg-stone-200 transition-colors whitespace-nowrap">Only essential</button>
+            <button id="cookie-accept"
+                class="px-3 py-1.5 md:px-4 md:py-2 bg-emerald-600 text-white text-xs md:text-sm font-semibold rounded-full hover:bg-emerald-500 transition-colors whitespace-nowrap">Accept</button>
+            <button id="cookie-decline"
+                class="px-3 py-1.5 md:px-4 md:py-2 bg-stone-100 text-stone-600 text-[11px] md:text-xs font-medium rounded-full hover:bg-stone-200 transition-colors whitespace-nowrap">Only
+                essential</button>
         </div>
     </div>
 
@@ -751,11 +995,11 @@
         const menu = document.getElementById('mobile-menu');
         const navbar = document.getElementById('navbar');
 
-        if(btn) {
+        if (btn) {
             btn.addEventListener('click', () => {
                 menu.classList.toggle('hidden');
                 // Toggle background for readability when menu is open
-                if(!menu.classList.contains('hidden')) {
+                if (!menu.classList.contains('hidden')) {
                     navbar.classList.add('bg-white');
                 } else if (window.scrollY === 0) {
                     navbar.classList.remove('bg-white');
@@ -826,10 +1070,10 @@
             // How It Works Steps - Robust Animation
             const steps = gsap.utils.toArray(".step-card");
             steps.forEach((step, i) => {
-                gsap.fromTo(step, 
+                gsap.fromTo(step,
                     { opacity: 0, y: 50 },
                     {
-                        opacity: 1, 
+                        opacity: 1,
                         y: 0,
                         duration: 0.8,
                         ease: "power2.out",
@@ -849,7 +1093,7 @@
                 gsap.fromTo(product,
                     { opacity: 0, scale: 0.9 },
                     {
-                        opacity: 1, 
+                        opacity: 1,
                         scale: 1,
                         duration: 0.5,
                         ease: "back.out(1.2)",
@@ -867,7 +1111,7 @@
             setTimeout(() => {
                 gsap.to(".step-card, .product-item", { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, overwrite: "auto" });
             }, 1000);
-            
+
             // Credit Application Reveal
             animateIn("#apply .glass-card", {
                 y: 40,
@@ -887,43 +1131,43 @@
 
         // Contact Form Handling (AJAX)
         const contactForm = document.getElementById('contact-form');
-        if(contactForm) {
+        if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const btn = contactForm.querySelector('button');
                 const originalText = btn.innerText;
-                
+
                 btn.disabled = true;
                 btn.innerText = 'Sending...';
-                
+
                 const formData = new FormData(contactForm);
-                
+
                 fetch(contactForm.action, {
                     method: 'POST',
                     body: formData,
                     headers: { 'Accept': 'application/json' }
                 })
-                .then(response => {
-                    if (response.ok) {
-                        btn.innerText = 'Message Sent!';
-                        btn.classList.add('bg-emerald-700');
-                        contactForm.reset();
-                        setTimeout(() => {
-                            btn.innerText = originalText;
-                            btn.disabled = false;
-                            btn.classList.remove('bg-emerald-700');
-                            alert('Message received! We will be in touch shortly via email or phone.');
-                        }, 3000);
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('There was a problem sending your message. Please try again.');
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                });
+                    .then(response => {
+                        if (response.ok) {
+                            btn.innerText = 'Message Sent!';
+                            btn.classList.add('bg-emerald-700');
+                            contactForm.reset();
+                            setTimeout(() => {
+                                btn.innerText = originalText;
+                                btn.disabled = false;
+                                btn.classList.remove('bg-emerald-700');
+                                alert('Message received! We will be in touch shortly via email or phone.');
+                            }, 3000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was a problem sending your message. Please try again.');
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                    });
             });
         }
 
@@ -931,25 +1175,25 @@
         ['file-id', 'file-res', 'file-income'].forEach(id => {
             const input = document.getElementById(id);
             const label = document.getElementById('label-' + id);
-            
-            if(input && label) {
+
+            if (input && label) {
                 input.addEventListener('change', (e) => {
                     if (e.target.files && e.target.files.length > 0) {
                         const fileName = e.target.files[0].name;
                         const display = fileName.length > 15 ? fileName.substring(0, 12) + '...' : fileName;
-                        
+
                         label.innerText = display;
                         label.classList.remove('text-stone-500');
                         label.classList.add('text-emerald-700', 'font-bold');
-                        
+
                         const container = input.nextElementSibling;
-                        if(container) {
+                        if (container) {
                             container.classList.remove('border-stone-200', 'bg-stone-50/50');
                             container.classList.add('border-emerald-500', 'bg-emerald-50');
-                            
+
                             // Add checkmark icon
                             const icon = container.querySelector('svg');
-                            if(icon) {
+                            if (icon) {
                                 icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />';
                                 icon.classList.remove('text-stone-400');
                                 icon.classList.add('text-emerald-600');
@@ -962,15 +1206,15 @@
 
         // Partner Form Handling
         const partnerForm = document.getElementById('partner-form');
-        if(partnerForm) {
+        if (partnerForm) {
             partnerForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const btn = e.target.querySelector('button');
                 const originalText = btn.innerText;
-                
+
                 btn.innerText = 'Sending Application...';
                 btn.classList.add('bg-emerald-700');
-                
+
                 setTimeout(() => {
                     btn.innerText = 'Application Sent!';
                     setTimeout(() => {
@@ -985,10 +1229,10 @@
 
         // Credit Application Handling - AJAX Submission
         const creditForm = document.getElementById('credit-form');
-        if(creditForm) {
-            creditForm.addEventListener('submit', function(e) {
+        if (creditForm) {
+            creditForm.addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 // 1. Validation
                 const idInput = document.getElementById('idNumber');
                 if (idInput && idInput.value && idInput.value.length !== 13) {
@@ -1015,14 +1259,15 @@
                         'Accept': 'application/json'
                     }
                 })
-                .then(response => {
-                    if (response.ok) {
-                        // 5. Success UI
-                        const container = creditForm.closest('.glass-card');
-                        if(container) {
-                            // Replace form content with Success Message
-                            gsap.to(container.children, {opacity: 0, duration: 0.3, onComplete: () => {
-                                container.innerHTML = `
+                    .then(response => {
+                        if (response.ok) {
+                            // 5. Success UI
+                            const container = creditForm.closest('.glass-card');
+                            if (container) {
+                                // Replace form content with Success Message
+                                gsap.to(container.children, {
+                                    opacity: 0, duration: 0.3, onComplete: () => {
+                                        container.innerHTML = `
                                     <div class="flex flex-col items-center justify-center text-center py-10">
                                         <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6 text-emerald-600">
                                             <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1038,35 +1283,39 @@
                                         </button>
                                     </div>
                                 `;
-                                gsap.fromTo(container.children, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5});
-                            }});
+                                        gsap.fromTo(container.children, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 });
+                                    }
+                                });
+                            } else {
+                                // Fallback
+                                alert('Application Received! We will be in touch shortly.');
+                                location.reload();
+                            }
                         } else {
-                            // Fallback
-                            alert('Application Received! We will be in touch shortly.');
-                            location.reload();
+                            throw new Error('Form submission failed');
                         }
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('There was a problem submitting your application. Please try again or visit us in-store.');
-                    btn.disabled = false;
-                    btn.innerText = originalText;
-                    btn.classList.remove('opacity-75', 'cursor-not-allowed');
-                });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was a problem submitting your application. Please try again or visit us in-store.');
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                        btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    });
             });
         }
     </script>
     <!-- Shop Overlay -->
-    <div id="shop-overlay" class="fixed inset-0 z-[100] bg-stone-50 overflow-hidden hidden opacity-0 translate-y-[20px] flex flex-col">
+    <div id="shop-overlay"
+        class="fixed inset-0 z-[100] bg-stone-50 overflow-hidden hidden opacity-0 translate-y-[20px] flex flex-col">
         <!-- Shop Header -->
-        <nav class="shrink-0 w-full p-4 md:p-6 flex justify-between items-center z-50 bg-white/90 backdrop-blur-sm border-b border-stone-100 shadow-sm">
+        <nav
+            class="shrink-0 w-full p-4 md:p-6 flex justify-between items-center z-50 bg-white/90 backdrop-blur-sm border-b border-stone-100 shadow-sm">
             <div class="flex items-center gap-3">
                 <button id="close-shop-btn" class="p-2 hover:bg-stone-100 rounded-full transition-colors">
                     <svg class="w-6 h-6 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                 </button>
                 <div>
@@ -1074,12 +1323,15 @@
                     <p class="text-xs text-emerald-600 font-medium">Free delivery in Embalenhle</p>
                 </div>
             </div>
-            
+
             <button id="cart-btn" class="relative p-2 hover:bg-stone-100 rounded-full transition-colors group">
-                <svg class="w-7 h-7 text-stone-800 group-hover:text-emerald-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                <svg class="w-7 h-7 text-stone-800 group-hover:text-emerald-600 transition-colors" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <span id="cart-count" class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full shadow-sm scale-0 transition-transform">0</span>
+                <span id="cart-count"
+                    class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full shadow-sm scale-0 transition-transform">0</span>
             </button>
         </nav>
 
@@ -1087,14 +1339,22 @@
         <div class="flex-1 overflow-y-auto p-4 md:p-8 relative">
             <div class="max-w-6xl mx-auto">
                 <!-- Shop Hero -->
-                <div class="mb-8 rounded-3xl bg-gradient-to-r from-emerald-800 to-teal-900 p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div
+                    class="mb-8 rounded-3xl bg-gradient-to-r from-emerald-800 to-teal-900 p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                    </div>
                     <div class="relative z-10 max-w-lg">
                         <h3 class="text-3xl font-bold mb-2">Order Essentials Online</h3>
-                        <p class="text-emerald-100 mb-6">Select your items, add them to your cart, and we'll deliver to your door in Embalenhle, Secunda, Evander and nearby areas — <span class="font-semibold text-white">delivery is always free</span>. Payment or store credit is finalized on delivery.</p>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-xs font-medium">
+                        <p class="text-emerald-100 mb-6">Select your items, add them to your cart, and we'll deliver to
+                            your door in Embalenhle, Secunda, Evander and nearby areas — <span
+                                class="font-semibold text-white">delivery is always free</span>. Payment or store credit
+                            is finalized on delivery.</p>
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 text-xs font-medium">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                             <span>Fast &amp; Free Delivery</span>
                         </div>
@@ -1102,22 +1362,28 @@
                 </div>
 
                 <!-- Product Grid -->
-                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-20">
+                <div id="product-grid"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-20">
                     <!-- Products injected via JS -->
                 </div>
             </div>
         </div>
 
         <!-- Checkout Modal (Overlay) -->
-        <div id="checkout-modal" class="absolute inset-0 z-[60] bg-stone-900/50 backdrop-blur-sm hidden flex items-end md:items-center justify-center p-4 opacity-0 transition-opacity">
-            <div class="bg-white w-full max-w-lg rounded-t-3xl md:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div id="checkout-modal"
+            class="absolute inset-0 z-[60] bg-stone-900/50 backdrop-blur-sm hidden flex items-end md:items-center justify-center p-4 opacity-0 transition-opacity">
+            <div
+                class="bg-white w-full max-w-lg rounded-t-3xl md:rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
                 <div class="p-5 border-b border-stone-100 flex justify-between items-center bg-stone-50/50">
                     <h3 class="font-bold text-lg text-stone-900">Your Cart</h3>
                     <button id="close-checkout" class="text-stone-400 hover:text-stone-900">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </button>
                 </div>
-                
+
                 <div class="overflow-y-auto flex-1 p-5 space-y-6">
                     <!-- Cart Items List -->
                     <div id="cart-items" class="space-y-4">
@@ -1135,60 +1401,81 @@
                             <span>Delivery</span>
                             <span>FREE</span>
                         </div>
-                        <div class="flex justify-between text-xl font-bold text-stone-900 pt-2 border-t border-stone-100">
+                        <div
+                            class="flex justify-between text-xl font-bold text-stone-900 pt-2 border-t border-stone-100">
                             <span>Total</span>
                             <span id="cart-total">R0.00</span>
                         </div>
                     </div>
 
                     <!-- Customer Details Form -->
-                    <div id="checkout-form-container" class="bg-stone-50 rounded-2xl p-5 border border-stone-100 hidden">
+                    <div id="checkout-form-container"
+                        class="bg-stone-50 rounded-2xl p-5 border border-stone-100 hidden">
                         <h4 class="font-bold text-sm text-stone-900 uppercase tracking-wide mb-4">Delivery Details</h4>
                         <form id="order-form" class="space-y-3">
                             <div>
-                                <input required id="order-name" type="text" placeholder="Full Name" class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none">
+                                <input required id="order-name" type="text" placeholder="Full Name"
+                                    class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none">
                             </div>
                             <div>
-                                <input required id="order-id" type="text" inputmode="numeric" maxlength="13" placeholder="ID Number (For Credit Check)" class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none">
+                                <input required id="order-id" type="text" inputmode="numeric" maxlength="13"
+                                    placeholder="ID Number (For Credit Check)"
+                                    class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none">
                             </div>
                             <div>
-                                <textarea required id="order-address" rows="2" placeholder="Delivery Address (Street, Section, etc.)" class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none"></textarea>
+                                <textarea required id="order-address" rows="2"
+                                    placeholder="Delivery Address (Street, Section, etc.)"
+                                    class="w-full rounded-xl border border-stone-200 px-4 py-2.5 text-sm focus:border-emerald-500 focus:outline-none"></textarea>
                             </div>
                             <div class="text-[10px] text-stone-500 leading-tight">
-                                By placing this order, you agree to have your details verified for credit eligibility upon delivery.
+                                By placing this order, you agree to have your details verified for credit eligibility
+                                upon delivery.
                             </div>
-                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-200 transition-all flex items-center justify-center gap-2">
+                            <button type="submit"
+                                class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-emerald-200 transition-all flex items-center justify-center gap-2">
                                 <span>Place Order via WhatsApp</span>
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                                </svg>
                             </button>
                         </form>
                     </div>
-                    
-                    <button id="checkout-btn" class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+
+                    <button id="checkout-btn"
+                        class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                         Proceed to Checkout
                     </button>
                 </div>
 
                 <!-- Shop Footer -->
-                <footer class="border-t border-stone-100 bg-stone-50/80 backdrop-blur-sm px-5 py-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-[11px] text-stone-500">
+                <footer
+                    class="border-t border-stone-100 bg-stone-50/80 backdrop-blur-sm px-5 py-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-2 text-[11px] text-stone-500">
                     <p>Free delivery in Embalenhle, Secunda, Evander & nearby areas.</p>
-                    <p class="md:text-right">© <span id="current-year"></span> Khayalethu Grocery Store · NCR Reg No: NCRCP12345</p>
+                    <p class="md:text-right">© <span id="current-year"></span> Khayalethu Grocery Store · NCR Reg No:
+                        NCRCP12345</p>
                 </footer>
             </div>
         </div>
     </div>
 
     <!-- Legal Overlay -->
-    <div id="legal-overlay" class="fixed inset-0 z-[150] bg-stone-900/30 backdrop-blur-sm hidden opacity-0 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden transform scale-95 transition-all">
+    <div id="legal-overlay"
+        class="fixed inset-0 z-[150] bg-stone-900/30 backdrop-blur-sm hidden opacity-0 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden transform scale-95 transition-all">
             <!-- Header -->
             <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50/50">
                 <h3 id="legal-title" class="font-bold text-xl text-stone-900">Legal</h3>
-                <button id="close-legal-btn" class="p-2 hover:bg-stone-200 rounded-full transition-colors cursor-pointer">
-                    <svg class="w-6 h-6 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                <button id="close-legal-btn"
+                    class="p-2 hover:bg-stone-200 rounded-full transition-colors cursor-pointer">
+                    <svg class="w-6 h-6 text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
             </div>
-            
+
             <!-- Content Scroll -->
             <div id="legal-content" class="p-6 overflow-y-auto text-stone-600 space-y-6 text-sm leading-relaxed">
                 <!-- Dynamic Content -->
@@ -1196,22 +1483,28 @@
 
             <!-- Footer (for actions) -->
             <div id="legal-footer" class="p-6 border-t border-stone-100 bg-stone-50 hidden">
-                <button id="legal-action-btn" class="w-full bg-stone-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition-colors shadow-lg">Save Preferences</button>
+                <button id="legal-action-btn"
+                    class="w-full bg-stone-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition-colors shadow-lg">Save
+                    Preferences</button>
             </div>
         </div>
     </div>
 
     <!-- Full Screen About Overlay -->
-    <div id="about-overlay" class="fixed inset-0 z-[100] bg-stone-50 overflow-y-auto hidden opacity-0 translate-y-[20px]">
+    <div id="about-overlay"
+        class="fixed inset-0 z-[100] bg-stone-50 overflow-y-auto hidden opacity-0 translate-y-[20px]">
         <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-stone-50/90 backdrop-blur-sm">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold">K</div>
+                <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold">K
+                </div>
                 <span class="font-bold text-stone-900">Our Story</span>
             </div>
-            <button id="close-about-btn" class="group flex items-center gap-2 px-5 py-2.5 bg-white border border-stone-200 rounded-full hover:bg-stone-100 transition-all shadow-sm cursor-pointer">
+            <button id="close-about-btn"
+                class="group flex items-center gap-2 px-5 py-2.5 bg-white border border-stone-200 rounded-full hover:bg-stone-100 transition-all shadow-sm cursor-pointer">
                 <span class="text-sm font-medium text-stone-600">Close</span>
-                <svg class="w-5 h-5 text-stone-400 group-hover:text-stone-900 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                <svg class="w-5 h-5 text-stone-400 group-hover:text-stone-900 transition-colors" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </nav>
@@ -1229,56 +1522,74 @@
                     <div>
                         <h3 class="text-xl font-bold text-stone-900 mb-3">The Beginning</h3>
                         <p class="text-stone-600 leading-relaxed">
-                            Khayalethu Grocery Store started in 2021 in a small garage in Embalenhle. We noticed a recurring problem: hardworking families running out of essentials just days before payday. The options were limited—go hungry or borrow from loan sharks with exorbitant interest rates. We chose a third option: trust.
+                            Khayalethu Grocery Store started in 2021 in a small garage in Embalenhle. We noticed a
+                            recurring problem: hardworking families running out of essentials just days before payday.
+                            The options were limited—go hungry or borrow from loan sharks with exorbitant interest
+                            rates. We chose a third option: trust.
                         </p>
                     </div>
                     <div>
                         <h3 class="text-xl font-bold text-stone-900 mb-3">How We Differ</h3>
                         <p class="text-stone-600 leading-relaxed">
-                            Unlike big retailers, we know our customers by name. We understand that life happens. A delayed grant or an unexpected expense shouldn't mean an empty table. Our credit model is built on community vetting and dignity, not credit scores and algorithms.
+                            Unlike big retailers, we know our customers by name. We understand that life happens. A
+                            delayed grant or an unexpected expense shouldn't mean an empty table. Our credit model is
+                            built on community vetting and dignity, not credit scores and algorithms.
                         </p>
                     </div>
                 </div>
 
                 <div class="space-y-8">
                     <div class="bg-emerald-900 rounded-3xl p-8 text-white relative overflow-hidden shadow-xl">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-500 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+                        <div
+                            class="absolute top-0 right-0 w-40 h-40 bg-emerald-500 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2">
+                        </div>
                         <h3 class="text-2xl font-bold mb-4">Our Core Values</h3>
                         <ul class="space-y-4">
                             <li class="flex items-start gap-3">
-                                <div class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-xs">✓</div>
-                                <span><strong>Dignity First:</strong> Shopping on credit should feel the same as shopping with cash.</span>
+                                <div
+                                    class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-xs">
+                                    ✓</div>
+                                <span><strong>Dignity First:</strong> Shopping on credit should feel the same as
+                                    shopping with cash.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <div class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-xs">✓</div>
+                                <div
+                                    class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-xs">
+                                    ✓</div>
                                 <span><strong>Transparency:</strong> No hidden fees. 0% Interest if paid on time.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <div class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-xs">✓</div>
-                                <span><strong>Local Growth:</strong> We source produce from local farmers whenever possible.</span>
+                                <div
+                                    class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold text-xs">
+                                    ✓</div>
+                                <span><strong>Local Growth:</strong> We source produce from local farmers whenever
+                                    possible.</span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Free Delivery Section -->
             <div class="mt-20 grid md:grid-cols-2 gap-8 items-stretch">
                 <!-- Info Card -->
                 <div class="bg-emerald-50 rounded-3xl p-8 border border-emerald-100 flex flex-col justify-center">
-                    <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-6">
+                    <div
+                        class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-6">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-stone-900 mb-4">We Deliver for Free</h3>
                     <p class="text-stone-600 mb-6 leading-relaxed">
-                        If you live in <span class="font-bold text-emerald-700">Embalenhle, Secunda, or Evander</span>, we bring your groceries to your door at no extra cost. 
+                        If you live in <span class="font-bold text-emerald-700">Embalenhle, Secunda, or Evander</span>,
+                        we bring your groceries to your door at no extra cost.
                         We run two delivery rounds daily: Morning (9am - 12pm) and Late Afternoon (3pm - 6pm).
                     </p>
                     <div class="flex items-center gap-3 text-sm text-stone-500">
-                         <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                         <span>You'll get a WhatsApp before we arrive.</span>
+                        <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                        <span>You'll get a WhatsApp before we arrive.</span>
                     </div>
                 </div>
 
@@ -1286,17 +1597,22 @@
                 <div class="grid grid-cols-2 grid-rows-3 gap-3 h-80 md:h-auto">
                     <!-- Hero Tile -->
                     <div class="col-span-2 row-span-2 relative rounded-2xl overflow-hidden group">
-                        <div class="absolute inset-0 bg-stone-200 bg-[url('images/delivery-bike1.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <div
+                            class="absolute inset-0 bg-stone-200 bg-[url('images/delivery-bike1.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                        </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-white font-bold text-sm">Local Routes</span>
                     </div>
                     <!-- Small Tiles -->
                     <div class="relative rounded-2xl overflow-hidden group">
-                        <div class="absolute inset-0 bg-stone-200 bg-[url('images/delivery-bike4.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <div
+                            class="absolute inset-0 bg-stone-200 bg-[url('images/delivery-bike4.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                        </div>
                         <div class="absolute inset-0 bg-black/20"></div>
                         <span class="absolute bottom-2 left-2 text-white font-bold text-xs">Fresh</span>
                     </div>
-                    <div class="relative rounded-2xl overflow-hidden group bg-emerald-600 flex items-center justify-center">
+                    <div
+                        class="relative rounded-2xl overflow-hidden group bg-emerald-600 flex items-center justify-center">
                         <span class="text-white font-bold text-sm">Always Free</span>
                     </div>
                 </div>
@@ -1304,30 +1620,39 @@
 
             <!-- Big Image Placeholder -->
             <div class="mt-8 rounded-3xl overflow-hidden h-80 relative group shadow-2xl">
-                 <div class="absolute inset-0 bg-[url('images/emba.jpg')] bg-cover bg-center transition-transform duration-[2s] group-hover:scale-105"></div>
-                 <div class="absolute inset-0 bg-stone-900/40"></div>
-                 <div class="absolute bottom-8 left-8 text-white">
+                <div
+                    class="absolute inset-0 bg-[url('images/emba.jpg')] bg-cover bg-center transition-transform duration-[2s] group-hover:scale-105">
+                </div>
+                <div class="absolute inset-0 bg-stone-900/40"></div>
+                <div class="absolute bottom-8 left-8 text-white">
                     <p class="font-bold text-2xl md:text-3xl mb-1">Serving Embalenhle & Surrounds</p>
                     <p class="text-emerald-200 font-mono">Since 2021</p>
-                 </div>
+                </div>
             </div>
 
             <!-- Meet the Team -->
             <div class="mt-24">
                 <h3 class="text-3xl font-bold text-stone-900 mb-12 text-center">The People Behind the Promise</h3>
-                
+
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Team Member 1 -->
                     <div class="group text-center">
-                        <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white">
-                            <div class="absolute inset-0 bg-[url('images/doc.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <div
+                            class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white">
+                            <div
+                                class="absolute inset-0 bg-[url('images/doc.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                            </div>
                         </div>
                         <h4 class="text-xl font-bold text-stone-900">Serame D. Mahloko</h4>
                         <p class="text-emerald-600 font-medium text-sm mb-3">Founder & Store Manager</p>
-                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"I started this store so no mother in Embalenhle has to worry about an empty cupboard."</p>
-                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="serame@khayalethu.co.za">
+                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"I started this store so no mother
+                            in Embalenhle has to worry about an empty cupboard."</p>
+                        <button
+                            class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer"
+                            data-email="serame@khayalethu.co.za">
                             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                             </svg>
                             <span>serame@khayalethu.co.za</span>
                         </button>
@@ -1335,15 +1660,22 @@
 
                     <!-- Team Member 2 -->
                     <div class="group text-center">
-                        <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white">
-                            <div class="absolute inset-0 bg-[url('images/zandi.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <div
+                            class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white">
+                            <div
+                                class="absolute inset-0 bg-[url('images/zandi.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                            </div>
                         </div>
                         <h4 class="text-xl font-bold text-stone-900">Zandile Mahloko</h4>
                         <p class="text-emerald-600 font-medium text-sm mb-3">Credit & Accounts</p>
-                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"My job is to find a way to say 'yes' responsibly, helping you build a good credit record."</p>
-                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="zandile@khayalethu.co.za">
+                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"My job is to find a way to say
+                            'yes' responsibly, helping you build a good credit record."</p>
+                        <button
+                            class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer"
+                            data-email="zandile@khayalethu.co.za">
                             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                             </svg>
                             <span>zandile@khayalethu.co.za</span>
                         </button>
@@ -1351,15 +1683,22 @@
 
                     <!-- Team Member 3 -->
                     <div class="group text-center">
-                        <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white">
-                            <div class="absolute inset-0 bg-[url('images/nathi.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <div
+                            class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white">
+                            <div
+                                class="absolute inset-0 bg-[url('images/nathi.jpg')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110">
+                            </div>
                         </div>
                         <h4 class="text-xl font-bold text-stone-900">Nkosinathi Ndhlovu</h4>
                         <p class="text-emerald-600 font-medium text-sm mb-3">Marketing & Analytics</p>
-                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"Delivering actionable insights every day through data-driven marketing and business intelligence."</p>
-                        <button class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer" data-email="nathi@khayalethu.co.za">
+                        <p class="text-stone-500 text-sm leading-relaxed px-4 mb-4">"Delivering actionable insights
+                            every day through data-driven marketing and business intelligence."</p>
+                        <button
+                            class="copy-email inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 hover:bg-emerald-100 text-stone-500 hover:text-emerald-700 rounded-lg text-xs font-mono transition-colors cursor-pointer"
+                            data-email="nathi@khayalethu.co.za">
                             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                             </svg>
                             <span>nathi@khayalethu.co.za</span>
                         </button>
@@ -1372,41 +1711,92 @@
                 <h3 class="text-3xl font-bold text-stone-900 mb-12 text-center">Community Voices</h3>
                 <div class="grid md:grid-cols-3 gap-6">
                     <!-- Review 1 -->
-                    <div class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
                         <div class="flex text-emerald-500 mb-4 text-sm gap-0.5">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
                         </div>
-                        <p class="text-stone-600 text-sm mb-6 leading-relaxed">"Khayalethu saved us during a tough month. The process was respectful and private. I didn't feel judged."</p>
+                        <p class="text-stone-600 text-sm mb-6 leading-relaxed">"Khayalethu saved us during a tough
+                            month. The process was respectful and private. I didn't feel judged."</p>
                         <p class="text-xs font-bold text-stone-900 uppercase tracking-wider">— Thokozane N.</p>
                     </div>
 
                     <!-- Review 2 -->
-                    <div class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
                         <div class="flex text-emerald-500 mb-4 text-sm gap-0.5">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
                         </div>
-                        <p class="text-stone-600 text-sm mb-6 leading-relaxed">"Fresh meat and maize meal when I had zero cash. I paid back on the 30th as promised. A blessing."</p>
+                        <p class="text-stone-600 text-sm mb-6 leading-relaxed">"Fresh meat and maize meal when I had
+                            zero cash. I paid back on the 30th as promised. A blessing."</p>
                         <p class="text-xs font-bold text-stone-900 uppercase tracking-wider">— Themba J.</p>
                     </div>
 
                     <!-- Review 3 -->
-                    <div class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
                         <div class="flex text-emerald-500 mb-4 text-sm gap-0.5">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
                         </div>
-                        <p class="text-stone-600 text-sm mb-6 leading-relaxed">"No loan sharks, no high interest. Just neighbors helping neighbors. The quality of veg is also better than the mall."</p>
+                        <p class="text-stone-600 text-sm mb-6 leading-relaxed">"No loan sharks, no high interest. Just
+                            neighbors helping neighbors. The quality of veg is also better than the mall."</p>
                         <p class="text-xs font-bold text-stone-900 uppercase tracking-wider">— Sarah K.</p>
                     </div>
                 </div>
@@ -1425,11 +1815,11 @@
         const openAboutBtn = document.getElementById('open-about-btn');
         const closeAboutBtn = document.getElementById('close-about-btn');
 
-        if(openAboutBtn && aboutOverlay && closeAboutBtn) {
+        if (openAboutBtn && aboutOverlay && closeAboutBtn) {
             openAboutBtn.addEventListener('click', () => {
                 aboutOverlay.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
-                
+
                 // Animation
                 gsap.to(aboutOverlay, {
                     opacity: 1,
@@ -1455,10 +1845,10 @@
             };
 
             closeAboutBtn.addEventListener('click', closeAbout);
-            
+
             // Close on ESC
             document.addEventListener('keydown', (e) => {
-                if(e.key === 'Escape' && !aboutOverlay.classList.contains('hidden')) {
+                if (e.key === 'Escape' && !aboutOverlay.classList.contains('hidden')) {
                     closeAbout();
                 }
             });
@@ -1467,7 +1857,7 @@
         // ==========================================
         // SHOP LOGIC
         // ==========================================
-        
+
         // Product Data
         const productsDB = [
             {
@@ -1544,6 +1934,24 @@
                     { id: "8a", label: "2l", price: 100 }
                 ],
                 defaultPrice: 100
+            },
+            {
+                id: 9,
+                name: "Eggs",
+                image: "images/eggs.jpg",
+                variants: [
+                    { id: "9a", label: "30", price: 85 }
+                ],
+                defaultPrice: 85
+            },
+            {
+                id: 10,
+                name: "Russians",
+                image: "images/russians.jpg",
+                variants: [
+                    { id: "10a", label: "4kg", price: 250 }
+                ],
+                defaultPrice: 250
             }
         ];
 
@@ -1579,11 +1987,11 @@
         function renderProducts() {
             productGrid.innerHTML = productsDB.map(product => {
                 const currentVariant = selections[product.id];
-                
+
                 // Create variants dropdown/selector
                 let variantSelector = '';
-                if(product.variants.length > 1) {
-                    const options = product.variants.map(v => 
+                if (product.variants.length > 1) {
+                    const options = product.variants.map(v =>
                         `<option value="${v.id}" ${v.id === currentVariant.id ? 'selected' : ''}>${v.label}</option>`
                     ).join('');
                     variantSelector = `
@@ -1624,10 +2032,10 @@
             const product = productsDB.find(p => p.id === productId);
             const variant = product.variants.find(v => v.id === variantId);
             selections[productId] = variant;
-            
+
             // Update UI Price
             const priceEl = document.getElementById(`price-${productId}`);
-            if(priceEl) {
+            if (priceEl) {
                 priceEl.innerText = `R${variant.price}`;
             }
         };
@@ -1635,11 +2043,11 @@
         window.addToCart = (productId) => {
             const product = productsDB.find(p => p.id === productId);
             const variant = selections[productId];
-            
+
             // Check if item already exists in cart with same variant
             const existingItem = cart.find(item => item.productId === productId && item.variantId === variant.id);
-            
-            if(existingItem) {
+
+            if (existingItem) {
                 existingItem.qty += 1;
             } else {
                 cart.push({
@@ -1653,12 +2061,12 @@
                     image: product.image
                 });
             }
-            
+
             updateCartIcon();
-            
+
             // Simple visual feedback
             const btn = document.activeElement;
-            if(btn) {
+            if (btn) {
                 const original = btn.innerText;
                 btn.innerText = 'Added';
                 btn.classList.add('bg-emerald-600');
@@ -1678,8 +2086,8 @@
         function updateCartIcon() {
             const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
             cartCount.innerText = totalQty;
-            
-            if(totalQty > 0) {
+
+            if (totalQty > 0) {
                 cartCount.classList.remove('scale-0');
             } else {
                 cartCount.classList.add('scale-0');
@@ -1687,7 +2095,7 @@
         }
 
         function renderCart() {
-            if(cart.length === 0) {
+            if (cart.length === 0) {
                 cartItemsContainer.innerHTML = `<div class="text-center text-stone-400 py-12 flex flex-col items-center">
                     <svg class="w-12 h-12 mb-3 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                     <p>Your cart is empty</p>
@@ -1731,21 +2139,21 @@
         function setupEventListeners() {
             // Open Shop
             shopBtns.forEach(btn => {
-                if(btn) {
+                if (btn) {
                     btn.addEventListener('click', () => {
                         shopOverlay.classList.remove('hidden');
                         document.body.style.overflow = 'hidden';
-                        
+
                         gsap.to(shopOverlay, {
                             opacity: 1,
                             y: 0,
                             duration: 0.5,
                             ease: "power3.out"
                         });
-                        
+
                         // Close mobile menu if open
                         const mobileMenu = document.getElementById('mobile-menu');
-                        if(mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                         }
                     });
@@ -1765,8 +2173,8 @@
                     }
                 });
             };
-            
-            if(closeShopBtn) closeShopBtn.addEventListener('click', closeShop);
+
+            if (closeShopBtn) closeShopBtn.addEventListener('click', closeShop);
 
             // Open Cart/Checkout
             cartBtn.addEventListener('click', () => {
@@ -1775,7 +2183,7 @@
                 // Reset form view
                 formContainer.classList.add('hidden');
                 checkoutBtn.classList.remove('hidden');
-                
+
                 gsap.to(checkoutModal, {
                     opacity: 1,
                     duration: 0.3
@@ -1792,7 +2200,7 @@
                     }
                 });
             };
-            
+
             closeCheckoutBtn.addEventListener('click', closeCheckout);
 
             // Proceed to Form
@@ -1800,7 +2208,7 @@
                 checkoutBtn.classList.add('hidden');
                 formContainer.classList.remove('hidden');
                 formContainer.classList.add('animate-fade-in-up'); // Ensure we have a class or simple animation
-                
+
                 // Simple animation via JS
                 gsap.from(formContainer, { y: 20, opacity: 0, duration: 0.3 });
             });
@@ -1808,32 +2216,32 @@
             // Submit Order via WhatsApp
             orderForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
+
                 const name = document.getElementById('order-name').value;
                 const idNum = document.getElementById('order-id').value;
                 const address = document.getElementById('order-address').value;
-                
+
                 let message = `*New Order from Website*\n\n`;
                 message += `*Customer:* ${name}\n`;
                 message += `*ID:* ${idNum}\n`;
                 message += `*Address:* ${address}\n\n`;
                 message += `*Order Details:*\n`;
-                
+
                 let total = 0;
                 cart.forEach(item => {
                     message += `- ${item.qty}x ${item.name} (${item.variantLabel}) @ R${item.price}\n`;
                     total += (item.price * item.qty);
                 });
-                
+
                 message += `\n*Total:* R${total}`;
                 message += `\n*Delivery:* Free`;
-                
+
                 // Encode and open WhatsApp
                 const whatsappNumber = "27727935025"; // Replace with real number
                 const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-                
+
                 window.open(url, '_blank');
-                
+
                 // Close modal and clear cart
                 closeCheckout();
                 cart = [];
@@ -1849,13 +2257,13 @@
         document.querySelectorAll('.copy-email').forEach(btn => {
             btn.addEventListener('click', () => {
                 const email = btn.getAttribute('data-email');
-                if(email) {
+                if (email) {
                     navigator.clipboard.writeText(email).then(() => {
                         const originalText = btn.querySelector('span').innerText;
                         btn.querySelector('span').innerText = 'Copied!';
                         btn.classList.remove('bg-stone-100', 'text-stone-500');
                         btn.classList.add('bg-emerald-100', 'text-emerald-700', 'font-bold');
-                        
+
                         setTimeout(() => {
                             btn.querySelector('span').innerText = originalText;
                             btn.classList.remove('bg-emerald-100', 'text-emerald-700', 'font-bold');
@@ -2023,12 +2431,12 @@
 
         function openLegal(type) {
             const data = legalData[type];
-            if(!data) return;
+            if (!data) return;
 
             legalTitle.innerText = data.title;
             legalContent.innerHTML = data.body;
-            
-            if(data.hasAction) {
+
+            if (data.hasAction) {
                 legalFooter.classList.remove('hidden');
                 legalActionBtn.innerText = data.actionText;
             } else {
@@ -2036,9 +2444,9 @@
             }
 
             legalOverlay.classList.remove('hidden');
-            
+
             gsap.to(legalOverlay, { opacity: 1, duration: 0.3 });
-            gsap.fromTo(legalOverlay.children[0], 
+            gsap.fromTo(legalOverlay.children[0],
                 { scale: 0.95, y: 20 },
                 { scale: 1, y: 0, duration: 0.4, ease: "back.out(1.2)" }
             );
@@ -2046,14 +2454,16 @@
 
         function closeLegal() {
             gsap.to(legalOverlay, { opacity: 0, duration: 0.2 });
-            gsap.to(legalOverlay.children[0], { scale: 0.95, y: 20, duration: 0.2, onComplete: () => {
-                legalOverlay.classList.add('hidden');
-            }});
+            gsap.to(legalOverlay.children[0], {
+                scale: 0.95, y: 20, duration: 0.2, onComplete: () => {
+                    legalOverlay.classList.add('hidden');
+                }
+            });
         }
 
         ['btn-cookies', 'btn-terms', 'btn-popia', 'btn-ncr'].forEach(id => {
             const btn = document.getElementById(id);
-            if(btn) {
+            if (btn) {
                 btn.addEventListener('click', () => {
                     // map id to key
                     const key = id.replace('btn-', '');
@@ -2062,8 +2472,8 @@
             }
         });
 
-        if(closeLegalBtn) closeLegalBtn.addEventListener('click', closeLegal);
-        if(legalActionBtn) legalActionBtn.addEventListener('click', () => {
+        if (closeLegalBtn) closeLegalBtn.addEventListener('click', closeLegal);
+        if (legalActionBtn) legalActionBtn.addEventListener('click', () => {
             // Simulate saving
             const original = legalActionBtn.innerText;
             legalActionBtn.innerText = "Preferences Saved!";
@@ -2079,7 +2489,7 @@
 
         // Close on BG click
         legalOverlay.addEventListener('click', (e) => {
-            if(e.target === legalOverlay) closeLegal();
+            if (e.target === legalOverlay) closeLegal();
         });
 
         // ==========================================
@@ -2091,13 +2501,13 @@
         const cookieMoreBtn = document.getElementById('cookie-more');
 
         function hideCookieBanner() {
-            if(!cookieBanner) return;
+            if (!cookieBanner) return;
             cookieBanner.classList.add('pointer-events-none');
             cookieBanner.classList.add('opacity-0');
         }
 
         function showCookieBanner() {
-            if(!cookieBanner) return;
+            if (!cookieBanner) return;
             cookieBanner.classList.remove('pointer-events-none');
             cookieBanner.classList.remove('opacity-0');
         }
@@ -2106,7 +2516,7 @@
         window.addEventListener('load', () => {
             try {
                 const pref = localStorage.getItem('kh_cookie_pref');
-                if(!pref) {
+                if (!pref) {
                     setTimeout(showCookieBanner, 1200);
                 }
             } catch (e) {
@@ -2115,25 +2525,25 @@
             }
         });
 
-        if(cookieAcceptBtn) {
+        if (cookieAcceptBtn) {
             cookieAcceptBtn.addEventListener('click', () => {
                 try {
                     localStorage.setItem('kh_cookie_pref', 'all');
-                } catch (e) {}
+                } catch (e) { }
                 hideCookieBanner();
             });
         }
 
-        if(cookieDeclineBtn) {
+        if (cookieDeclineBtn) {
             cookieDeclineBtn.addEventListener('click', () => {
                 try {
                     localStorage.setItem('kh_cookie_pref', 'essential');
-                } catch (e) {}
+                } catch (e) { }
                 hideCookieBanner();
             });
         }
 
-        if(cookieMoreBtn) {
+        if (cookieMoreBtn) {
             cookieMoreBtn.addEventListener('click', () => {
                 hideCookieBanner();
                 openLegal('cookies');
@@ -2142,4 +2552,5 @@
 
     </script>
 </body>
+
 </html>
